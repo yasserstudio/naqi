@@ -1,0 +1,25 @@
+name: New AI Client Support
+description: Request support for a new AI client
+labels: ["feature", "help wanted"]
+body:
+  - type: input
+    id: client_name
+    attributes:
+      label: AI client name
+      placeholder: "e.g., Windsurf, Zed, JetBrains AI"
+    validations:
+      required: true
+
+  - type: textarea
+    id: config_location
+    attributes:
+      label: Config file location(s)
+      description: Where does this client store its MCP/config files?
+    validations:
+      required: true
+
+  - type: textarea
+    id: config_format
+    attributes:
+      label: Config file format
+      description: Paste a sample config (redact any secrets)
