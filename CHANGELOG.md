@@ -24,6 +24,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **AI rate limiting** — 10 calls/hour and 50 calls/day limits enforced before API calls. Rate limit errors surfaced to frontend with clear messaging.
 - **AI usage tracking** — tracks calls, estimated tokens (input/output), and estimated cost per provider (Anthropic $3/$15 MTok, OpenAI $0.40/$1.60 MTok). Daily and all-time totals persisted to `~/.naqi/usage.json`.
 - **AI usage dashboard** in Settings — shows today's calls, tokens, cost, total stats, and hourly rate limit bar with warning state. Only visible when API key is configured.
+- **Memory contradiction detection** — local Jaccard similarity analysis finds memories with >40% word overlap across different types/sources. AI analysis enhanced with content snippets (first 300 chars) for semantic contradiction detection. 5 new Rust tests.
 - **Provider picker** in Settings — choose between Anthropic and OpenAI with dynamic key format hints
 - **AI badge on recommendations** — visual indicator distinguishing local vs AI-sourced recommendations
 - **Loading skeletons** on all 8 pages — animated placeholder UI during data fetch
