@@ -80,6 +80,11 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) â€
   page route transitions (fade + slide), search overlay spring enter/exit,
   confirm dialog spring scale, stat cards staggered entrance on dashboard,
   onboarding step slide transitions. MotionConfig sets global defaults.
+  Health score animated counter (spring physics count-up from 0), health bar
+  spring fill, sidebar active indicator with layoutId sliding highlight,
+  stat card whileHover/whileTap spring micro-interactions, card expand/collapse
+  height animations (ServerCard, MemoryItem, SkillItem), recommendation card
+  spring entrance + slide-out dismiss via AnimatePresence.
 
 ### Security
 - Workspace data anonymized before any AI API call (no paths, secrets, or memory content)
