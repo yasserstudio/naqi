@@ -35,6 +35,11 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) â€
 - OpenAI prompt explicitly requests JSON array response
 - Empty workspace no longer triggers unnecessary API call
 - AI errors surfaced to frontend instead of silently swallowed
+- Unsafe memory source type casting replaced with safe type guard
+- Error boundary catches unhandled exceptions and shows recovery UI
+- ConfirmDialog now has keyboard Escape handling, focus management, and ARIA attributes
+- Toast messages use safe error formatting instead of raw string interpolation
+- Null check on affected_items in cleanup toast (prevents "Removed undefined")
 
 ### Security
 - Workspace data anonymized before any AI API call (no paths, secrets, or memory content)
