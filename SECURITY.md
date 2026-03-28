@@ -47,8 +47,10 @@ Security issues we care about:
 ## Design Principles
 
 Naqi is built with security-first principles:
-- **Never store secrets** — API keys go in OS keychain, env vars are masked in memory
+- **Never store secrets in plain text** — API keys stored in `~/.naqi/credentials.json` with 600 permissions (OS keychain planned for v1.0). Scanned env var values are masked in memory.
+- **Workspace anonymization** — before any AI API call, workspace data is stripped of file paths, secret values, and memory content. Only metadata (names, types, ages, counts) is sent.
 - **Backup-first cleanup** — every modification creates a backup, auto-rollback on validation failure
 - **Read-only scanning** — the scanner never modifies source config files
 - **Capability scoping** — Tauri filesystem access restricted to known config paths
-- **No network by default** — core features work entirely offline
+- **No network by default** — core features work entirely offline. AI features are opt-in and require explicit API key configuration.
+- **AI recs are advisory only** — AI-sourced recommendations cannot be auto-applied; they require manual review

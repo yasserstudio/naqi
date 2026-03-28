@@ -16,17 +16,17 @@ Naqi answers that.
 
 - **Scans** Claude Desktop, Claude Code, Cursor, VS Code, and Windsurf configs in one view
 - **Detects** stale servers, contradictory memories, unused skills, and config inconsistencies
-- **Cleans up** with AI-powered recommendations, safe one-click removal, and full undo support
+- **Cleans up** with AI-powered recommendations (Anthropic + OpenAI), safe one-click removal, and full undo support
 
 ## Status
 
-**In active development.** Phase 1 (MVP) is underway. The scanner, dashboard, and cleanup engine are being built.
+**In active development.** MVP feature-complete with 237 tests. Scanner, dashboard, cleanup engine, and AI-powered recommendations are built. Preparing for first public release.
 
 ## Tech Stack
 
 - **Frontend:** React 19 + TypeScript + Tailwind CSS v4 + Vite
 - **Backend:** Rust (Tauri v2)
-- **AI:** Claude API for smart cleanup recommendations
+- **AI:** Multi-provider (Anthropic Claude + OpenAI GPT) for smart cleanup recommendations
 - **Architecture:** Local-first — all scanning happens on your machine
 
 ## Development
