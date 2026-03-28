@@ -63,6 +63,11 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) â€
 - Confirm dialog constrained to 90vw with responsive padding
 - Horizontal scroll prevented on main content area
 - Light mode: replaced all hardcoded `text-white` with `text-[hsl(var(--foreground))]` (7 instances), added light-mode glass variables (semi-transparent white bg, dark borders, softer shadows)
+- Batch cleanup now reports failed actions individually instead of swallowing errors silently
+- `build_prompt` returns Result instead of silently defaulting to empty string on serialization failure
+- DiffPreview query uses safe null check instead of non-null assertion
+- SkillItem badge styling fixed (broken ternary always returned empty string)
+- Theme persisted across app restarts (applied on startup from saved settings)
 
 ### Security
 - Workspace data anonymized before any AI API call (no paths, secrets, or memory content)
