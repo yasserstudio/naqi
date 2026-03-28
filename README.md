@@ -20,7 +20,7 @@ Naqi answers that.
 
 ## Status
 
-**In active development.** MVP feature-complete with 240 tests. Scanner, dashboard, cleanup engine, and AI-powered recommendations are built. Preparing for first public release.
+**In active development.** MVP feature-complete with 243 tests. Scanner, dashboard, cleanup engine, AI-powered recommendations, global search, health trend chart, and onboarding flow are built. Preparing for first public release.
 
 ## Tech Stack
 

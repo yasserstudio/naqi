@@ -99,7 +99,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) â€
 
 | Version | Date | Highlights |
 |---------|------|------------|
-| 0.1.0-alpha.1 | 2026-03-27 | MVP feature-complete, 240 tests (177 Rust + 63 frontend) |
+| 0.1.0-alpha.1 | 2026-03-27 | MVP feature-complete, 243 tests (180 Rust + 63 frontend) |
 
 [Unreleased]: https://github.com/yasserstudio/naqi/compare/v0.1.0-alpha.1...HEAD
 [0.1.0-alpha.1]: https://github.com/yasserstudio/naqi/releases/tag/v0.1.0-alpha.1
