@@ -19,6 +19,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **Config file watcher** — polls config file mtimes every 30s, auto-rescans when external changes detected, shows toast notification
 - **First-launch onboarding** — 4-step walkthrough on first launch explaining scan, recommendations, safety, and undo. Skip button available. Sets `first_launch: false` on completion and triggers first scan.
 - **Auto-updater** — Tauri v2 updater plugin checks for updates on startup, shows "Update to vX.Y.Z" button in sidebar with download progress bar. Release workflow signs builds and generates `latest.json` manifest for GitHub Releases.
+- **Memory content viewer** — click any MemoryItem to expand and see full content in a scrollable monospace view, description, file path, contradiction badges, and copy-to-clipboard button
 - **Provider picker** in Settings — choose between Anthropic and OpenAI with dynamic key format hints
 - **AI badge on recommendations** — visual indicator distinguishing local vs AI-sourced recommendations
 - **Loading skeletons** on all 8 pages — animated placeholder UI during data fetch
