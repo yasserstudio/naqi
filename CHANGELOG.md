@@ -7,7 +7,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 ## [Unreleased]
 
 ### Added
-- **Multi-provider AI recommendations** — Anthropic (Claude Sonnet 4) and OpenAI (GPT-4o Mini) support for intelligent workspace analysis
+- **Multi-provider AI recommendations** — Claude (Sonnet 4.6) and OpenAI (GPT-4o Mini) support for intelligent workspace analysis
 - **Workspace anonymizer** — strips secrets, file paths, and memory content before sending to AI APIs
 - **API key management** — secure storage in `~/.naqi/credentials.json` with provider selection, key validation, and 600 file permissions
 - **Provider picker** in Settings — choose between Anthropic and OpenAI with dynamic key format hints
