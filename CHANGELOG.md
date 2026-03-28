@@ -12,6 +12,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **API key management** — secure storage in `~/.naqi/credentials.json` with provider selection, key validation, and 600 file permissions
 - **Diff preview** in cleanup confirm dialog — shows before/after JSON with red/green line highlighting before applying any change
 - **Server detail panel** — click any ServerCard to expand and see full command with all args, env vars with masked values and secret badges, config file path, and duplicate info. Copy command button included.
+- **Batch cleanup** — select multiple recommendations with checkboxes, apply all at once with "Apply N selected" button. Sequential execution with backup per action. AI-only recs excluded from selection.
 - **Provider picker** in Settings — choose between Anthropic and OpenAI with dynamic key format hints
 - **AI badge on recommendations** — visual indicator distinguishing local vs AI-sourced recommendations
 - **Loading skeletons** on all 8 pages — animated placeholder UI during data fetch
