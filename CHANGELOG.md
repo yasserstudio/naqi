@@ -76,6 +76,10 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) â€
 - ServerCard: fixed nested interactive elements (header is now the toggle button, card is non-interactive container)
 - SearchOverlay: added role="dialog", aria-modal, aria-label
 - Implemented Cmd+, shortcut to open Settings (macOS standard)
+- Added Motion animation library (`motion/react`) for premium UI transitions:
+  page route transitions (fade + slide), search overlay spring enter/exit,
+  confirm dialog spring scale, stat cards staggered entrance on dashboard,
+  onboarding step slide transitions. MotionConfig sets global defaults.
 
 ### Security
 - Workspace data anonymized before any AI API call (no paths, secrets, or memory content)
