@@ -21,6 +21,9 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **Auto-updater** — Tauri v2 updater plugin checks for updates on startup, shows "Update to vX.Y.Z" button in sidebar with download progress bar. Release workflow signs builds and generates `latest.json` manifest for GitHub Releases.
 - **Memory content viewer** — click any MemoryItem to expand and see full content in a scrollable monospace view, description, file path, contradiction badges, and copy-to-clipboard button
 - **Skill detail panel** — click any SkillItem to expand and see description, install path, file count, size, staleness badge, and source type badge with color coding
+- **AI rate limiting** — 10 calls/hour and 50 calls/day limits enforced before API calls. Rate limit errors surfaced to frontend with clear messaging.
+- **AI usage tracking** — tracks calls, estimated tokens (input/output), and estimated cost per provider (Anthropic $3/$15 MTok, OpenAI $0.40/$1.60 MTok). Daily and all-time totals persisted to `~/.naqi/usage.json`.
+- **AI usage dashboard** in Settings — shows today's calls, tokens, cost, total stats, and hourly rate limit bar with warning state. Only visible when API key is configured.
 - **Provider picker** in Settings — choose between Anthropic and OpenAI with dynamic key format hints
 - **AI badge on recommendations** — visual indicator distinguishing local vs AI-sourced recommendations
 - **Loading skeletons** on all 8 pages — animated placeholder UI during data fetch
