@@ -25,7 +25,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 ### Changed
 - **Recommendations engine** — merges local + AI recommendations with deduplication by affected item
 - **RecommendationCard** — AI recs show "Review manually" instead of actionable Remove button
-- **Settings page** — real API key save/remove (was placeholder), provider picker UI
+- **Settings page** — redesigned AI provider picker with brand logos, per-provider color glows, model labels, and connected state badge
 - **CleanupPage** — shows AI analyzing badge, AI unavailable badge on error, deduped merged recs
 
 ### Fixed
