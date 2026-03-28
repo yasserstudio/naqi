@@ -40,6 +40,12 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) â€
 - ConfirmDialog now has keyboard Escape handling, focus management, and ARIA attributes
 - Toast messages use safe error formatting instead of raw string interpolation
 - Null check on affected_items in cleanup toast (prevents "Removed undefined")
+- Responsive stat cards grid (2-col on narrow, 4-col on wide)
+- Content area max-width increased from 960px to 1024px for better full-screen use
+- Page headers wrap gracefully on narrow windows
+- Recommendation badges wrap instead of overflowing
+- Confirm dialog constrained to 90vw with responsive padding
+- Horizontal scroll prevented on main content area
 
 ### Security
 - Workspace data anonymized before any AI API call (no paths, secrets, or memory content)
