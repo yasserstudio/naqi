@@ -54,3 +54,4 @@ Naqi is built with security-first principles:
 - **Capability scoping** — Tauri filesystem access restricted to known config paths
 - **No network by default** — core features work entirely offline. AI features are opt-in and require explicit API key configuration.
 - **AI recs are advisory only** — AI-sourced recommendations cannot be auto-applied; they require manual review
+- **Sanitized error responses** — raw API error bodies (which may contain org IDs, key fragments, or internal structures) are never forwarded to the frontend; only safe, user-friendly messages are shown

@@ -40,6 +40,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) â€
 - Workspace data anonymized before any AI API call (no paths, secrets, or memory content)
 - API keys stored with restricted file permissions (chmod 600 on Unix)
 - AI recommendation confidence capped at 0.95 to prevent overconfidence
+- API error responses sanitized â€” raw bodies (containing org IDs, key fragments, internal JSON) never reach the frontend; known HTTP codes mapped to user-friendly messages; full details logged server-side only
 
 ---
 
@@ -60,7 +61,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) â€
 - **JSONC support**: strips // and /* */ comments, handles trailing commas
 - **Secret masking**: env vars with TOKEN/KEY/SECRET/PASSWORD/CREDENTIAL/AUTH are masked
 - **Server resolution**: validates stdio commands exist via `which`
-- **174 Rust tests** covering parsers, memory, recommendations, cleanup, anonymizer, AI analysis, and edge cases
+- **177 Rust tests** covering parsers, memory, recommendations, cleanup, anonymizer, AI analysis, error sanitization, and edge cases
 - **9 test fixture files** for all client config formats
 - Full documentation suite (26 documents: architecture, API, testing, roadmap, GTM, legal)
 
@@ -76,7 +77,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) â€
 
 | Version | Date | Highlights |
 |---------|------|------------|
-| 0.1.0-alpha.1 | 2026-03-27 | MVP feature-complete, 174 Rust + 63 frontend tests |
+| 0.1.0-alpha.1 | 2026-03-27 | MVP feature-complete, 177 Rust + 63 frontend tests |
 
 [Unreleased]: https://github.com/yasserstudio/naqi/compare/v0.1.0-alpha.1...HEAD
 [0.1.0-alpha.1]: https://github.com/yasserstudio/naqi/releases/tag/v0.1.0-alpha.1
