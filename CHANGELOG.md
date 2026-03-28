@@ -25,8 +25,10 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 ### Changed
 - **Recommendations engine** — merges local + AI recommendations with deduplication by affected item
 - **RecommendationCard** — AI recs show "Review manually" instead of actionable Remove button
-- **Settings page** — redesigned AI provider picker with brand logos, per-provider color glows, model labels, and connected state badge
+- **Settings page** — redesigned AI provider picker with official brand SVG logos (Claude sparkle, OpenAI hexagon), per-provider color glows (#C15F3C Claude, #EEE OpenAI), model labels, and connected state badge
 - **CleanupPage** — shows AI analyzing badge, AI unavailable badge on error, deduped merged recs
+- **Claude API** — upgraded from claude-sonnet-4-20250514 to claude-sonnet-4-6 per official docs audit; response parsing now filters by content block type and checks `stop_reason` for truncation
+- **OpenAI API** — upgraded from gpt-4o-mini to gpt-4.1-mini per official docs audit; request param renamed `max_tokens` to `max_completion_tokens`; added `finish_reason` check for truncation and content filtering
 
 ### Fixed
 - AI recommendations no longer have clickable Remove button (empty placeholder actions)
@@ -88,7 +90,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 
 | Version | Date | Highlights |
 |---------|------|------------|
-| 0.1.0-alpha.1 | 2026-03-27 | MVP feature-complete, 177 Rust + 63 frontend tests |
+| 0.1.0-alpha.1 | 2026-03-27 | MVP feature-complete, 240 tests (177 Rust + 63 frontend) |
 
 [Unreleased]: https://github.com/yasserstudio/naqi/compare/v0.1.0-alpha.1...HEAD
 [0.1.0-alpha.1]: https://github.com/yasserstudio/naqi/releases/tag/v0.1.0-alpha.1

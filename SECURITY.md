@@ -30,7 +30,7 @@ Do NOT open a public GitHub issue for security vulnerabilities.
 
 Security issues we care about:
 - Exposure of secrets (API keys, tokens, passwords) from scanned configs
-- Anonymization bypass (PII sent to Claude API)
+- Anonymization bypass (PII sent to AI APIs — Claude or OpenAI)
 - Unauthorized filesystem access beyond declared Tauri capabilities
 - Config file corruption during cleanup operations
 - Path traversal or injection in scanner/parser logic
