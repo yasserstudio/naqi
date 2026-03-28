@@ -55,6 +55,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) â€
 - Recommendation badges wrap instead of overflowing
 - Confirm dialog constrained to 90vw with responsive padding
 - Horizontal scroll prevented on main content area
+- Light mode: replaced all hardcoded `text-white` with `text-[hsl(var(--foreground))]` (7 instances), added light-mode glass variables (semi-transparent white bg, dark borders, softer shadows)
 
 ### Security
 - Workspace data anonymized before any AI API call (no paths, secrets, or memory content)
