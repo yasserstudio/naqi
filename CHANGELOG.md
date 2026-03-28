@@ -68,6 +68,14 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - DiffPreview query uses safe null check instead of non-null assertion
 - SkillItem badge styling fixed (broken ternary always returned empty string)
 - Theme persisted across app restarts (applied on startup from saved settings)
+- ConfirmDialog: focus trap (Tab/Shift+Tab stays within dialog), cancel button auto-focused
+- Text contrast: removed /50 opacity on visible muted text across Sidebar, Settings, Onboarding, SearchOverlay
+- Added `@media (prefers-reduced-motion: reduce)` — disables all animations
+- Added `@media (prefers-reduced-transparency: reduce)` — replaces glass with solid backgrounds
+- Accessible labels: API key input, onboarding dots, search overlay dialog
+- ServerCard: fixed nested interactive elements (header is now the toggle button, card is non-interactive container)
+- SearchOverlay: added role="dialog", aria-modal, aria-label
+- Implemented Cmd+, shortcut to open Settings (macOS standard)
 
 ### Security
 - Workspace data anonymized before any AI API call (no paths, secrets, or memory content)
