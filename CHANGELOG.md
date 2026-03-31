@@ -14,6 +14,10 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **Panel size persistence** — `useLocalStorage` hook for generic localStorage state with cross-window sync
 - **Inline onboarding** — first-launch onboarding moved from full-screen overlay to dismissible card on dashboard
 - **Cleanup loading states** — Remove button shows spinner during action, batch apply shows "Cleaning 2/5..." progress, confirmation dialog lists affected items
+- **Unified page headers** — `PageHeader` component with icon badge + title + count across all 8 pages
+- **Section headers** — `SectionHeader` component with uppercase label + count + horizontal rule for grouped lists (Skills by client, Configs by client)
+- **Stagger entrance animations** — list items fade-in with 30ms staggered delay on Servers, Skills, Configs, Memories, History, and Profiles pages
+- **App icon and branding** — new icon set (macOS icns, iOS, Android, Windows), sidebar logo, tray icon
 - **Multi-provider AI recommendations** — Claude (Sonnet 4.6) and OpenAI (GPT-4.1 Mini) support for intelligent workspace analysis
 - **Workspace anonymizer** — strips secrets, file paths, and memory content before sending to AI APIs
 - **API key management** — secure storage in `~/.naqi/credentials.json` with provider selection, key validation, and 600 file permissions
