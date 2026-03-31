@@ -67,6 +67,10 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
   - Last active route persisted and restored on launch
   - Normalized gap spacing across all pages
 
+- **Settings tabbed layout** — four tabs with icons: Appearance (theme + schedule), AI (provider + key + usage), Export, About. Active tab persisted to localStorage.
+- **ServerPanel inline inspector** — converted from modal overlay to inline split-view that opens alongside the server list. Width animates 0→420px. Server list shrinks to accommodate.
+- **Performance optimizations** — will-change:transform on blobs, contain:layout on glass-surface, glass-blur reduced from 20px to 12px
+- **Frontend tests** — useLocalStorage (6 tests), RecommendationCard (9 tests), Sidebar (7 tests). Total: 86 tests (was 64).
 - **Light mode audit** — fixed hardcoded dark-only colors across ProviderCard (border-white → border-primary), ScheduleSettings toggle thumb (added shadow), BackgroundBlobs (5x lower opacity in light mode), card-elevated (uses theme-aware glass vars)
 
 ### Changed
