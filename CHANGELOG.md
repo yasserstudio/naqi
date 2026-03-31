@@ -17,7 +17,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **Global search** (Cmd+K) — search overlay across servers, memories, skills, and configs. Arrow key navigation, Enter to jump to page. Results show type-colored icons and detail.
 - **Keyboard shortcuts** — Cmd+K search, Cmd+R rescan, Cmd+1-8 page navigation. Search hint button in sidebar.
 - **Config file watcher** — polls config file mtimes every 30s, auto-rescans when external changes detected, shows toast notification
-- **First-launch onboarding** — 4-step walkthrough on first launch explaining scan, recommendations, safety, and undo. Skip button available. Sets `first_launch: false` on completion and triggers first scan.
+- **First-launch onboarding** — 3-step walkthrough on first launch (scan, recommendations, safe cleanup with undo). Skip button available. Sets `first_launch: false` on completion and triggers first scan.
 - **Auto-updater** — Tauri v2 updater plugin checks for updates on startup, shows "Update to vX.Y.Z" button in sidebar with download progress bar. Release workflow signs builds and generates `latest.json` manifest for GitHub Releases.
 - **Memory content viewer** — click any MemoryItem to expand and see full content in a scrollable monospace view, description, file path, contradiction badges, and copy-to-clipboard button
 - **Skill detail panel** — click any SkillItem to expand and see description, install path, file count, size, staleness badge, and source type badge with color coding
@@ -36,6 +36,25 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **Release workflow** — tag-triggered Tauri builds with GitHub Release draft
 - **Versioning strategy** — SemVer with alpha/beta/rc pre-release tags
 - New IPC commands: `save_api_key`, `remove_api_key`, `check_api_key`, `get_ai_provider`, `get_ai_recommendations`
+
+- **Apple HIG audit** — 21 findings addressed across accessibility, window chrome, keyboard access, motion, and layout:
+  - macOS overlay titlebar with drag regions and traffic light integration
+  - `Cmd+Z` global undo, `Cmd+Shift+S` sidebar toggle shortcuts
+  - Status indicators use shape icons alongside color (CheckCircle2, XCircle, Clock, AlertCircle)
+  - Focus ring opacity increased to 70% across all interactive components
+  - Responsive root font-size `clamp(13px, 0.875rem, 18px)` for system text size support
+  - Full keyboard access audit — sidebar search, HealthGauge link, all cards Tab-reachable
+  - ARIA labels added to icon-only buttons and expandable cards
+  - Muted-foreground contrast ratio fixed to 5.0:1 (WCAG AA)
+  - Sidebar widened to 240px with source-list section headers (Workspace, Tools)
+  - ShortcutsDialog converted from full-screen modal to lightweight popover
+  - Onboarding consolidated from 4 steps to 3
+  - Search overlay shows recent queries when empty
+  - Spring animations tuned to critically damped (bounce ≤ 0.15)
+  - Onboarding wrapped in MotionConfig for reduced motion support
+  - Consistent 72px min-height on collapsed list items
+  - Last active route persisted and restored on launch
+  - Normalized gap spacing across all pages
 
 ### Changed
 - **Recommendations engine** — merges local + AI recommendations with deduplication by affected item

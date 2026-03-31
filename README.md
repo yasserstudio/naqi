@@ -18,6 +18,16 @@ Naqi answers that.
 - **Detects** stale servers, contradictory memories, unused skills, and config inconsistencies
 - **Cleans up** with AI-powered recommendations (Claude + OpenAI), safe one-click removal, and full undo support
 
+## Features
+
+- **Dashboard** with health score gauge, trend chart, and editorial card grid
+- **Global search** (`Cmd+K`) across servers, memories, skills, and configs with recent queries
+- **Keyboard-first** — `Cmd+Z` undo, `Cmd+R` rescan, `Cmd+Shift+S` toggle sidebar, `Cmd+1-8` page nav
+- **macOS native** — overlay titlebar with traffic lights, collapsible sidebar, state restoration on launch
+- **Accessible** — WCAG AA contrast, focus rings, status icons (not color-only), reduced motion support, full keyboard navigation
+- **Config profiles** — capture, apply, export/import server configurations across clients
+- **3-step onboarding** — scan, recommendations, safe cleanup with undo
+
 ## Status
 
 **In active development.** MVP feature-complete with 243 tests. Scanner, dashboard, cleanup engine, AI-powered recommendations, global search, health trend chart, and onboarding flow are built. Preparing for first public release.
@@ -28,6 +38,7 @@ Naqi answers that.
 - **Backend:** Rust (Tauri v2)
 - **AI:** Multi-provider (Claude Sonnet 4.6 + OpenAI GPT-4.1 Mini) for smart cleanup recommendations
 - **Architecture:** Local-first — all scanning happens on your machine
+- **Design:** Dark-mode-first glass morphism, Inter + JetBrains Mono, responsive root font-size
 
 ## Development
 
@@ -46,6 +57,18 @@ cd naqi
 pnpm install
 pnpm tauri dev
 ```
+
+### Keyboard Shortcuts
+
+| Shortcut | Action |
+|----------|--------|
+| `Cmd+K` | Search workspace |
+| `Cmd+R` | Rescan workspace |
+| `Cmd+Z` | Undo last cleanup action |
+| `Cmd+Shift+S` | Toggle sidebar |
+| `Cmd+,` | Open Settings |
+| `Cmd+1-8` | Navigate to page |
+| `?` | Show all shortcuts |
 
 See [Development Guide](docs/technical/development-guide.md) for full details.
 
