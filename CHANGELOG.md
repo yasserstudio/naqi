@@ -67,6 +67,8 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
   - Last active route persisted and restored on launch
   - Normalized gap spacing across all pages
 
+- **Light mode audit** — fixed hardcoded dark-only colors across ProviderCard (border-white → border-primary), ScheduleSettings toggle thumb (added shadow), BackgroundBlobs (5x lower opacity in light mode), card-elevated (uses theme-aware glass vars)
+
 ### Changed
 - **Recommendations engine** — merges local + AI recommendations with deduplication by affected item
 - **RecommendationCard** — AI recs show "Review manually" instead of actionable Remove button
@@ -76,6 +78,12 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **OpenAI API** — upgraded from gpt-4o-mini to gpt-4.1-mini per official docs audit; request param renamed `max_tokens` to `max_completion_tokens`; added `finish_reason` check for truncation and content filtering
 
 ### Fixed
+- SkillsPage and ConfigsPage `useMemo` moved before early returns (fixed "Rendered more hooks" crash)
+- Shell undo toast: access `entry.action_description` instead of passing raw UndoEntry object
+- HealthGauge test updated for category-based redesign (message only shown when issues exist)
+- Removed unused `formatDate` from HealthTrend (replaced by 7-day grid builder)
+- ServerPanel setTimeout cleared on unmount (memory leak fix)
+- All checks pass: typecheck 0 errors, lint 0 errors, 64/64 frontend tests, 237/237 Rust tests
 - AI recommendations no longer have clickable Remove button (empty placeholder actions)
 - HTTP client now has 30s timeout (was unbounded, could hang)
 - API key removal now invalidates AI recommendation cache
