@@ -24,11 +24,15 @@ Naqi answers that.
 - **Resizable sidebar** — drag to resize (180–400px), double-click to reset, width persisted
 - **Global search** (`Cmd+K`) across servers, memories, skills, and configs with recent queries
 - **Keyboard-first** — `Cmd+Z` undo, `Cmd+R` rescan, `Cmd+Shift+S` toggle sidebar, `Cmd+1-8` page nav
-- **macOS native** — overlay titlebar with traffic lights, collapsible sidebar, state restoration on launch
+- **Menu bar tray** — persistent icon with glass-styled status panel (health score, category bar, quick scan, fix issues)
+- **macOS native** — overlay titlebar with traffic lights, collapsible sidebar, hides to tray on close, state restoration
 - **Accessible** — WCAG AA contrast, focus rings, status icons (not color-only), reduced motion support, full keyboard navigation
 - **Config profiles** — capture, apply, export/import server configurations across clients
 - **Inline onboarding** — dismissible welcome card on first launch
-- **Micro-interactions** — spring hover/tap on cards, slide-down expand, circular AI usage ring
+- **Server health checks** — test MCP servers with one click (binary check for Stdio, HTTP ping for Http/Sse)
+- **Config diff tracking** — monitors config file changes over time with line-level stats
+- **Multi-workspace** — filter memories by Claude Code project directory
+- **Micro-interactions** — spring hover/tap on cards, slide-down expand, cleanup dissolve animations
 
 ## Status
 

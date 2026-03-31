@@ -21,6 +21,8 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **Config diff history** — tracks config file hash changes across scans, shows change history on History page with path, client, lines added/removed, and relative time
 - **Multi-workspace support** — detects Claude Code project directories, adds workspace filter dropdown to Memories page (Global / per-project filtering)
 - **Distribution prep** — macOS entitlements.plist, Homebrew cask formula (ARM/Intel), distribution guide, CLI companion docs
+- **System tray with glass panel** — persistent menu bar icon with custom webview panel (not native NSMenu). Shows health score, category bar, workspace counts, Scan Now, Fix Issues (opens app on Cleanup page). Glass-surface styled to match the app. Panel auto-hides on blur/Escape. Main window hides to tray on close (app keeps running for scheduled scans).
+- **Cleanup dissolve animation** — applying a recommendation shows green checkmark overlay with backdrop blur, then card scales down + slides left + dissolves on exit
 - **App icon and branding** — new icon set (macOS icns, iOS, Android, Windows), sidebar logo, tray icon
 - **Multi-provider AI recommendations** — Claude (Sonnet 4.6) and OpenAI (GPT-4.1 Mini) support for intelligent workspace analysis
 - **Workspace anonymizer** — strips secrets, file paths, and memory content before sending to AI APIs
