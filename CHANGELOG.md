@@ -85,13 +85,23 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **Claude API** — upgraded from claude-sonnet-4-20250514 to claude-sonnet-4-6 per official docs audit; response parsing now filters by content block type and checks `stop_reason` for truncation
 - **OpenAI API** — upgraded from gpt-4o-mini to gpt-4.1-mini per official docs audit; request param renamed `max_tokens` to `max_completion_tokens`; added `finish_reason` check for truncation and content filtering
 
+### Refactored (simplify code review)
+- **Stagger animation preset** — extracted `staggerItem(index, groupOffset)` in `motion-presets.ts`, replaced 7 inline copies across pages
+- **PageHeader built-in spacing** — baked `mb-4` into component, removed 7 redundant spacer divs
+- **SectionHeader icon prop** — added optional `icon` prop, used in HistoryPage instead of manual markup
+- **Shared HTTP client** — `scanner/health.rs` uses `OnceLock<reqwest::Client>` matching `llm_client` pattern
+- **Spawn blocking** — `check_stdio_server` wrapped in `spawn_blocking` to avoid blocking async runtime
+- **No-op write guard** — `useLocalStorage` skips localStorage write when value unchanged
+- **Config history bug** — stored `line_count` in snapshot to fix diff stats (was re-reading current file as "previous")
+
 ### Fixed
+- Config diff stats always showing 0 lines changed (double file read bug in `config_history.rs`)
 - SkillsPage and ConfigsPage `useMemo` moved before early returns (fixed "Rendered more hooks" crash)
 - Shell undo toast: access `entry.action_description` instead of passing raw UndoEntry object
 - HealthGauge test updated for category-based redesign (message only shown when issues exist)
 - Removed unused `formatDate` from HealthTrend (replaced by 7-day grid builder)
 - ServerPanel setTimeout cleared on unmount (memory leak fix)
-- All checks pass: typecheck 0 errors, lint 0 errors, 64/64 frontend tests, 237/237 Rust tests
+- All checks pass: typecheck 0 errors, lint 0 errors, 86/86 frontend tests, 243/243 Rust tests
 - AI recommendations no longer have clickable Remove button (empty placeholder actions)
 - HTTP client now has 30s timeout (was unbounded, could hang)
 - API key removal now invalidates AI recommendation cache
