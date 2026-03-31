@@ -7,6 +7,13 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 ## [Unreleased]
 
 ### Added
+- **Resizable sidebar** — drag the right edge to resize (180–400px), double-click to reset to 240px, width persisted to localStorage across sessions
+- **Circular usage ring** — SVG-based ring gauge for AI usage stats with animated arc fill, spring counter, and warning color shift at 80% threshold. Replaces flat stat grid.
+- **Micro-interaction polish** — shared motion presets (`cardHover`, `buttonPress`, `expandContent`) applied across all cards, consistent scale hover/tap feedback, expand panels slide-down with y offset
+- **Category-based health bar** — stacked bar where each category (Servers 50pts, Memories 30pts, Configs 20pts) owns a segment colored by its own health status. Per-category scores computed in Rust backend.
+- **Panel size persistence** — `useLocalStorage` hook for generic localStorage state with cross-window sync
+- **Inline onboarding** — first-launch onboarding moved from full-screen overlay to dismissible card on dashboard
+- **Cleanup loading states** — Remove button shows spinner during action, batch apply shows "Cleaning 2/5..." progress, confirmation dialog lists affected items
 - **Multi-provider AI recommendations** — Claude (Sonnet 4.6) and OpenAI (GPT-4.1 Mini) support for intelligent workspace analysis
 - **Workspace anonymizer** — strips secrets, file paths, and memory content before sending to AI APIs
 - **API key management** — secure storage in `~/.naqi/credentials.json` with provider selection, key validation, and 600 file permissions

@@ -20,13 +20,15 @@ Naqi answers that.
 
 ## Features
 
-- **Dashboard** with health score gauge, trend chart, and editorial card grid
+- **Dashboard** with category-based health bar, 7-day trend chart, and editorial card grid
+- **Resizable sidebar** — drag to resize (180–400px), double-click to reset, width persisted
 - **Global search** (`Cmd+K`) across servers, memories, skills, and configs with recent queries
 - **Keyboard-first** — `Cmd+Z` undo, `Cmd+R` rescan, `Cmd+Shift+S` toggle sidebar, `Cmd+1-8` page nav
 - **macOS native** — overlay titlebar with traffic lights, collapsible sidebar, state restoration on launch
 - **Accessible** — WCAG AA contrast, focus rings, status icons (not color-only), reduced motion support, full keyboard navigation
 - **Config profiles** — capture, apply, export/import server configurations across clients
-- **3-step onboarding** — scan, recommendations, safe cleanup with undo
+- **Inline onboarding** — dismissible welcome card on first launch
+- **Micro-interactions** — spring hover/tap on cards, slide-down expand, circular AI usage ring
 
 ## Status
 
