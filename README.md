@@ -32,7 +32,7 @@ Naqi answers that.
 
 ## Status
 
-**In active development.** MVP feature-complete with 243+ tests. Scanner, dashboard, cleanup engine, AI-powered recommendations, global search, health trend chart, resizable sidebar, and onboarding flow are built. HIG-audited for macOS. Preparing for first public release.
+**In active development.** Feature-rich with 243 Rust + 86 frontend tests. Scanner, dashboard, cleanup engine, AI recommendations, server health checks, config diff tracking, multi-workspace support, resizable sidebar, and global search are built. HIG-audited for macOS. Preparing for first public release.
 
 ## Tech Stack
 

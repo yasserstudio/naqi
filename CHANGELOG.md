@@ -17,6 +17,10 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **Unified page headers** — `PageHeader` component with icon badge + title + count across all 8 pages
 - **Section headers** — `SectionHeader` component with uppercase label + count + horizontal rule for grouped lists (Skills by client, Configs by client)
 - **Stagger entrance animations** — list items fade-in with 30ms staggered delay on Servers, Skills, Configs, Memories, History, and Profiles pages
+- **Server health checks** — Test button on ServerCard expanded view. Checks binary existence (Stdio) or HTTP HEAD (Http/Sse) with 5s timeout. Shows reachable/latency or error.
+- **Config diff history** — tracks config file hash changes across scans, shows change history on History page with path, client, lines added/removed, and relative time
+- **Multi-workspace support** — detects Claude Code project directories, adds workspace filter dropdown to Memories page (Global / per-project filtering)
+- **Distribution prep** — macOS entitlements.plist, Homebrew cask formula (ARM/Intel), distribution guide, CLI companion docs
 - **App icon and branding** — new icon set (macOS icns, iOS, Android, Windows), sidebar logo, tray icon
 - **Multi-provider AI recommendations** — Claude (Sonnet 4.6) and OpenAI (GPT-4.1 Mini) support for intelligent workspace analysis
 - **Workspace anonymizer** — strips secrets, file paths, and memory content before sending to AI APIs
