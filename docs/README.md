@@ -1,6 +1,6 @@
 # Naqi Documentation
 
-> **The AI Agent Cleaner** — Keep your AI workspace pure.
+> **The AI Workspace Cleaner** — Keep your AI workspace pure.
 
 ---
 
@@ -9,47 +9,57 @@
 ### Product
 Core product vision, features, and roadmap.
 
-- [Project Overview](product/project-overview.md) — Vision, problem statement, tech stack, and roadmap
+- [Project Overview](product/project-overview.md) — Vision, problem statement, tech stack
 - [User Personas](product/user-personas.md) — Target segments, profiles, and jobs-to-be-done
-- [Pain Points](product/pain-points.md) — 6 core problems with real-world scenarios and severity analysis
-- [Features](product/features.md) — Full feature spec with acceptance criteria (MVP through Phase 3)
-- [Solutions](product/solutions.md) — How each feature solves each pain point, with validation criteria
-- [User Flows](product/user-flows.md) — Screen-by-screen UX journeys for all 10 core flows
-- [Implementation Roadmap](product/implementation-roadmap.md) — Week-by-week MVP build plan with dependencies, cut list, and definition of done
-
-### Business
-Strategy, pricing, market analysis, and growth planning.
-
-- [Business Model & Pricing](business/business-model.md) — Revenue model, pricing tiers, unit economics
-- [Go-To-Market Strategy](business/go-to-market.md) — Launch plan, channels, growth loops
-- [Competitive Analysis](business/competitive-analysis.md) — Landscape, positioning, moat strategy
-- [Financial Projections](business/financial-projections.md) — Revenue forecasts, cost structure, milestones
-- [Pro Tier Licensing](business/licensing.md) — License keys, validation, activation, payment provider, feature gating
-- [Landing Page Spec](business/landing-page.md) — naqi.dev content, sections, SEO, design, pre/post-launch variants
-- [GitHub Strategy](business/github-strategy.md) — Repo setup, open-source strategy, community, GitHub as growth channel
+- [Pain Points](product/pain-points.md) — 6 core problems with real-world scenarios
+- [Features](product/features.md) — Full feature spec with acceptance criteria
+- [Solutions](product/solutions.md) — How each feature solves each pain point
+- [User Flows](product/user-flows.md) — Screen-by-screen UX journeys for all core flows
+- [Implementation Roadmap](product/implementation-roadmap.md) — Build plan with dependencies
 
 ### Technical
 Architecture, data models, and implementation guides.
 
-- [System Architecture](technical/architecture.md) — Module design, project structure, IPC contract, security model
-- [Config Formats Reference](technical/config-formats.md) — Real config schemas for every AI client (Claude, Cursor, VS Code)
-- [Data Models](technical/data-models.md) — Rust structs + TypeScript types for the full data layer
-- [API Design](technical/api-design.md) — Claude API integration, prompts, anonymization, error handling
-- [Development Guide](technical/development-guide.md) — Setup, dependencies, conventions, testing, workflow
-- [Deployment & Distribution](technical/deployment.md) — Code signing, CI/CD, auto-updates, release process
-- [Design System](technical/design-system.md) — Color tokens, typography, spacing, component specs, icons, motion, accessibility
-- [Testing Plan](technical/testing-plan.md) — Test fixtures, 200+ named test cases, coverage targets, manual checklist
-- [Error States & Edge Cases](technical/error-states-edge-cases.md) — Every error state, boundary condition, and recovery behavior across all modules
+- [System Architecture](technical/architecture.md) — Module design, IPC contract, security model
+- [Config Formats Reference](technical/config-formats.md) — Config schemas for every AI client
+- [Data Models](technical/data-models.md) — Rust structs + TypeScript types
+- [API Design](technical/api-design.md) — Claude/OpenAI integration, prompts, anonymization
+- [Design System](technical/design-system.md) — Color tokens, typography, spacing, components, motion, accessibility
+- [Development Guide](technical/development-guide.md) — Setup, conventions, testing, workflow
+- [Testing Plan](technical/testing-plan.md) — 329 tests, coverage targets, fixtures
+- [Error States & Edge Cases](technical/error-states-edge-cases.md) — Every error state and recovery behavior
+
+### Distribution
+Release, signing, and distribution.
+
+- [Distribution Guide](distribution.md) — Code signing, notarization, Homebrew tap, release process, auto-updater
+- [CLI Companion](cli.md) — Planned CLI commands (scan, score, clean) with output formats
+- [Deployment](technical/deployment.md) — CI/CD, build process, platform targets
+
+### Business
+Strategy, pricing, market analysis, and growth.
+
+- [Business Model & Pricing](business/business-model.md) — Revenue model, pricing tiers
+- [Go-To-Market Strategy](business/go-to-market.md) — Launch plan, channels, growth loops
+- [Competitive Analysis](business/competitive-analysis.md) — Landscape, positioning, moat
+- [Financial Projections](business/financial-projections.md) — Revenue forecasts, milestones
+- [Pro Tier Licensing](business/licensing.md) — License keys, validation, feature gating
+- [Landing Page Spec](business/landing-page.md) — naqi.dev content and design
+- [GitHub Strategy](business/github-strategy.md) — Open-source strategy, community, GitHub as growth channel
 
 ### Legal
 Privacy, terms, and compliance.
 
-- [Privacy Policy](legal/privacy-policy.md) — Data handling, anonymization, GDPR/CCPA, no telemetry
-- [Terms of Service](legal/terms-of-service.md) — License grant, refunds, liability, acceptable use
+- [Privacy Policy](legal/privacy-policy.md) — Data handling, anonymization, no telemetry
+- [Terms of Service](legal/terms-of-service.md) — License grant, liability, acceptable use
 
 ### Project Root
-- [CLAUDE.md](../CLAUDE.md) — AI-assisted development instructions and conventions
+- [ROADMAP.md](../ROADMAP.md) — Public roadmap with version milestones
+- [CHANGELOG.md](../CHANGELOG.md) — Detailed change history
+- [CONTRIBUTING.md](../CONTRIBUTING.md) — How to contribute
+- [CLAUDE.md](../CLAUDE.md) — AI-assisted development conventions
+- [VERSIONING.md](../VERSIONING.md) — SemVer strategy
 
 ---
 
-*Last updated: March 26, 2026 — Phase 0 complete, scaffold built, entering Phase 1*
+*Last updated: March 31, 2026 — v0.1.0 feature-complete, preparing public release*

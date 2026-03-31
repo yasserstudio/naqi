@@ -2,7 +2,8 @@
 
 > The AI workspace cleaner — scan, audit, and clean up your MCP servers, memories, and skills.
 
-<!-- Screenshot will go here once the dashboard is built -->
+<!-- TODO: Replace with actual screenshot before public launch -->
+<!-- ![Naqi Dashboard](docs/assets/screenshot-dashboard.png) -->
 
 ## The Problem
 
@@ -18,33 +19,55 @@ Naqi answers that.
 - **Detects** stale servers, contradictory memories, unused skills, and config inconsistencies
 - **Cleans up** with AI-powered recommendations (Claude + OpenAI), safe one-click removal, and full undo support
 
+## Install
+
+### macOS (Homebrew)
+
+```bash
+brew tap yasserstudio/naqi
+brew install --cask naqi
+```
+
+### Download
+
+[macOS (Apple Silicon)](https://github.com/yasserstudio/naqi/releases/latest) · [macOS (Intel)](https://github.com/yasserstudio/naqi/releases/latest)
+
+> Windows and Linux coming in v0.3.0.
+
 ## Features
 
 - **Dashboard** with category-based health bar, 7-day trend chart, and editorial card grid
+- **Menu bar tray** — persistent icon with glass-styled status panel (health score, quick scan, fix issues)
 - **Resizable sidebar** — drag to resize (180–400px), double-click to reset, width persisted
 - **Global search** (`Cmd+K`) across servers, memories, skills, and configs with recent queries
 - **Keyboard-first** — `Cmd+Z` undo, `Cmd+R` rescan, `Cmd+Shift+S` toggle sidebar, `Cmd+1-8` page nav
-- **Menu bar tray** — persistent icon with glass-styled status panel (health score, category bar, quick scan, fix issues)
-- **macOS native** — overlay titlebar with traffic lights, collapsible sidebar, hides to tray on close, state restoration
-- **Accessible** — WCAG AA contrast, focus rings, status icons (not color-only), reduced motion support, full keyboard navigation
-- **Config profiles** — capture, apply, export/import server configurations across clients
-- **Inline onboarding** — dismissible welcome card on first launch
+- **macOS native** — overlay titlebar, collapsible sidebar, hides to tray on close, state restoration
+- **Accessible** — WCAG AA contrast, focus rings, status icons, reduced motion, full keyboard nav
 - **Server health checks** — test MCP servers with one click (binary check for Stdio, HTTP ping for Http/Sse)
+- **Config profiles** — capture, apply, export/import server configurations across clients
 - **Config diff tracking** — monitors config file changes over time with line-level stats
 - **Multi-workspace** — filter memories by Claude Code project directory
-- **Micro-interactions** — spring hover/tap on cards, slide-down expand, cleanup dissolve animations
+- **AI-powered** — Claude Sonnet 4.6 or OpenAI GPT-4.1 Mini for intelligent cleanup recommendations (optional, local analysis works without API key)
 
-## Status
+## Keyboard Shortcuts
 
-**In active development.** Feature-rich with 243 Rust + 86 frontend tests. Scanner, dashboard, cleanup engine, AI recommendations, server health checks, config diff tracking, multi-workspace support, resizable sidebar, and global search are built. HIG-audited for macOS. Preparing for first public release.
+| Shortcut | Action |
+|----------|--------|
+| `Cmd+K` | Search workspace |
+| `Cmd+R` | Rescan workspace |
+| `Cmd+Z` | Undo last cleanup action |
+| `Cmd+Shift+S` | Toggle sidebar |
+| `Cmd+,` | Open Settings |
+| `Cmd+1-8` | Navigate to page |
+| `?` | Show all shortcuts |
 
 ## Tech Stack
 
-- **Frontend:** React 19 + TypeScript + Tailwind CSS v4 + Vite
-- **Backend:** Rust (Tauri v2)
-- **AI:** Multi-provider (Claude Sonnet 4.6 + OpenAI GPT-4.1 Mini) for smart cleanup recommendations
-- **Architecture:** Local-first — all scanning happens on your machine
-- **Design:** Dark-mode-first glass morphism, Inter + JetBrains Mono, responsive root font-size
+- **Frontend:** React 19, TypeScript 5.8, Tailwind CSS v4, Vite 7
+- **Backend:** Rust (Tauri v2), serde, chrono, reqwest, thiserror
+- **AI:** Multi-provider (Claude Sonnet 4.6 + OpenAI GPT-4.1 Mini)
+- **Design:** Dark-mode-first glass morphism, Inter + JetBrains Mono
+- **Tests:** 243 Rust + 86 frontend (329 total)
 
 ## Development
 
@@ -64,28 +87,29 @@ pnpm install
 pnpm tauri dev
 ```
 
-### Keyboard Shortcuts
+### Checks
 
-| Shortcut | Action |
-|----------|--------|
-| `Cmd+K` | Search workspace |
-| `Cmd+R` | Rescan workspace |
-| `Cmd+Z` | Undo last cleanup action |
-| `Cmd+Shift+S` | Toggle sidebar |
-| `Cmd+,` | Open Settings |
-| `Cmd+1-8` | Navigate to page |
-| `?` | Show all shortcuts |
+```bash
+pnpm check              # lint + typecheck + test
+cd src-tauri && cargo test  # Rust tests
+```
 
 See [Development Guide](docs/technical/development-guide.md) for full details.
 
 ## Documentation
 
-Comprehensive docs live in [`docs/`](docs/README.md):
+| Area | Contents |
+|------|----------|
+| [Product](docs/product/) | Vision, personas, features, user flows, roadmap |
+| [Technical](docs/technical/) | Architecture, data models, API design, design system, testing |
+| [Business](docs/business/) | Pricing, GTM, competitive analysis, GitHub strategy |
+| [Distribution](docs/distribution.md) | Code signing, Homebrew, release process |
+| [CLI](docs/cli.md) | Planned CLI commands (scan, score, clean) |
+| [Legal](docs/legal/) | Privacy policy, terms of service |
 
-- **Product:** Vision, personas, features, user flows, implementation roadmap
-- **Business:** Pricing, GTM, competitive analysis, licensing
-- **Technical:** Architecture, data models, API design, design system, testing plan
-- **Legal:** Privacy policy, terms of service
+## Roadmap
+
+See [ROADMAP.md](ROADMAP.md) for the full roadmap. Currently preparing v0.1.0 public release.
 
 ## Contributing
 
