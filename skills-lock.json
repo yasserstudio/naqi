@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "skills": {
+    "atlassian": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "f1f894ed8ac4813a5bd4e3e702c2406521d50dff1fc268178261e6098cf37849"
+    },
+    "azure-devops": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "eb1195cf6adb98e27dc1ab357478739b7c45b6255f0c413a04cc644f105dee75"
+    },
+    "deep-research": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "5f5ce0b74005e08e0f407ed03c39e159b6260c441b492a5ea2d3a7b2b4f127bb"
+    },
+    "elevenlabs": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "f6dc426abd1d6e88476a5730cb22cd3f5f6297d0a299cd82904fc44d459d053d"
+    },
+    "gmail": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "51c123d31dbcd173f325ca35bd2ed48be5e662c82f11e1c8adb16ec031761d79"
+    },
+    "google-calendar": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "63f84304e81fc761d041da3936cd828cd82edfaa02927d7e63ac002c4eb42b9d"
+    },
+    "google-chat": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "9a7808e6be676683de274486a964fa0205a701ba7a4f7ef55a8143139cb094a2"
+    },
+    "google-docs": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "44716bbe174ba0ba7cd0526e54080e6da83d0917bc29b7391c5fd91a2cc6ca5d"
+    },
+    "google-drive": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "5a8756bb7488f3b7071d39936cd001cadcf092d76ffd7fbbda38666aca5383f5"
+    },
+    "google-sheets": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "356ed026db3a23a9a2a0f38ab76fdb9eb19e05b6d8ef08de88d3e765c95e0c94"
+    },
+    "google-slides": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "4da9fa29ab347d3bb8956ccea8a2460f2cb5044ccb7e1198392dca0a88e305c3"
+    },
+    "google-tts": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "37957560af4034bf7fffc3312706c0ae71852e91331bf2686c2d15d7be977cc6"
+    },
+    "imagen": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "75454df07edfd8e92b1b2b48c1f017efca682c40cf920b98a0bed9c9a7a02d03"
+    },
+    "jules": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "c6c218096836bbfc70ff825a64a2fc877b5803be3c437d23a3d6f1c54f8dc64b"
+    },
+    "manus": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "498f2fa26c1b93e7e4449773a20ab715df7ec7d60b26cf45edbfe6acf6596c27"
+    },
+    "mssql": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "a1e008a30b768aeef52919fceb29eb6a14354dc56b68cee893b6f53b86f68139"
+    },
+    "mysql": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "26665645defca646c88f5107c13c5bd76d007d427400d50fc5207fa425314eb9"
+    },
+    "notebooklm": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "521f23c8fa1f451f9d717974d1f488ed14799b26bb78a94000368803e72e34cf"
+    },
+    "outline": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "37415e67630211671362f263fee8abba60f8685df4c297be85d3fc667c02e80b"
+    },
+    "postgres": {
+      "source": "sanjay3290/ai-skills",
+      "sourceType": "github",
+      "computedHash": "02b414cf7521ba8a204a57e8309d67632a970ba7b39093cc484ac4cc4a60c016"
+    }
+  }
+}
