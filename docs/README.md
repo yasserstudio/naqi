@@ -44,7 +44,7 @@ Strategy, pricing, market analysis, and growth.
 - [Competitive Analysis](business/competitive-analysis.md) — Landscape, positioning, moat
 - [Financial Projections](business/financial-projections.md) — Revenue forecasts, milestones
 - [Pro Tier Licensing](business/licensing.md) — License keys, validation, feature gating
-- [Landing Page Spec](business/landing-page.md) — naqi.dev content and design
+- [Landing Page Spec](business/landing-page.md) — naqi.app content and design
 - [GitHub Strategy](business/github-strategy.md) — Open-source strategy, community, GitHub as growth channel
 
 ### Legal

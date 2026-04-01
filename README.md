@@ -13,7 +13,7 @@ Scan, audit, and clean up MCP servers, memories, and skills across every AI clie
 [![Built with Tauri](https://img.shields.io/badge/built%20with-Tauri%20v2-40bfa0.svg)]()
 [![Binary Size](https://img.shields.io/badge/binary-~12MB-40bfa0.svg)]()
 
-[Download](https://naqi.dev) · [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md)
+[Download](https://naqi.app) · [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md)
 
 </div>
 
@@ -194,7 +194,7 @@ See [SECURITY.md](SECURITY.md). Report vulnerabilities via email, not public iss
 
 <div align="center">
 
-[MIT License](LICENSE) · [naqi.dev](https://naqi.dev)
+[MIT License](LICENSE) · [naqi.app](https://naqi.app)
 
 <br />
 

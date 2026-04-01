@@ -1,6 +1,6 @@
 # Privacy Policy
 
-> **Naqi** (naqi.dev) — Privacy Policy
+> **Naqi** (naqi.app) — Privacy Policy
 >
 > Last updated: March 26, 2026
 
@@ -133,9 +133,9 @@ That's it. No other outbound connections.
 
 ---
 
-## 6. Cookie Policy (naqi.dev Website)
+## 6. Cookie Policy (naqi.app Website)
 
-The naqi.dev website uses only essential cookies required for basic site functionality. We do not use:
+The naqi.app website uses only essential cookies required for basic site functionality. We do not use:
 
 - Analytics cookies (no Google Analytics, no Plausible, no Fathom)
 - Advertising cookies
@@ -157,7 +157,7 @@ You can see everything Naqi stores locally by reading the files in `~/.naqi/`. F
 ### Right to deletion
 
 - **Local data:** Delete the `~/.naqi/` directory to remove all Naqi data from your machine. Uninstalling the app also removes this data.
-- **Lemon Squeezy data:** Email privacy@naqi.dev and we will request deletion of your records from Lemon Squeezy on your behalf.
+- **Lemon Squeezy data:** Email privacy@naqi.app and we will request deletion of your records from Lemon Squeezy on your behalf.
 - **Anthropic API data:** Anonymized summaries sent to the Claude API are subject to Anthropic's data retention policies. Since the data is anonymized before transmission, it cannot be linked back to you.
 
 ### Right to portability
@@ -204,7 +204,7 @@ Naqi is a developer tool and is not directed at children under 13. We do not kno
 
 If we make material changes to this policy, we will:
 - Update the "Last updated" date at the top
-- Post a notice on naqi.dev
+- Post a notice on naqi.app
 - For significant changes, notify Pro users via the email address associated with their Lemon Squeezy purchase
 
 ---
@@ -213,6 +213,6 @@ If we make material changes to this policy, we will:
 
 For privacy questions or data requests:
 
-**Email:** privacy@naqi.dev
+**Email:** privacy@naqi.app
 
 We aim to respond to all privacy inquiries within 7 business days.
