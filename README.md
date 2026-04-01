@@ -1,23 +1,25 @@
-# naqi نقي
+# naqi
 
-> The AI workspace cleaner — scan, audit, and clean up your MCP servers, memories, and skills.
+The AI workspace cleaner.
 
-<!-- TODO: Replace with actual screenshot before public launch -->
+<!-- TODO: Add hero screenshot before public launch -->
 <!-- ![Naqi Dashboard](docs/assets/screenshot-dashboard.png) -->
 
-## The Problem
+## The problem
 
-AI tools encourage you to connect MCP servers, save memories, and install skills — but provide no way to clean up afterward. Over time, you accumulate stale servers, contradictory memories, and unused skills that silently degrade your AI experience.
+Every MCP server you connected for a one-off task? Still there. Still authenticated.
+Every memory Claude saved about a project you shipped six months ago? Still shaping responses.
+Every skill you installed from a blog post? Still loaded. Never triggered.
 
-There is no tool to answer: *"What AI stuff do I have, what's actually used, and what should I remove?"*
+There is no "Manage Connected Apps" for your AI workspace. No usage tracking. No expiry. No cleanup.
 
-Naqi answers that.
+You just accumulate. Naqi fixes that.
 
-## What Naqi Does
+## What Naqi does
 
-- **Scans** Claude Desktop, Claude Code, Cursor, VS Code, and Windsurf configs in one view
-- **Detects** stale servers, contradictory memories, unused skills, and config inconsistencies
-- **Cleans up** with AI-powered recommendations (Claude + OpenAI), safe one-click removal, and full undo support
+- **One scan, every AI client** — finds MCP servers, memories, skills, and config files across Claude Desktop, Claude Code, Cursor, VS Code, and Windsurf. 3 seconds. 100% local.
+- **Smart recommendations** — AI-powered analysis surfaces what's stale, duplicated, contradictory, or unused. With explanations, not just warnings.
+- **Safe cleanup** — every action backed up before changes. Diff preview. Full undo stack. Nothing auto-deleted. Ever.
 
 ## Install
 
@@ -32,42 +34,51 @@ brew install --cask naqi
 
 [macOS (Apple Silicon)](https://github.com/yasserstudio/naqi/releases/latest) · [macOS (Intel)](https://github.com/yasserstudio/naqi/releases/latest)
 
-> Windows and Linux coming in v0.3.0.
+Windows and Linux coming soon.
+
+## How it works
+
+1. **Scan** — Naqi reads config files locally. No accounts, no cloud, no permissions to grant. Takes 3 seconds.
+2. **Review** — see your full AI inventory in one dashboard. Health score shows where you stand. Recommendations show what needs attention and why.
+3. **Clean** — apply recommended cleanups with one click. Preview every change before confirming. Everything backed up. Full undo anytime.
+
+Scanning is 100% local. The Pro tier sends an anonymized summary to Claude's API for analysis — API keys stripped, paths redacted, no PII. You supply your own API key.
+
+## Free vs Pro
+
+| | Free | Pro ($14.99 one-time) |
+|---|---|---|
+| Config scanning (5 AI clients) | Yes | Yes |
+| Dashboard and health score | Yes | Yes |
+| Memory and skill audit | Yes | Yes |
+| Exportable reports | Yes | Yes |
+| AI-powered recommendations | — | Yes |
+| Contradiction detection | — | Yes |
+| One-click cleanup with batch mode | — | Yes |
+| Diff preview and undo | — | Yes |
+
+One-time purchase. No subscription. Works on 3 devices.
 
 ## Features
 
-- **Dashboard** with category-based health bar, 7-day trend chart, and editorial card grid
-- **Menu bar tray** — persistent icon with glass-styled status panel (health score, quick scan, fix issues)
-- **Resizable sidebar** — drag to resize (180–400px), double-click to reset, width persisted
-- **Global search** (`Cmd+K`) across servers, memories, skills, and configs with recent queries
-- **Keyboard-first** — `Cmd+Z` undo, `Cmd+R` rescan, `Cmd+Shift+S` toggle sidebar, `Cmd+1-8` page nav
-- **macOS native** — overlay titlebar, collapsible sidebar, hides to tray on close, state restoration
-- **Accessible** — WCAG AA contrast, focus rings, status icons, reduced motion, full keyboard nav
-- **Server health checks** — test MCP servers with one click (binary check for Stdio, HTTP ping for Http/Sse)
+- **Dashboard** — health score with category-based stacked bar, 7-day trend chart, daily brief, attention cards
+- **System tray** — persistent menu bar icon with glass-styled status panel, quick scan, health score at a glance
+- **Servers page** — full MCP server inventory, health checks (binary/HTTP), transport badges, cross-client comparison
+- **Memories page** — browse Claude Code memories by project, contradiction detection, bulk actions, archive
 - **Config profiles** — capture, apply, export/import server configurations across clients
-- **Config diff tracking** — monitors config file changes over time with line-level stats
-- **Multi-workspace** — filter memories by Claude Code project directory
-- **AI-powered** — Claude Sonnet 4.6 or OpenAI GPT-4.1 Mini for intelligent cleanup recommendations (optional, local analysis works without API key)
+- **Config history** — monitors config file changes over time with line-level diff stats
+- **Global search** (`Cmd+K`) — search across servers, memories, skills, and configs
+- **Keyboard-first** — `Cmd+R` rescan, `Cmd+Z` undo, `Cmd+Shift+S` toggle sidebar, `Cmd+1-8` page nav, `?` shortcuts
+- **Native macOS** — overlay titlebar, resizable sidebar, hides to tray on close, state restoration
+- **Accessible** — WCAG AA contrast, focus rings, status icons (not color-only), reduced motion support
 
-## Keyboard Shortcuts
+## Tech stack
 
-| Shortcut | Action |
-|----------|--------|
-| `Cmd+K` | Search workspace |
-| `Cmd+R` | Rescan workspace |
-| `Cmd+Z` | Undo last cleanup action |
-| `Cmd+Shift+S` | Toggle sidebar |
-| `Cmd+,` | Open Settings |
-| `Cmd+1-8` | Navigate to page |
-| `?` | Show all shortcuts |
-
-## Tech Stack
-
-- **Frontend:** React 19, TypeScript 5.8, Tailwind CSS v4, Vite 7
+- **Frontend:** React 19, TypeScript, Tailwind CSS v4, Vite, shadcn/ui
 - **Backend:** Rust (Tauri v2), serde, chrono, reqwest, thiserror
-- **AI:** Multi-provider (Claude Sonnet 4.6 + OpenAI GPT-4.1 Mini)
-- **Design:** Dark-mode-first glass morphism, Inter + JetBrains Mono
-- **Tests:** 243 Rust + 86 frontend (329 total)
+- **AI:** Multi-provider — Claude Sonnet 4.6 + OpenAI GPT-4.1 Mini (optional, local analysis works without API key)
+- **Design:** Dark-mode-first, Inter + JetBrains Mono, macOS HIG-aligned
+- **Binary:** ~12MB (Tauri uses system webview, no bundled Chromium)
 
 ## Development
 
@@ -87,34 +98,26 @@ pnpm install
 pnpm tauri dev
 ```
 
-### Checks
+### Run checks
 
 ```bash
-pnpm check              # lint + typecheck + test
-cd src-tauri && cargo test  # Rust tests
+pnpm check                    # lint + typecheck + frontend tests
+cd src-tauri && cargo test    # Rust tests
 ```
-
-See [Development Guide](docs/technical/development-guide.md) for full details.
-
-## Documentation
-
-| Area | Contents |
-|------|----------|
-| [Product](docs/product/) | Vision, personas, features, user flows, roadmap |
-| [Technical](docs/technical/) | Architecture, data models, API design, design system, testing |
-| [Business](docs/business/) | Pricing, GTM, competitive analysis, GitHub strategy |
-| [Distribution](docs/distribution.md) | Code signing, Homebrew, release process |
-| [CLI](docs/cli.md) | Planned CLI commands (scan, score, clean) |
-| [Legal](docs/legal/) | Privacy policy, terms of service |
-
-## Roadmap
-
-See [ROADMAP.md](ROADMAP.md) for the full roadmap. Currently preparing v0.1.0 public release.
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for how to get started.
+See [CONTRIBUTING.md](CONTRIBUTING.md). New AI client parsers are the most impactful contribution — check [good first issues](https://github.com/yasserstudio/naqi/labels/good%20first%20issue).
+
+## Security
+
+See [SECURITY.md](SECURITY.md). Report vulnerabilities via email, not public issues.
 
 ## License
 
 [MIT](LICENSE)
+
+## Links
+
+- [naqi.dev](https://naqi.dev) — download and docs
+- [Changelog](CHANGELOG.md)
