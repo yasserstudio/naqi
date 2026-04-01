@@ -194,6 +194,18 @@ See [SECURITY.md](SECURITY.md). Report vulnerabilities via email, not public iss
 
 <div align="center">
 
-[MIT License](LICENSE) · Built by [Yasser](https://github.com/yasserstudio) · [naqi.dev](https://naqi.dev)
+[MIT License](LICENSE) · [naqi.dev](https://naqi.dev)
+
+<br />
+
+Built by
+
+<a href="https://yasser.studio">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="brand-assets/yasser-studio-logo-white.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="brand-assets/yasser-studio-logo-official.png" />
+    <img src="brand-assets/yasser-studio-logo-official.png" alt="Yasser's Studio" height="30" />
+  </picture>
+</a>
 
 </div>
