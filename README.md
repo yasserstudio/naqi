@@ -44,7 +44,7 @@ You just accumulate. **Naqi fixes that.**
 
 ### One scan, every client
 
-Finds MCP servers, memories, skills, and config files across **Claude Desktop, Claude Code, Cursor, VS Code, and Windsurf**. 3 seconds. 100% local.
+Finds MCP servers, memories, skills, and config files across **8 AI clients** — Claude Desktop, Claude Code, Cursor, VS Code, Windsurf, GitHub Copilot, JetBrains, and Zed. 3 seconds. 100% local.
 
 </td>
 <td width="33%" valign="top">
@@ -104,7 +104,7 @@ Windows and Linux coming soon.
 
 | | Free | Pro · $14.99 one-time |
 |:---|:---:|:---:|
-| Config scanning (5 AI clients) | **Yes** | **Yes** |
+| Config scanning (8 AI clients) | **Yes** | **Yes** |
 | Dashboard and health score | **Yes** | **Yes** |
 | Memory and skill audit | **Yes** | **Yes** |
 | Exportable reports | **Yes** | **Yes** |
@@ -123,15 +123,18 @@ Windows and Linux coming soon.
 <tr>
 <td width="50%" valign="top">
 
-- **Dashboard** — health score, trend chart, daily brief, attention cards
-- **System tray** — menu bar icon with glass panel, quick scan, health at a glance
+- **Dashboard** — health score, trend chart, daily brief, attention cards, FAB scan trigger
+- **System tray** — menu bar icon with stat grid panel, quick scan, health at a glance
 - **Servers** — full MCP inventory, health checks, transport badges, cross-client diff
 - **Memories** — browse by project, contradiction detection, bulk actions, archive
 - **Profiles** — capture, apply, export/import configs across clients
+- **Backups** — versioned with SHA-256 dedup, auto-backup on scan, ZIP export, one-click restore
 
 </td>
 <td width="50%" valign="top">
 
+- **Safe mode** — block all modifications, per-client locking, change log
+- **Danger zone** — reset configs, delete memories, factory reset with two-step confirmation
 - **Config history** — file change tracking with line-level diff stats
 - **Global search** — `Cmd+K` across servers, memories, skills, configs
 - **Keyboard-first** — `Cmd+R` rescan, `Cmd+Z` undo, `Cmd+1-8` nav, `?` shortcuts
@@ -150,7 +153,7 @@ Windows and Linux coming soon.
 |:------|:------|
 | **Frontend** | React 19 · TypeScript · Tailwind CSS v4 · Vite · shadcn/ui |
 | **Backend** | Rust · Tauri v2 · serde · chrono · reqwest · thiserror |
-| **AI** | Claude Sonnet 4.6 + OpenAI GPT-4.1 Mini (optional — local analysis works without API key) |
+| **AI** | 5 providers: Anthropic (Sonnet 4.6) · OpenAI (GPT-5.4 Nano) · Google Gemini (2.5 Flash) · xAI Grok · Ollama (local). Optional — local analysis works without API key |
 | **Design** | Dark-mode-first · Inter + JetBrains Mono · macOS HIG-aligned |
 | **Binary** | ~12MB (Tauri uses system webview — no bundled Chromium) |
 

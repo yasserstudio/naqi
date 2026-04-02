@@ -4,6 +4,60 @@ All notable changes to Naqi are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) — see [VERSIONING.md](VERSIONING.md) for full strategy.
 
+## [0.2.0] — 2026-04-02
+
+### Added
+- **3 new AI client scanners** — GitHub Copilot, JetBrains (dynamic IDE discovery), and Zed (`context_servers`). Total: 8 clients scanned.
+- **Backup system** — versioned backups with SHA-256 dedup, max 10 per file. Auto-backup on every scan. Export as ZIP with manifest, one-click restore. Configurable retention (7/30/90 days).
+- **Safe mode** — `safe_mode` toggle blocks all modify/delete actions. Per-client locking (`locked_clients`). Guards in cleanup, profiles, danger zone. Change log records every modification.
+- **Danger zone** — Reset client configs, Delete memories, Remove skills, Clear Naqi data, Factory reset. Two-step confirmation (dialog + type DELETE). Backup before every destructive action. Respects safe mode and locked clients.
+- **3 new AI providers** — Google Gemini (2.5 Flash, $0.10/$0.40 MTok), xAI Grok (grok-4-1-fast, $0.20/$0.50 MTok), Ollama (local, free). OpenAI updated to GPT-5.4 Nano ($0.20/$1.25 MTok). Total: 5 providers.
+- **Gemini custom API** — `system_instruction` + `responseMimeType` for structured JSON output
+- **OpenAI-compatible transport** — shared by OpenAI, Grok, and Ollama providers
+- **Per-provider cost estimation** in usage stats
+- **AI settings tab** — provider-specific placeholders, test connection button, Ollama health check
+- **Floating Action Button (FAB)** — bottom-anchored scan trigger with multi-layer glow, progress arc, spinning ring, idle float animation, progressive blur dock
+- **Pre-scan welcome state** — hero icon + greeting + single Scan CTA (replaces empty dashboard)
+- **Scan progress category grid** — 5 tiles with ambient glow theater, 4-second minimum display
+- **Tray panel redesign** — 2x3 stat grid with colored gradient tiles + recommendation card + footer
+- **Dynamic background blob** — color tied to health band (green/yellow/orange/red)
+- **Enhanced color system** — primary boosted to `hsl(170, 70%, 46%)`, all colors +10-15% saturation
+- **Increased button sizes** — xs=28px, sm=32px, default=36px, lg=40px for desktop ergonomics
+- **Window opens centered** — 1200x800, no state persistence, double-click titlebar toggles fullscreen
+
+### Changed
+- **AI system prompt rewritten** — clarifies available data fields, caps recommendations at 5
+- **Robust JSON extraction** — bracket-depth counting parser replaces regex-based extraction
+- **Stable recommendation IDs** — content hash instead of random generation
+- **Contradiction threshold** raised from 0.4 to 0.6 (reduces false positives)
+- **Staleness confidence** rebalanced for more accurate scoring
+- **Command paths anonymized** to basename only in AI submissions
+- **Project names stripped** from anonymized data
+- **Rate limits checked** before initiating API calls (fail-fast)
+- **Notification dedup window** reduced from 1 hour to 10 minutes
+
+### Refactored
+- **Atomic file writes** across all 8 storage modules (write to temp + rename)
+- **Undo stack Mutex** for safe concurrent access
+- **LLM retry logic** — 2x exponential backoff on HTTP 429/5xx responses
+- **18 raw `<button>` elements** replaced with shadcn `<Button>` for consistency
+- **ESLint react-hooks plugin** added — enforces `rules-of-hooks` and `exhaustive-deps`
+- **`useThemeToggle` hook** extracted from inline toggle logic
+- **Hooks-after-early-returns** fixed in 3 pages (prevents "Rendered more hooks" crash)
+- **`formatError` used consistently** across all toast notifications
+
+### Fixed
+- Tray: removed `expect()` crash, fixed scale factor defaulting to 1.0 on missing value
+- All checks pass: 118 frontend tests, 297 Rust tests
+
+### Security
+- Safe mode prevents accidental modifications across cleanup, profiles, and danger zone
+- Danger zone requires two-step confirmation with typed DELETE keyword
+- Backup created before every destructive action in danger zone
+- Per-client locking prevents modifications to specific client configs
+
+---
+
 ## [Unreleased]
 
 ### Added
@@ -186,7 +240,9 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 
 | Version | Date | Highlights |
 |---------|------|------------|
+| 0.2.0 | 2026-04-02 | 8 clients, 5 AI providers, backup system, safe mode, danger zone, CleanMyMac-inspired UI |
 | 0.1.0-alpha.1 | 2026-03-27 | MVP feature-complete, 243 tests (180 Rust + 63 frontend) |
 
-[Unreleased]: https://github.com/yasserstudio/naqi/compare/v0.1.0-alpha.1...HEAD
+[Unreleased]: https://github.com/yasserstudio/naqi/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/yasserstudio/naqi/compare/v0.1.0-alpha.1...v0.2.0
 [0.1.0-alpha.1]: https://github.com/yasserstudio/naqi/releases/tag/v0.1.0-alpha.1
