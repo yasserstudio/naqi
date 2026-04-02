@@ -1,8 +1,8 @@
 # Config File Formats Reference
 
-> Last updated: March 26, 2026
+> Last updated: April 2, 2026
 >
-> Derived from actual file analysis on a real development machine. These are the formats Naqi's parsers must handle.
+> Derived from actual file analysis on a real development machine. These are the formats Naqi's 8 client parsers must handle.
 
 ---
 
@@ -468,24 +468,132 @@ MCP servers can also be defined in `settings.json` with the `"mcp"` wrapper key:
 
 ---
 
+## GitHub Copilot
+
+### Config path
+
+| OS | Path |
+|----|------|
+| macOS/Linux | `~/.config/github-copilot/hosts.json` |
+| Windows | `%LOCALAPPDATA%\github-copilot\hosts.json` |
+
+### Schema
+
+```jsonc
+{
+  "github.com": {
+    "user": "username",
+    "oauth_token": "gho_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+  }
+}
+```
+
+### Parser notes
+
+- **Auth/detection only** — this file proves GitHub Copilot is installed and authenticated, but does not contain MCP server definitions
+- Used by Naqi to detect Copilot as an active AI client in the workspace inventory
+- The `oauth_token` is a secret and must be masked during scanning (never stored or sent to APIs)
+- No MCP server configuration — Copilot manages its own server connections internally
+
+---
+
+## JetBrains IDEs
+
+### Config path
+
+| Product | Path |
+|---------|------|
+| IntelliJ IDEA | `~/Library/Application Support/JetBrains/IntelliJIdea<version>/options/mcp.json` |
+| WebStorm | `~/Library/Application Support/JetBrains/WebStorm<version>/options/mcp.json` |
+| PyCharm | `~/Library/Application Support/JetBrains/PyCharm<version>/options/mcp.json` |
+| Other | `~/Library/Application Support/JetBrains/<Product><Version>/options/mcp.json` |
+
+Product directories are **discovered dynamically** — the parser scans all directories matching `~/Library/Application Support/JetBrains/*/options/mcp.json` to find active IDE installations.
+
+### Schema
+
+```jsonc
+{
+  "mcpServers": {
+    "<server-name>": {
+      "command": "npx",
+      "args": ["-y", "package-name@latest"],
+      "env": {
+        "API_KEY": "value"
+      }
+    }
+  }
+}
+```
+
+### Parser notes
+
+- Uses the standard `mcpServers` format (same as Claude Desktop)
+- Each JetBrains product version has its own config directory — a machine may have multiple (e.g., `IntelliJIdea2025.1` and `WebStorm2025.2`)
+- The parser scans all product directories dynamically, reporting each as a separate client source (e.g., "JetBrains IntelliJ IDEA 2025.1")
+- Supports stdio transport only (command + args + env)
+- Config file may not exist if the user has not configured MCP servers in that IDE
+
+---
+
+## Zed
+
+### Config path
+
+| OS | Path |
+|----|------|
+| macOS/Linux | `~/.config/zed/settings.json` |
+
+### Schema
+
+```jsonc
+{
+  // Zed uses "context_servers" as its MCP key
+  "context_servers": {
+    "<server-name>": {
+      "command": "npx",
+      "args": ["-y", "package-name@latest"],
+      "env": {
+        "API_KEY": "value"
+      }
+    }
+  },
+
+  // Other Zed settings
+  "theme": "One Dark",
+  "buffer_font_family": "JetBrains Mono"
+}
+```
+
+### Parser notes
+
+- Uses `context_servers` as the top-level key (unique among all clients)
+- The parser wraps `context_servers` entries into the standard `mcpServers` format for unified processing
+- Config is embedded in the main `settings.json` — must be extracted without disturbing other Zed settings
+- Supports stdio transport (command + args + env)
+- The settings file always exists if Zed is installed, but `context_servers` key may be absent
+
+---
+
 ## Cross-Client Format Comparison
 
-| Aspect | Claude Desktop | Claude Code | Cursor | VS Code | Windsurf |
-|--------|---------------|-------------|--------|---------|----------|
-| **MCP key** | `mcpServers` | `mcpServers` | `mcpServers` | `servers` | `mcpServers` |
-| **Transport: stdio** | `command` + `args` | `command` + `args` | `command` (string) or `command` + `args` | `command` + `args` | `command` + `args` |
-| **Transport: HTTP** | Not supported | Supported (`type: "http"`) | Supported (inferred from `url`) | Supported (`type: "http"`) | Supported (`serverUrl` or `url`) |
-| **Transport: SSE** | Not supported | Supported (`type: "sse"`) | Supported (inferred from `url`) | Supported (`type: "sse"`) | Supported (`serverUrl` or `url`) |
-| **Variable interpolation** | None | `${VAR}`, `${VAR:-default}` | `${env:NAME}`, `${userHome}`, `${workspaceFolder}` | `${input:id}`, `${workspaceFolder}`, `${userHome}` | `${env:VARIABLE_NAME}` |
-| **Input prompts** | None | None | None | `inputs` array with `${input:id}` | None |
-| **Env vars** | `env` object | `env` object | `env` object, `envFile` | `env` object, `envFile` | `env` object |
-| **Secrets storage** | Plaintext in JSON | Plaintext in JSON | Plaintext in JSON | Prompted via `inputs` or plaintext | Plaintext in JSON |
-| **Hot reload** | No | No | Yes | Yes | No |
-| **Memory system** | None | MEMORY.md + project memories | None | None | None |
-| **Rules/Skills** | None | `.claude/rules/*.md`, `~/.claude/skills/` | `.cursor/rules/` (`.mdc`/`.md`) | None | None |
-| **Plugins** | None | `enabledPlugins` in settings.json | Extensions | Extensions | Extensions |
-| **Project-level MCP** | None | `.mcp.json` | `.cursor/mcp.json` | `.vscode/mcp.json` | None (global only) |
-| **Tool limits** | None | None | None | None | 100 tools total |
+| Aspect | Claude Desktop | Claude Code | Cursor | VS Code | Windsurf | GitHub Copilot | JetBrains | Zed |
+|--------|---------------|-------------|--------|---------|----------|----------------|-----------|-----|
+| **MCP key** | `mcpServers` | `mcpServers` | `mcpServers` | `servers` | `mcpServers` | N/A (auth only) | `mcpServers` | `context_servers` |
+| **Transport: stdio** | `command` + `args` | `command` + `args` | `command` (string) or `command` + `args` | `command` + `args` | `command` + `args` | N/A | `command` + `args` | `command` + `args` |
+| **Transport: HTTP** | Not supported | Supported (`type: "http"`) | Supported (inferred from `url`) | Supported (`type: "http"`) | Supported (`serverUrl` or `url`) | N/A | Not supported | Not supported |
+| **Transport: SSE** | Not supported | Supported (`type: "sse"`) | Supported (inferred from `url`) | Supported (`type: "sse"`) | Supported (`serverUrl` or `url`) | N/A | Not supported | Not supported |
+| **Variable interpolation** | None | `${VAR}`, `${VAR:-default}` | `${env:NAME}`, `${userHome}`, `${workspaceFolder}` | `${input:id}`, `${workspaceFolder}`, `${userHome}` | `${env:VARIABLE_NAME}` | None | None | None |
+| **Input prompts** | None | None | None | `inputs` array with `${input:id}` | None | None | None | None |
+| **Env vars** | `env` object | `env` object | `env` object, `envFile` | `env` object, `envFile` | `env` object | N/A | `env` object | `env` object |
+| **Secrets storage** | Plaintext in JSON | Plaintext in JSON | Plaintext in JSON | Prompted via `inputs` or plaintext | Plaintext in JSON | OAuth token in JSON | Plaintext in JSON | Plaintext in JSON |
+| **Hot reload** | No | No | Yes | Yes | No | N/A | No | No |
+| **Memory system** | None | MEMORY.md + project memories | None | None | None | None | None | None |
+| **Rules/Skills** | None | `.claude/rules/*.md`, `~/.claude/skills/` | `.cursor/rules/` (`.mdc`/`.md`) | None | None | None | None | None |
+| **Plugins** | None | `enabledPlugins` in settings.json | Extensions | Extensions | Extensions | Extensions | Plugins | Extensions |
+| **Project-level MCP** | None | `.mcp.json` | `.cursor/mcp.json` | `.vscode/mcp.json` | None (global only) | None | None | None |
+| **Tool limits** | None | None | None | None | 100 tools total | None | None | None |
+| **Discovery** | Fixed path | Fixed path | Fixed path | Fixed path | Fixed path | Fixed path | Dynamic (scan all product dirs) | Fixed path |
 
 ---
 
@@ -493,26 +601,41 @@ MCP servers can also be defined in `settings.json` with the `"mcp"` wrapper key:
 
 Given the format differences, the parser strategy is:
 
-1. **Normalize transport detection:**
+1. **Normalize MCP key:**
+   ```
+   if "mcpServers" key → use directly (Claude Desktop, Claude Code, Cursor, Windsurf, JetBrains)
+   if "servers" key → use directly (VS Code)
+   if "context_servers" key → wrap to mcpServers (Zed)
+   if hosts.json with oauth_token → auth-only client detection (GitHub Copilot)
+   ```
+
+2. **Normalize transport detection:**
    ```
    if explicit "type" field → use it (Claude Code, VS Code)
    if "url" or "serverUrl" key present → Transport::Http (or SSE)
    if "command" key present → Transport::Stdio
    ```
 
-2. **Normalize command format:**
+3. **Normalize command format:**
    ```
    if command contains spaces and args is empty → split command into (binary, args)
    if command is single word and args present → use as-is
    ```
 
-3. **Server identity for dedup:**
+4. **Server identity for dedup:**
    Two servers are considered "the same" if:
    - Same transport type AND
    - Same resolved command/binary (after splitting) OR same URL AND
    - Across different clients
 
-4. **Env var extraction:**
+5. **JetBrains dynamic discovery:**
+   ```
+   scan ~/Library/Application Support/JetBrains/*/options/mcp.json
+   extract product name and version from directory name
+   report each as separate client source
+   ```
+
+6. **Env var extraction:**
    - Extract key names always
    - Store masked values for display: `"ghp_abc123xyz" → "ghp_****xyz"`
    - Full values only kept in backup files (never in Naqi's working state)
