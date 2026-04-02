@@ -25,6 +25,20 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **Increased button sizes** — xs=28px, sm=32px, default=36px, lg=40px for desktop ergonomics
 - **Window opens centered** — 1200x800, no state persistence, double-click titlebar toggles fullscreen
 
+### HIG Compliance (13 fixes)
+- **System font stack** — font-family now uses `-apple-system, BlinkMacSystemFont` first so SF Pro renders on macOS, with Inter as fallback for other platforms
+- **Light mode contrast** — secondary bg darkened from 95% to 91%, glass surface opacity increased to 0.92 for better readability
+- **Animation durations** — reduced across app: emoji wave 1.5s to 0.6s, FAB idle 2.5s to 1.8s, scan progress breathing 1.2s to 0.8s (macOS standard 0.3-0.8s range)
+- **ARIA labels** — added to FAB (aria-busy), HealthGauge (role="button" with descriptive label), memory checkboxes (aria-label per item), sidebar logo alt text; removed duplicate aria-label on memory group checkbox
+- **8pt grid alignment** — select-control now uses 36px min-height, 8px/12px padding, 6px border-radius
+- **Toggle switches** — increased from 40x24px to 44x26px for macOS touch target compliance
+- **Reduced motion** — complete support: animation-duration 0s, keeps 150ms transitions for non-jarring feedback, disables blob float animation
+- **Scrollbar** — added scrollbar-width: thin (Firefox/standards) + increased webkit scrollbar from 6px to 8px
+- **Line height** — body increased from 1.55 to 1.6 per macOS type guidelines
+- **Background blob** — pauses animation on document.hidden (battery saving), added will-change hint for GPU acceleration
+- **Dark mode glass** — glass-bg lightened from rgba(14,17,26) to rgba(22,25,38) for better surface elevation visibility
+- **Sidebar spacing** — increased nav gap from 0.5 to 1 (4px), section margin from 2 to 4 (16px), divider margin from 3 to 4 (16px)
+
 ### Changed
 - **AI system prompt rewritten** — clarifies available data fields, caps recommendations at 5
 - **Robust JSON extraction** — bracket-depth counting parser replaces regex-based extraction
