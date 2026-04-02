@@ -75,6 +75,15 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 ## [Unreleased]
 
 ### Added
+- **Backup Browser page** — new `/backups` route with file list grouped by client, version timeline, View/Compare/Restore buttons, side-by-side diff viewer for comparing backup versions, export ZIP button. Added to sidebar nav (Archive icon).
+- **Onboarding Safe Mode** — Step 3 of onboarding now shows Safe Mode toggle (defaults ON). New users start in read-only mode. Saved to `settings.safe_mode` during `handleComplete`.
+- **Model selector** — `available_models()` per provider returns 3-5 models. `ai_model` field in AppSettings. ModelSelector dropdown in AI settings. LLM client reads `ai_model` as override (falls back to provider default). Models: Claude Sonnet/Opus/Haiku, GPT-5.4 Nano/Mini/Full, Gemini Flash/Pro, Grok Fast/4.20/Reasoning, Ollama Llama/Gemma/Qwen/Mistral, OpenRouter 5 models.
+- **OpenRouter provider** — 6th AI provider. OpenAI-compatible at `openrouter.ai/api/v1/chat/completions`. Default model: `anthropic/claude-sonnet-4-6`. Key prefix: `sk-or-`. Any OpenRouter model ID works via model selector.
+- **E2E test suite** — Playwright: 12 tests across 3 files (`e2e/navigation.spec.ts` 4 tests, `e2e/settings.spec.ts` 6 tests, `e2e/dashboard.spec.ts` 2 tests). `playwright.config.ts` targets `localhost:1420`. `pnpm test:e2e` script.
+- **Homebrew + Release** — `homebrew/naqi.rb` cask formula for macOS. Release workflow: Apple code signing enabled, aarch64 + x86_64 targets. Auto-updater via `tauri-plugin-updater` already configured.
+- **Ping updates server status** — Check All and individual Test buttons now update `server.status` in workspace cache. Broken servers always sort to top. Health score recalculates after Check All.
+
+### Previously added
 - **Resizable sidebar** — drag the right edge to resize (180–400px), double-click to reset to 240px, width persisted to localStorage across sessions
 - **Circular usage ring** — SVG-based ring gauge for AI usage stats with animated arc fill, spring counter, and warning color shift at 80% threshold. Replaces flat stat grid.
 - **Micro-interaction polish** — shared motion presets (`cardHover`, `buttonPress`, `expandContent`) applied across all cards, consistent scale hover/tap feedback, expand panels slide-down with y offset

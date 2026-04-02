@@ -128,7 +128,7 @@ Windows and Linux coming soon.
 - **Servers** — full MCP inventory, health checks, transport badges, cross-client diff
 - **Memories** — browse by project, contradiction detection, bulk actions, archive
 - **Profiles** — capture, apply, export/import configs across clients
-- **Backups** — versioned with SHA-256 dedup, auto-backup on scan, ZIP export, one-click restore
+- **Backups** — versioned with SHA-256 dedup, auto-backup on scan, ZIP export, one-click restore, dedicated browser page with diff viewer
 
 </td>
 <td width="50%" valign="top">
@@ -153,7 +153,7 @@ Windows and Linux coming soon.
 |:------|:------|
 | **Frontend** | React 19 · TypeScript · Tailwind CSS v4 · Vite · shadcn/ui |
 | **Backend** | Rust · Tauri v2 · serde · chrono · reqwest · thiserror |
-| **AI** | 5 providers: Anthropic (Sonnet 4.6) · OpenAI (GPT-5.4 Nano) · Google Gemini (2.5 Flash) · xAI Grok · Ollama (local). Optional — local analysis works without API key |
+| **AI** | 6 providers: Anthropic (Sonnet 4.6) · OpenAI (GPT-5.4 Nano) · Google Gemini (2.5 Flash) · xAI Grok · Ollama (local) · OpenRouter (any model). Per-provider model selector. Optional — local analysis works without API key |
 | **Design** | Dark-mode-first · Inter + JetBrains Mono · macOS HIG-aligned |
 | **Binary** | ~12MB (Tauri uses system webview — no bundled Chromium) |
 
@@ -180,6 +180,7 @@ pnpm tauri dev
 
 ```bash
 pnpm check                    # lint + typecheck + frontend tests
+pnpm test:e2e                 # playwright e2e tests (12 tests)
 cd src-tauri && cargo test    # rust tests
 ```
 
