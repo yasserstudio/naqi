@@ -26,7 +26,7 @@ Architecture, data models, and implementation guides.
 - [API Design](technical/api-design.md) — Claude/OpenAI integration, prompts, anonymization
 - [Design System](technical/design-system.md) — Color tokens, typography, spacing, components, motion, accessibility
 - [Development Guide](technical/development-guide.md) — Setup, conventions, testing, workflow
-- [Testing Plan](technical/testing-plan.md) — 451 tests (298 Rust + 141 frontend + 12 E2E), coverage targets, fixtures
+- [Testing Plan](technical/testing-plan.md) — 455 tests (302 Rust + 141 frontend + 12 E2E), coverage targets, fixtures
 - [Error States & Edge Cases](technical/error-states-edge-cases.md) — Every error state and recovery behavior
 
 ### Distribution
