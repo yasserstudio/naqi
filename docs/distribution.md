@@ -34,17 +34,20 @@ The file `src-tauri/entitlements.plist` declares the app sandbox entitlements:
 - `com.apple.security.network.client` -- allows outbound network connections (needed for AI API calls and the auto-updater)
 - `com.apple.security.files.user-selected.read-only` -- allows reading user-selected files
 
-To use the entitlements file, add it to `tauri.conf.json` under the macOS bundle configuration:
+Both the entitlements and signing identity are configured in `tauri.conf.json`:
 
 ```json
 {
   "bundle": {
     "macOS": {
+      "signingIdentity": "-",
       "entitlements": "entitlements.plist"
     }
   }
 }
 ```
+
+The `signingIdentity: "-"` uses ad-hoc signing for local dev builds. In CI, the `APPLE_SIGNING_IDENTITY` environment variable overrides this with the full Developer ID certificate.
 
 ## Notarization with Tauri v2
 
@@ -166,10 +169,12 @@ Add these secrets to the `naqi` repository settings:
 
 | Secret | Value |
 |--------|-------|
-| `APPLE_SIGNING_IDENTITY` | Full certificate name |
+| `APPLE_CERTIFICATE` | Base64-encoded `.p12` certificate (`base64 -i cert.p12`) |
+| `APPLE_CERTIFICATE_PASSWORD` | Password for the `.p12` file |
+| `APPLE_SIGNING_IDENTITY` | Full certificate name (e.g., `Developer ID Application: Name (TEAMID)`) |
 | `APPLE_ID` | Apple ID email |
 | `APPLE_PASSWORD` | App-specific password |
-| `APPLE_TEAM_ID` | Team ID |
+| `APPLE_TEAM_ID` | 10-character Team ID |
 | `TAURI_SIGNING_PRIVATE_KEY` | Updater private key (for signing `latest.json`) |
 | `TAURI_SIGNING_PRIVATE_KEY_PASSWORD` | Updater key password |
 
