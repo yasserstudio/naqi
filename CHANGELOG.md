@@ -62,7 +62,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 
 ### Fixed
 - Tray: removed `expect()` crash, fixed scale factor defaulting to 1.0 on missing value
-- All checks pass: 118 frontend tests, 297 Rust tests
+- All checks pass: 141 frontend tests, 298 Rust tests
 
 ### Security
 - Safe mode prevents accidental modifications across cleanup, profiles, and danger zone
@@ -82,6 +82,20 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **E2E test suite** — Playwright: 12 tests across 3 files (`e2e/navigation.spec.ts` 4 tests, `e2e/settings.spec.ts` 6 tests, `e2e/dashboard.spec.ts` 2 tests). `playwright.config.ts` targets `localhost:1420`. `pnpm test:e2e` script.
 - **Homebrew + Release** — `homebrew/naqi.rb` cask formula for macOS. Release workflow: Apple code signing enabled, aarch64 + x86_64 targets. Auto-updater via `tauri-plugin-updater` already configured.
 - **Ping updates server status** — Check All and individual Test buttons now update `server.status` in workspace cache. Broken servers always sort to top. Health score recalculates after Check All.
+- **23 new frontend tests** — useSafeMode (6), useThemeToggle (6), useSkillUpdates (5), server-templates (6). Total: 141 frontend tests.
+- **Shared test utilities** — `src/__tests__/test-utils.ts` with `createWrapper()` and `createBaseSettings()` factory, deduplicated from 6 test files.
+
+### Fixed
+- 15 failing ServerCard tests fixed (missing QueryClientProvider wrapper)
+- 9 ESLint warnings fixed (hook deps, console.debug → console.warn, TrayPanel timer useState → useRef)
+- 7 cargo clippy warnings fixed (rsplit, is_some_and, is_none_or, saturating_sub)
+- Rust anonymize test assertion corrected (project name correctly stripped during anonymization)
+- Removed unused `make_health` test helper in notifications.rs
+
+### Refactored
+- Removed dead `canGoBack` code and unreachable back-button JSX from OnboardingOverlay
+- Removed redundant `scanning` useState from TrayPanel (replaced with `rescan.isPending`)
+- Extracted shared test boilerplate to `test-utils.ts` (net -81 lines)
 
 ### Previously added
 - **Resizable sidebar** — drag the right edge to resize (180–400px), double-click to reset to 240px, width persisted to localStorage across sessions
