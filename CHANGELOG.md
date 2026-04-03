@@ -11,7 +11,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **Backup system** — versioned backups with SHA-256 dedup, max 10 per file. Auto-backup on every scan. Export as ZIP with manifest, one-click restore. Configurable retention (7/30/90 days).
 - **Safe mode** — `safe_mode` toggle blocks all modify/delete actions. Per-client locking (`locked_clients`). Guards in cleanup, profiles, danger zone. Change log records every modification.
 - **Danger zone** — Reset client configs, Delete memories, Remove skills, Clear Naqi data, Factory reset. Two-step confirmation (dialog + type DELETE). Backup before every destructive action. Respects safe mode and locked clients.
-- **3 new AI providers** — Google Gemini (2.5 Flash, $0.10/$0.40 MTok), xAI Grok (grok-4-1-fast, $0.20/$0.50 MTok), Ollama (local, free). OpenAI updated to GPT-5.4 Nano ($0.20/$1.25 MTok). Total: 5 providers.
+- **3 new AI providers** — Google Gemini (2.5 Flash, $0.10/$0.40 MTok), xAI Grok (grok-4-1-fast, $0.20/$0.50 MTok), Ollama (local, free). OpenAI updated to GPT-5.4 Nano ($0.20/$1.25 MTok). Total: 6 providers (OpenRouter added in [Unreleased]).
 - **Gemini custom API** — `system_instruction` + `responseMimeType` for structured JSON output
 - **OpenAI-compatible transport** — shared by OpenAI, Grok, and Ollama providers
 - **Per-provider cost estimation** in usage stats
@@ -277,7 +277,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 
 | Version | Date | Highlights |
 |---------|------|------------|
-| 0.2.0 | 2026-04-02 | 8 clients, 5 AI providers, backup system, safe mode, danger zone, CleanMyMac-inspired UI |
+| 0.2.0 | 2026-04-02 | 8 clients, 6 AI providers, backup system, safe mode, danger zone, CleanMyMac-inspired UI |
 | 0.1.0-alpha.1 | 2026-03-27 | MVP feature-complete, 243 tests (180 Rust + 63 frontend) |
 
 [Unreleased]: https://github.com/yasserstudio/naqi/compare/v0.2.0...HEAD

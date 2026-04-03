@@ -166,7 +166,7 @@ Windows and Linux coming soon.
 
 - Rust 1.75+ (`rustup`)
 - Node.js 20+ (`nvm` or `brew install node@20`)
-- pnpm 9+ (`npm install -g pnpm`)
+- pnpm 10+ (`npm install -g pnpm`)
 - Xcode Command Line Tools (`xcode-select --install`)
 
 </details>
