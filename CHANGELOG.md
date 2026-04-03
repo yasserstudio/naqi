@@ -84,6 +84,10 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **Ping updates server status** — Check All and individual Test buttons now update `server.status` in workspace cache. Broken servers always sort to top. Health score recalculates after Check All.
 - **23 new frontend tests** — useSafeMode (6), useThemeToggle (6), useSkillUpdates (5), server-templates (6). Total: 141 frontend tests.
 - **Shared test utilities** — `src/__tests__/test-utils.ts` with `createWrapper()` and `createBaseSettings()` factory, deduplicated from 6 test files.
+- **Safe Mode keyboard shortcut** — `⌘⇧M` toggles Safe Mode from anywhere with toast confirmation
+- **Field-level validation** — ServerForm shows per-field error hints on blur (name, command, URL)
+- **SkillsPage empty state** — shows helpful message when no skills are installed
+- **Code signing + notarization** — Developer ID Application certificate, entitlements, and release workflow configured for aarch64 + x86_64
 
 ### Fixed
 - 15 failing ServerCard tests fixed (missing QueryClientProvider wrapper)
@@ -91,6 +95,8 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - 7 cargo clippy warnings fixed (rsplit, is_some_and, is_none_or, saturating_sub)
 - Rust anonymize test assertion corrected (project name correctly stripped during anonymization)
 - Removed unused `make_health` test helper in notifications.rs
+- Replaced raw `<button>` elements with shadcn `<Button>` in MemoriesPage, DashboardPage, SearchOverlay
+- Added aria-label to DashboardPage attention heading
 
 ### Refactored
 - Removed dead `canGoBack` code and unreachable back-button JSX from OnboardingOverlay
