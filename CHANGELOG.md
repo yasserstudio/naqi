@@ -87,6 +87,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **Safe Mode keyboard shortcut** — `⌘⇧M` toggles Safe Mode from anywhere with toast confirmation
 - **Field-level validation** — ServerForm shows per-field error hints on blur (name, command, URL)
 - **SkillsPage empty state** — shows helpful message when no skills are installed
+- **Enhanced contradiction detection** — case-insensitive matching, stop word filtering (60+ words), negation detection (`not`, `dont`, `never`, `avoid`), three labels (Contradictory/Near-duplicate/Redundant), same-source near-duplicate detection, fixed `contradiction_ids` pipeline for notifications.
 - **Visual config editor** — click any config file to expand inline JSON editor with line numbers, real-time validation, Format button, ⌘S save, Revert, and Safe Mode guard. Backup created before every save.
 - **Code signing + notarization** — Developer ID Application certificate, entitlements, and release workflow configured for aarch64 + x86_64
 
