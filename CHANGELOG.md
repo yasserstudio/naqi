@@ -87,6 +87,9 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **Safe Mode keyboard shortcut** — `⌘⇧M` toggles Safe Mode from anywhere with toast confirmation
 - **Field-level validation** — ServerForm shows per-field error hints on blur (name, command, URL)
 - **SkillsPage empty state** — shows helpful message when no skills are installed
+- **Amp parser** — scans `~/.config/amp/settings.json` with `amp.mcpServers` key (Sourcegraph). Supports `disabled` field. Stdio transport only.
+- **Kiro parser** — scans `~/.kiro/settings/mcp.json` (AWS). Supports `disabled`/`disabledTools`, HTTP headers as env vars. Stdio + HTTP transport.
+- **10 AI clients** — up from 8. Naqi now scans: Claude Desktop, Claude Code, Cursor, VS Code, Windsurf, GitHub Copilot, JetBrains, Zed, Amp, Kiro.
 - **OS keychain for API keys** — API keys now stored in macOS Keychain (via `keyring` crate) instead of plaintext `credentials.json`. Existing keys auto-migrated on first load. Cross-platform ready (Windows Credential Manager, Linux Secret Service).
 - **Enhanced contradiction detection** — case-insensitive matching, stop word filtering (60+ words), negation detection (`not`, `dont`, `never`, `avoid`), three labels (Contradictory/Near-duplicate/Redundant), same-source near-duplicate detection, fixed `contradiction_ids` pipeline for notifications.
 - **Visual config editor** — click any config file to expand inline JSON editor with line numbers, real-time validation, Format button, ⌘S save, Revert, and Safe Mode guard. Backup created before every save.
