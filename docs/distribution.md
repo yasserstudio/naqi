@@ -28,11 +28,10 @@ Tauri v2 handles code signing automatically when the correct environment variabl
 
 ### Entitlements
 
-The file `src-tauri/entitlements.plist` declares the app sandbox entitlements:
+The file `src-tauri/entitlements.plist` declares the app entitlements:
 
-- `com.apple.security.app-sandbox` -- enables App Sandbox
+- `com.apple.security.app-sandbox` -- **disabled** (`false`). Naqi needs to read config files across `~/.claude/`, `~/.cursor/`, `~/Library/Application Support/`, etc. which are inaccessible under App Sandbox. Since Naqi distributes via Developer ID (not Mac App Store), sandbox is not required.
 - `com.apple.security.network.client` -- allows outbound network connections (needed for AI API calls and the auto-updater)
-- `com.apple.security.files.user-selected.read-only` -- allows reading user-selected files
 
 Both the entitlements and signing identity are configured in `tauri.conf.json`:
 
