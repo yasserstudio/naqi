@@ -97,6 +97,11 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **OS keychain for API keys** — API keys now stored in macOS Keychain (via `keyring` crate) instead of plaintext `credentials.json`. Existing keys auto-migrated on first load. Cross-platform ready (Windows Credential Manager, Linux Secret Service).
 - **Enhanced contradiction detection** — case-insensitive matching, stop word filtering (60+ words), negation detection (`not`, `dont`, `never`, `avoid`), three labels (Contradictory/Near-duplicate/Redundant), same-source near-duplicate detection, fixed `contradiction_ids` pipeline for notifications.
 - **Visual config editor** — click any config file to expand inline JSON editor with line numbers, real-time validation, Format button, ⌘S save, Revert, and Safe Mode guard. Backup created before every save.
+- **ZIP import UI** — Import button on BackupsPage with native file dialog (`tauri-plugin-dialog`). Restores configs from Naqi-exported ZIP archives.
+- **Security section on CleanupPage** — dedicated "Security" group with shield icon separates security findings from regular cleanup recommendations.
+- **Bulk server delete** — Select mode toggle on ServersPage with per-server checkboxes, bulk delete bar, and confirm dialog. Respects Safe Mode.
+- **CLI reference in Settings** — About section shows `naqi scan`, `naqi score`, `naqi clean` commands in styled code block.
+- **Config file creation notice** — ServerPanel shows "This will create a new config file" banner when adding a server to a client with no existing config.
 - **Code signing + notarization** — Developer ID Application certificate, entitlements, and release workflow configured for aarch64 + x86_64
 
 ### Fixed
