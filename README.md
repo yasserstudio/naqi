@@ -44,7 +44,7 @@ You just accumulate. **Naqi fixes that.**
 
 ### One scan, every client
 
-Finds MCP servers, memories, skills, and config files across **8 AI clients** — Claude Desktop, Claude Code, Cursor, VS Code, Windsurf, GitHub Copilot, JetBrains, and Zed. 3 seconds. 100% local.
+Finds MCP servers, memories, skills, and config files across **10 AI clients** — Claude Desktop, Claude Code, Cursor, VS Code, Windsurf, GitHub Copilot, JetBrains, Zed, Amp, and Kiro. 3 seconds. 100% local.
 
 </td>
 <td width="33%" valign="top">
@@ -104,7 +104,7 @@ Windows and Linux coming soon.
 
 | | Free | Pro · $14.99 one-time |
 |:---|:---:|:---:|
-| Config scanning (8 AI clients) | **Yes** | **Yes** |
+| Config scanning (10 AI clients) | **Yes** | **Yes** |
 | Dashboard and health score | **Yes** | **Yes** |
 | Memory and skill audit | **Yes** | **Yes** |
 | Exportable reports | **Yes** | **Yes** |

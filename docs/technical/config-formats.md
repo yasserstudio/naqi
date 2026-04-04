@@ -2,7 +2,7 @@
 
 > Last updated: April 2, 2026
 >
-> Derived from actual file analysis on a real development machine. These are the formats Naqi's 8 client parsers must handle.
+> Derived from actual file analysis on a real development machine. These are the formats Naqi's 10 client parsers must handle.
 
 ---
 
