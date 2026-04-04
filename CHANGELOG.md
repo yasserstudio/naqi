@@ -87,6 +87,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **Safe Mode keyboard shortcut** — `⌘⇧M` toggles Safe Mode from anywhere with toast confirmation
 - **Field-level validation** — ServerForm shows per-field error hints on blur (name, command, URL)
 - **SkillsPage empty state** — shows helpful message when no skills are installed
+- **Security audit** — 5 local detection rules: insecure HTTP URLs (non-localhost), secrets in command args, secrets in URL query params, unused secrets on broken servers, credential sprawl across clients. SecurityConcern recommendations now generated locally (previously AI-only).
 - **Amp parser** — scans `~/.config/amp/settings.json` with `amp.mcpServers` key (Sourcegraph). Supports `disabled` field. Stdio transport only.
 - **Kiro parser** — scans `~/.kiro/settings/mcp.json` (AWS). Supports `disabled`/`disabledTools`, HTTP headers as env vars. Stdio + HTTP transport.
 - **10 AI clients** — up from 8. Naqi now scans: Claude Desktop, Claude Code, Cursor, VS Code, Windsurf, GitHub Copilot, JetBrains, Zed, Amp, Kiro.
