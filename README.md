@@ -126,20 +126,21 @@ Windows and Linux coming soon.
 - **Dashboard** — health score, trend chart, daily brief, attention cards, FAB scan trigger
 - **System tray** — menu bar icon with stat grid panel, quick scan, health at a glance
 - **Servers** — full MCP inventory, health checks, transport badges, cross-client diff
-- **Memories** — browse by project, contradiction detection, bulk actions, archive
+- **Memories** — browse by project, enhanced contradiction detection (negation-aware), bulk actions, archive
 - **Profiles** — capture, apply, export/import configs across clients
-- **Backups** — versioned with SHA-256 dedup, auto-backup on scan, ZIP export, one-click restore, dedicated browser page with diff viewer
+- **Backups** — versioned with SHA-256 dedup, auto-backup on scan, ZIP export/import, one-click restore, dedicated browser page with diff viewer
 
 </td>
 <td width="50%" valign="top">
 
-- **Safe mode** — block all modifications, per-client locking, change log
-- **Danger zone** — reset configs, delete memories, factory reset with two-step confirmation
-- **Config history** — file change tracking with line-level diff stats
+- **Visual config editor** — inline JSON editing with line numbers, validation, format, `Cmd+S` save
+- **Security audit** — detects insecure HTTP, secrets in args/URLs, credential sprawl
+- **CLI companion** — `naqi scan`, `naqi score`, `naqi clean` for terminal workflows
+- **Safe mode** — block all modifications, per-client locking, `Cmd+Shift+M` toggle
 - **Global search** — `Cmd+K` across servers, memories, skills, configs
 - **Keyboard-first** — `Cmd+R` rescan, `Cmd+Z` undo, `Cmd+1-8` nav, `?` shortcuts
-- **Native macOS** — overlay titlebar, resizable sidebar, tray on close
-- **Accessible** — WCAG AA contrast, focus rings, status icons, reduced motion
+- **OS keychain** — API keys stored in macOS Keychain, not plaintext files
+- **Native macOS** — overlay titlebar, resizable sidebar, tray on close, WCAG AA accessible
 
 </td>
 </tr>

@@ -7,7 +7,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 ## [0.2.0] — 2026-04-02
 
 ### Added
-- **3 new AI client scanners** — GitHub Copilot, JetBrains (dynamic IDE discovery), and Zed (`context_servers`). Total: 8 clients scanned.
+- **3 new AI client scanners** — GitHub Copilot, JetBrains (dynamic IDE discovery), and Zed (`context_servers`). Total: 10 clients scanned (Amp and Kiro added in [Unreleased]).
 - **Backup system** — versioned backups with SHA-256 dedup, max 10 per file. Auto-backup on every scan. Export as ZIP with manifest, one-click restore. Configurable retention (7/30/90 days).
 - **Safe mode** — `safe_mode` toggle blocks all modify/delete actions. Per-client locking (`locked_clients`). Guards in cleanup, profiles, danger zone. Change log records every modification.
 - **Danger zone** — Reset client configs, Delete memories, Remove skills, Clear Naqi data, Factory reset. Two-step confirmation (dialog + type DELETE). Backup before every destructive action. Respects safe mode and locked clients.
@@ -62,7 +62,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 
 ### Fixed
 - Tray: removed `expect()` crash, fixed scale factor defaulting to 1.0 on missing value
-- All checks pass: 141 frontend tests, 298 Rust tests
+- All checks pass: 141 frontend tests, 326 Rust tests
 
 ### Security
 - Safe mode prevents accidental modifications across cleanup, profiles, and danger zone
@@ -293,7 +293,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 
 | Version | Date | Highlights |
 |---------|------|------------|
-| 0.2.0 | 2026-04-02 | 8 clients, 6 AI providers, backup system, safe mode, danger zone, CleanMyMac-inspired UI |
+| 0.2.0 | 2026-04-02 | 10 clients, 6 AI providers, backup system, safe mode, danger zone, CleanMyMac-inspired UI |
 | 0.1.0-alpha.1 | 2026-03-27 | MVP feature-complete, 243 tests (180 Rust + 63 frontend) |
 
 [Unreleased]: https://github.com/yasserstudio/naqi/compare/v0.2.0...HEAD
