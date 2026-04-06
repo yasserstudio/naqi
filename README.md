@@ -134,12 +134,14 @@ Windows and Linux coming soon.
 <td width="50%" valign="top">
 
 - **Visual config editor** — inline JSON editing with line numbers, validation, format, `Cmd+S` save
+- **Skill inventory** — enriched tiles with description preview, source repo slug, absolute last-modified date, commit SHA, installed/updated dates. Per-skill context menu: Open in Editor, Show in Finder, Copy Name/Install Path/Source Repo, Check for Update, Set Source Repo, Remove
+- **GitHub PAT for skill updates** — optional personal access token (OS keychain) raises rate limit from 60 to 5,000 req/hr for skill update checks. Configure in Settings > Skills
 - **Security audit** — detects insecure HTTP, secrets in args/URLs, credential sprawl
 - **CLI companion** — `naqi scan`, `naqi score`, `naqi clean` for terminal workflows
 - **Safe mode** — block all modifications, per-client locking, `Cmd+Shift+M` toggle
 - **Global search** — `Cmd+K` across servers, memories, skills, configs
 - **Keyboard-first** — `Cmd+R` rescan, `Cmd+Z` undo, `Cmd+1-8` nav, `?` shortcuts
-- **OS keychain** — API keys stored in macOS Keychain, not plaintext files
+- **OS keychain** — API keys and GitHub PAT stored in macOS Keychain, not plaintext files
 - **Native macOS** — overlay titlebar, resizable sidebar, tray on close, WCAG AA accessible
 
 </td>

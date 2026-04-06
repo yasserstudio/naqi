@@ -4,6 +4,25 @@ All notable changes to Naqi are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) — see [VERSIONING.md](VERSIONING.md) for full strategy.
 
+## [Unreleased] — 2026-04-06
+
+### Added
+- **Skill inventory enriched tiles** — collapsed tile shows description preview, source repo slug (detected from `.git/config` remote URL), Clock icon + absolute last-modified date (no more "X days ago" relative format). Expanded panel shows commit SHA + date, installed/updated dates from lock file, source repo with link.
+- **Per-skill context menu** — right-click any skill tile for: Open in Editor, Show in Finder, Copy Name, Copy Install Path, Copy Source Repo, Check for Update, Set Source Repo, Remove.
+- **Set Source Repo dialog** — uses `createPortal(dialog, document.body)` to escape `contain: layout style` on parent glass-surface tiles.
+- **GitHub PAT for skill updates** — optional personal access token stored in OS keychain (`storage::api_key`, account `github-token`). Raises GitHub API rate limit from 60 to 5,000 req/hr for skill update checks. Token takes priority over `GITHUB_TOKEN` env var.
+- **Settings > Skills section** — new 7th section in Settings for GitHub PAT configuration. Includes Test button (hits `/rate_limit` endpoint, returns authenticated limit as u32), masked placeholder when token is already set, and "Create a token on GitHub →" link button.
+- **`storage/skill_sources.rs`** — new module persisting `~/.naqi/skill-sources.json`. Exposes `load() -> HashMap<String, String>`, `set(name, source_repo)`, `remove(name)`. Uses `write_atomic()` for crash-safe writes. Stores user-managed `source_repo` overrides per skill name (highest priority over git remote detection).
+- **Skill source priority** — `source_repo` resolved in order: (1) user override in `skill-sources.json`, (2) git remote URL parsed from `<install_path>/.git/config`, (3) lock file field.
+- **Non-2xx GitHub error surfacing** — skill update checks surface the error message from the response body instead of crashing on a JSON parse error.
+- **New Tauri commands** — `check_single_skill_update`, `set_skill_source`, `remove_skill`, `save_github_token`, `remove_github_token`, `github_token_configured`, `test_github_token`, `ping_ai_provider`, `get_masked_api_key`, `get_masked_github_token`.
+
+### Changed
+- **Settings page** — now has 7 sections: Appearance, AI Provider, Skills (new), Export, About, Safe Mode, Danger Zone. Display name saves on blur/Enter. Test Connection uses lightweight `ping_provider()` (hits models endpoint, no scan triggered). Masked placeholder shown when API key or GitHub token is already configured. App version loaded dynamically via `getVersion()`. All links open via `openUrl()` from `@tauri-apps/plugin-opener`.
+- **Button design** — all buttons now use `rounded-full` (pill shape). New `glass` variant with backdrop blur + inset highlight; `outline` variant aliased to `glass`.
+
+---
+
 ## [0.2.0] — 2026-04-02
 
 ### Added
