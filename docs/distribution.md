@@ -17,14 +17,13 @@ Tauri v2 handles code signing automatically when the correct environment variabl
 
 ### Certificate Setup
 
-1. Enroll in the [Apple Developer Program](https://developer.apple.com/programs/).
-2. In Xcode or the Apple Developer portal, create a **Developer ID Application** certificate.
-3. Install the certificate in your macOS Keychain.
-4. Verify it is available:
-   ```bash
-   security find-identity -v -p codesigning
-   ```
-5. Set the `APPLE_SIGNING_IDENTITY` variable to the full certificate name shown in the output.
+**Status: complete.** The Developer ID Application certificate for `Yasser BERREHAIL (G52CBZDX99)` is installed in the login keychain. Verify at any time with:
+
+```bash
+security find-identity -v -p codesigning
+```
+
+Use `Developer ID Application: Yasser BERREHAIL (G52CBZDX99)` as the value for `APPLE_SIGNING_IDENTITY`.
 
 ### Entitlements
 
