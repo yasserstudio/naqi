@@ -4,16 +4,16 @@
 
 # naqi
 
-**The AI workspace cleaner.**
+**Your AI got slower because your config got bloated.**
 
-Scan, audit, and clean up MCP servers, memories, and skills across every AI client.
+Naqi scans every AI client on your Mac, finds the dead MCP servers, stale memories, and contradictory skills dragging Claude down — then cleans them up safely.
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-40bfa0.svg)](LICENSE)
 [![macOS](https://img.shields.io/badge/macOS-12%2B-40bfa0.svg)]()
 [![Built with Tauri](https://img.shields.io/badge/built%20with-Tauri%20v2-40bfa0.svg)]()
-[![Binary Size](https://img.shields.io/badge/binary-~12MB-40bfa0.svg)]()
+[![Binary Size](https://img.shields.io/badge/binary-~10MB-40bfa0.svg)]()
 
-[Download](https://naqi.app) · [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md)
+[Download](#install) · [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md)
 
 </div>
 
@@ -32,11 +32,11 @@ Every skill you installed from a blog post? Still loaded. Never triggered.
 
 There is no "Manage Connected Apps" for your AI workspace. No usage tracking. No expiry. No cleanup.
 
-You just accumulate. **Naqi fixes that.**
+You just accumulate.
 
 <br />
 
-## What Naqi does
+## See everything. Clean what's broken. Undo anything.
 
 <table>
 <tr>
@@ -79,7 +79,7 @@ Every action backed up before changes. **Diff preview. Full undo stack.** Nothin
               before confirming. Everything backed up. Full undo anytime.
 ```
 
-> Scanning is 100% local. The Pro tier sends an anonymized summary to Claude's API for analysis — API keys stripped, paths redacted, no PII. You supply your own API key.
+> Scanning is 100% local. The Pro tier sends an anonymized summary to your chosen AI provider — Anthropic, OpenAI, Gemini, Grok, Ollama (fully offline), or OpenRouter. API keys stripped, paths redacted, no PII. You bring your own key.
 
 <br />
 
@@ -94,7 +94,7 @@ brew install --cask naqi
 
 ### Direct download
 
-[macOS (Apple Silicon)](https://github.com/yasserstudio/naqi/releases/latest) · [macOS (Intel)](https://github.com/yasserstudio/naqi/releases/latest)
+[Latest release for macOS](https://github.com/yasserstudio/naqi/releases/latest) — universal binary (Apple Silicon + Intel).
 
 Windows and Linux coming soon.
 
@@ -104,14 +104,16 @@ Windows and Linux coming soon.
 
 | | Free | Pro · $14.99 one-time |
 |:---|:---:|:---:|
-| Config scanning (10 AI clients) | **Yes** | **Yes** |
-| Dashboard and health score | **Yes** | **Yes** |
-| Memory and skill audit | **Yes** | **Yes** |
-| Exportable reports | **Yes** | **Yes** |
-| AI-powered recommendations | — | **Yes** |
-| Contradiction detection | — | **Yes** |
-| One-click cleanup with batch mode | — | **Yes** |
-| Diff preview and undo | — | **Yes** |
+| Scan 10 AI clients | ✓ | ✓ |
+| Health score and dashboard | ✓ | ✓ |
+| Memory and skill audit | ✓ | ✓ |
+| Versioned backups and undo | ✓ | ✓ |
+| Safe Mode and change log | ✓ | ✓ |
+| Exportable reports | ✓ | ✓ |
+| **AI-powered recommendations** (6 providers, BYO key) | — | ✓ |
+| **Contradiction detection** (negation-aware) | — | ✓ |
+| **One-click batch cleanup** | — | ✓ |
+| **Cross-client diff and sync** | — | ✓ |
 
 <p align="center"><sub>One-time purchase · No subscription · Works on 3 devices</sub></p>
 
@@ -140,7 +142,7 @@ Windows and Linux coming soon.
 - **CLI companion** — `naqi scan`, `naqi score`, `naqi clean` for terminal workflows
 - **Safe mode** — block all modifications, per-client locking, `Cmd+Shift+M` toggle
 - **Global search** — `Cmd+K` across servers, memories, skills, configs
-- **Keyboard-first** — `Cmd+R` rescan, `Cmd+Z` undo, `Cmd+1-8` nav, `?` shortcuts
+- **Keyboard-first** — `Cmd+R` rescan, `Cmd+Z` undo, `Cmd+1-5` nav, `?` shortcuts
 - **OS keychain** — API keys and GitHub PAT stored in macOS Keychain, not plaintext files
 - **Native macOS** — overlay titlebar, resizable sidebar, tray on close, WCAG AA accessible
 
@@ -158,7 +160,7 @@ Windows and Linux coming soon.
 | **Backend** | Rust · Tauri v2 · serde · chrono · reqwest · thiserror |
 | **AI** | 6 providers: Anthropic (Sonnet 4.6) · OpenAI (GPT-5.4 Nano) · Google Gemini (2.5 Flash) · xAI Grok · Ollama (local) · OpenRouter (any model). Per-provider model selector. Optional — local analysis works without API key |
 | **Design** | Dark-mode-first · Inter + JetBrains Mono · macOS HIG-aligned |
-| **Binary** | ~12MB (Tauri uses system webview — no bundled Chromium) |
+| **Binary** | ~10MB (Tauri uses system webview — no bundled Chromium) |
 
 <br />
 
