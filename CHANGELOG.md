@@ -4,7 +4,11 @@ All notable changes to Naqi are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) — see [VERSIONING.md](VERSIONING.md) for full strategy.
 
-## [Unreleased] — 2026-04-07
+## [Unreleased]
+
+---
+
+## [0.3.0] — 2026-04-07
 
 ### Added
 - **Weekly workspace digest** — new `WeeklyDigest` notification type that summarises the past 7 days of health data (trend direction, average score, scan count). Generated after each scheduled scan but deduplicated to at most once per 7-day window. Shows in the in-app notification center as Info severity (no native notification). Toggled via Settings > Notifications > Weekly digest.
@@ -114,9 +118,7 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 
 ---
 
-## [Unreleased]
-
-### Added
+### Also Added (earlier in 0.3.0 sprint)
 - **Backup Browser page** — new `/backups` route with file list grouped by client, version timeline, View/Compare/Restore buttons, side-by-side diff viewer for comparing backup versions, export ZIP button. Added to sidebar nav (Archive icon).
 - **Onboarding Safe Mode** — Step 3 of onboarding now shows Safe Mode toggle (defaults ON). New users start in read-only mode. Saved to `settings.safe_mode` during `handleComplete`.
 - **Model selector** — `available_models()` per provider returns 3-5 models. `ai_model` field in AppSettings. ModelSelector dropdown in AI settings. LLM client reads `ai_model` as override (falls back to provider default). Models: Claude Sonnet/Opus/Haiku, GPT-5.4 Nano/Mini/Full, Gemini Flash/Pro, Grok Fast/4.20/Reasoning, Ollama Llama/Gemma/Qwen/Mistral, OpenRouter 5 models.
