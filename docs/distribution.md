@@ -129,7 +129,7 @@ end
 ### Overview
 
 ```
-Tag push --> CI builds --> Signed DMG --> GitHub Release --> Update Homebrew SHA
+Tag push --> CI builds --> Signed DMG --> GitHub Release --> Homebrew tap auto-updated
 ```
 
 ### Step-by-Step
@@ -139,7 +139,9 @@ Tag push --> CI builds --> Signed DMG --> GitHub Release --> Update Homebrew SHA
    # Update version in both files to the new version
    ```
 
-2. **Commit and tag**:
+2. **Update CHANGELOG.md** — ensure the new version section exists (e.g. `## [0.2.0] — 2026-04-02`). The `prepare` job in `release.yml` extracts this section automatically as the GitHub Release body.
+
+3. **Commit and tag**:
    ```bash
    git add -A
    git commit -m "chore: release v0.2.0"
@@ -147,20 +149,19 @@ Tag push --> CI builds --> Signed DMG --> GitHub Release --> Update Homebrew SHA
    git push origin main --tags
    ```
 
-3. **CI builds the release** (GitHub Actions):
-   - Runs `pnpm tauri build` on macOS runners (both `macos-latest` for ARM and `macos-13` for Intel).
+4. **CI builds the release** (`release.yml` — GitHub Actions):
+   - **`prepare` job** — extracts the matching `## [X.Y.Z]` section from `CHANGELOG.md` and exposes it as the release body output.
+   - **ARM build** — runs `pnpm tauri build` on `macos-latest` (Apple Silicon runner). Uses Rust cache (`Swatinem/rust-cache@v2`) and Node cache.
+   - **Intel build** — runs `pnpm tauri build` on `macos-13` (Intel runner). Uses same caches. Note: `macos-latest` must NOT be used for the Intel target as it is an ARM-only runner.
    - Code signing and notarization happen automatically via the environment variables stored as GitHub Actions secrets.
    - Produces: `Naqi_VERSION_aarch64.dmg`, `Naqi_VERSION_x64.dmg`, and `latest.json` (for the auto-updater).
+   - Creates a GitHub Release with the CHANGELOG notes as the release body.
 
-4. **Create GitHub Release**:
-   - The CI workflow creates a draft release attached to the tag.
-   - Upload the DMGs and `latest.json` as release assets.
-   - Write release notes and publish.
-
-5. **Update Homebrew tap**:
-   - Compute SHA256 for both DMGs.
-   - Update `Casks/naqi.rb` in the `homebrew-naqi` repository with the new version and checksums.
-   - Commit and push.
+5. **Homebrew tap auto-updated** (`publish-homebrew.yml` — triggered on `release: published`):
+   - Downloads both ARM (`aarch64`) and Intel (`x64`) DMGs from the release.
+   - Computes SHA256 for each artifact.
+   - Pushes an updated dual-arch cask to `yasserstudio/homebrew-naqi` at `Casks/naqi.rb`.
+   - No manual SHA update needed — the workflow handles it entirely.
 
 ### GitHub Actions Secrets
 
@@ -176,6 +177,7 @@ Add these secrets to the `naqi` repository settings:
 | `APPLE_TEAM_ID` | 10-character Team ID |
 | `TAURI_SIGNING_PRIVATE_KEY` | Updater private key (for signing `latest.json`) |
 | `TAURI_SIGNING_PRIVATE_KEY_PASSWORD` | Updater key password |
+| `HOMEBREW_TAP_TOKEN` | GitHub PAT with `Contents: write` on `yasserstudio/homebrew-naqi` (used by `publish-homebrew.yml`) |
 
 ## Auto-Updater
 

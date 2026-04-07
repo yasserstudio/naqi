@@ -20,6 +20,22 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 ### Changed
 - **Settings page** — now has 7 sections: Appearance, AI Provider, Skills (new), Export, About, Safe Mode, Danger Zone. Display name saves on blur/Enter. Test Connection uses lightweight `ping_provider()` (hits models endpoint, no scan triggered). Masked placeholder shown when API key or GitHub token is already configured. App version loaded dynamically via `getVersion()`. All links open via `openUrl()` from `@tauri-apps/plugin-opener`.
 - **Button design** — all buttons now use `rounded-full` (pill shape). New `glass` variant with backdrop blur + inset highlight; `outline` variant aliased to `glass`.
+- **Updater: graceful "no release" handling** — when no GitHub release has been published yet, the auto-updater no longer shows an error toast. "Could not fetch a valid release JSON" errors are silently swallowed on auto-check; on manual check they surface a friendly "Naqi is up to date" message instead of an error.
+
+### Fixed
+- **`release.yml` Intel build** — ARM build job was incorrectly using `macos-latest` (ARM runner) for the Intel target; corrected to `macos-13`.
+
+### Added
+- **`release.yml` `prepare` job** — extracts the matching `## [X.Y.Z]` section from `CHANGELOG.md` and passes the notes as the GitHub Release body, replacing the previous generic link.
+- **`release.yml` build caches** — Rust cache (`Swatinem/rust-cache@v2`) and Node cache added to all build jobs for faster CI runs. Removed the redundant "Run checks" step from release builds (CI workflow handles that separately).
+- **`publish-homebrew.yml` workflow** — new workflow triggered on `release: published`. Downloads both ARM and Intel DMGs, computes SHA256 for each, and pushes an updated dual-arch cask to `yasserstudio/homebrew-naqi`. Requires a new repository secret `HOMEBREW_TAP_TOKEN` (GitHub PAT with `Contents: write` permission on the homebrew-naqi repo).
+- **Dual-arch Homebrew cask** — `homebrew/naqi.rb` updated from single-arch (ARM only) to dual-arch format using `on_arm do` / `on_intel do` blocks. Version placeholder is `0.1.0` with `sha256 :no_check` until the first signed release is published.
+- **Rust test coverage +20 tests** — total Rust tests: 326 → 347.
+  - `scanner/parsers/copilot.rs`: 1 → 5 tests (empty paths, broken JSON, multiple paths, no-servers contract)
+  - `scanner/parsers/jetbrains.rs`: 2 → 7 tests (broken JSON, multiple servers, SSE transport, env secrets, multiple configs)
+  - `scanner/parsers/zed.rs`: 2 → 8 tests (broken JSON, multiple servers, env secrets, SSE, unrelated keys, metadata)
+  - `analyzer/anonymize.rs`: 14 → 19 tests (command path stripping, all Staleness variants, byte content length, stale skill path suppression)
+  - Fixed compile error in `anonymize.rs` test fixture: added missing `installed_at`/`updated_at` fields
 
 ---
 
