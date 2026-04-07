@@ -13,6 +13,13 @@ tags:
   - comparison
 ---
 
+<!--
+CTA pattern (per docs/business/site-architecture.md): render this post with a sticky inline CTA
+at 30% scroll depth and an inline CTA block at the natural pivot point (between "Where these
+tools overlap" and "Where they don't overlap"). Both link to /download. Footer-only CTAs convert
+at ~10% of inline CTAs — do not rely on the closing paragraph alone.
+-->
+
 # MCP Cleanup Tools Compared: Naqi vs Golf Scanner vs mcp-sec-audit
 
 If you've connected more than a couple of MCP servers to Claude Code, Cursor, or any other AI client, you already know the problem: there's no "Manage Connected Apps" screen for your AI workspace. You just accumulate. Stale servers stay authenticated. Old memories shape responses for projects you finished six months ago. Disabled MCP servers still inject tool definitions into your context window — yes, [even when you disable them in Claude Code](https://github.com/anthropics/claude-code/issues/30138).

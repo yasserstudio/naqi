@@ -47,7 +47,8 @@ Strategy, pricing, market analysis, and growth.
 - [Financial Projections](business/financial-projections.md) — Revenue forecasts, milestones
 - [Pro Tier Licensing](business/licensing.md) — License keys, validation, feature gating
 - [Paywall Design](business/paywall-design.md) — Upgrade flow, gating UX
-- [Landing Page Spec](business/landing-page.md) — naqi.app content and design
+- [Site Architecture](business/site-architecture.md) — Information architecture for naqi.app: pages, URL conventions, navigation, phasing
+- [Landing Page Spec](business/landing-page.md) — naqi.app homepage content and design
 - [Landing Page Copy](business/landing-page-copy.md) — Final hero/section copy for naqi.app
 - [Content Strategy](business/content-strategy.md) — Blog topics, SEO clusters, editorial calendar
 - [Social Media Strategy](business/social-media-strategy.md) — X/LinkedIn/Reddit playbooks

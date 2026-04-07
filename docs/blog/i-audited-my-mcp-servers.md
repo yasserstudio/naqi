@@ -14,6 +14,8 @@ tags:
 ---
 
 > **Author note:** This post is a template — replace the numbers in `[brackets]` with your actual scan results before publishing. The story works best when the numbers are real and surprising, even (especially) if they're embarrassing.
+>
+> **CTA pattern (per [site-architecture.md](../business/site-architecture.md)):** Render this post with a sticky inline CTA at 30% scroll depth and an inline CTA block at the natural pivot point (between "Why this happens" and "The pattern"). Both link to `/download`. Footer-only CTAs convert at ~10% of inline CTAs — do not rely on the closing paragraph alone.
 
 # I Audited My MCP Servers — Here's the Bloat I Found
 
