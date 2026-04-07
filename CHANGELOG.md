@@ -4,9 +4,10 @@ All notable changes to Naqi are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) — see [VERSIONING.md](VERSIONING.md) for full strategy.
 
-## [Unreleased] — 2026-04-06
+## [Unreleased] — 2026-04-07
 
 ### Added
+- **Draggable dashboard widgets** — each dashboard section (health gauge, daily brief, attention, clients) can be reordered by dragging the grip handle that appears on hover. Order is persisted to `localStorage` and survives app restarts. A "Restore default order" button appears below the widgets whenever the order has been customised. Conditional widgets (brief, attention) are excluded from the drag group when they have no content.
 - **Skill inventory enriched tiles** — collapsed tile shows description preview, source repo slug (detected from `.git/config` remote URL), Clock icon + absolute last-modified date (no more "X days ago" relative format). Expanded panel shows commit SHA + date, installed/updated dates from lock file, source repo with link.
 - **Per-skill context menu** — right-click any skill tile for: Open in Editor, Show in Finder, Copy Name, Copy Install Path, Copy Source Repo, Check for Update, Set Source Repo, Remove.
 - **Set Source Repo dialog** — uses `createPortal(dialog, document.body)` to escape `contain: layout style` on parent glass-surface tiles.
