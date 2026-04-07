@@ -19,3 +19,7 @@ src-tauri/target/
 # Tauri
 src-tauri/gen/
 claude-code/
+
+# Playwright
+test-results/
+playwright-report/
