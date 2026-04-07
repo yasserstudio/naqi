@@ -26,7 +26,7 @@ Architecture, data models, and implementation guides.
 - [API Design](technical/api-design.md) — Claude/OpenAI integration, prompts, anonymization
 - [Design System](technical/design-system.md) — Color tokens, typography, spacing, components, motion, accessibility
 - [Development Guide](technical/development-guide.md) — Setup, conventions, testing, workflow
-- [Testing Plan](technical/testing-plan.md) — 479 tests (326 Rust + 141 frontend + 12 E2E), coverage targets, fixtures
+- [Testing Plan](technical/testing-plan.md) — 500 tests (370 Rust + 181 frontend + 20 E2E), coverage targets, fixtures
 - [Error States & Edge Cases](technical/error-states-edge-cases.md) — Every error state and recovery behavior
 
 ### Distribution
@@ -40,11 +40,17 @@ Release, signing, and distribution.
 Strategy, pricing, market analysis, and growth.
 
 - [Business Model & Pricing](business/business-model.md) — Revenue model, pricing tiers
+- [Pricing Research](business/pricing-research.md) — Comparable products, willingness to pay, anchor analysis
 - [Go-To-Market Strategy](business/go-to-market.md) — Launch plan, channels, growth loops
+- [Launch Playbook](business/launch-playbook.md) — Day-by-day launch sequence
 - [Competitive Analysis](business/competitive-analysis.md) — Landscape, positioning, moat
 - [Financial Projections](business/financial-projections.md) — Revenue forecasts, milestones
 - [Pro Tier Licensing](business/licensing.md) — License keys, validation, feature gating
+- [Paywall Design](business/paywall-design.md) — Upgrade flow, gating UX
 - [Landing Page Spec](business/landing-page.md) — naqi.app content and design
+- [Landing Page Copy](business/landing-page-copy.md) — Final hero/section copy for naqi.app
+- [Content Strategy](business/content-strategy.md) — Blog topics, SEO clusters, editorial calendar
+- [Social Media Strategy](business/social-media-strategy.md) — X/LinkedIn/Reddit playbooks
 - [GitHub Strategy](business/github-strategy.md) — Open-source strategy, community, GitHub as growth channel
 
 ### Legal
@@ -62,4 +68,4 @@ Privacy, terms, and compliance.
 
 ---
 
-*Last updated: March 31, 2026 — v0.1.0 feature-complete, preparing public release*
+*Last updated: April 7, 2026 — v0.3.0 feature-complete, preparing public release*
