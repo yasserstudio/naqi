@@ -6,6 +6,14 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 
 ## [Unreleased]
 
+### Added
+- **Universal MAS binary** — `mas.yml` workflow now builds both `aarch64-apple-darwin` and `x86_64-apple-darwin` with the MAS config, combines them via `lipo`, re-signs the universal `.app` with the MAS app certificate and entitlements, and packages via `productbuild`. Triggered manually (`workflow_dispatch`) or via `v*-mas` tags.
+
+### Changed
+- **Proprietary license** — LICENSE replaced from MIT to proprietary. README, CONTRIBUTING, and Terms of Service updated accordingly.
+- **SECURITY.md** — supported versions updated to 0.4.x; `credentials.json` reference replaced with OS keychain (macOS Keychain, Windows Credential Manager, Linux Secret Service).
+- **Issue templates** — bug report now lists all 10 AI clients (was missing GitHub Copilot, JetBrains, Zed, Amp, Kiro). `config.yml` added to disable blank issues and surface support/security contact links. `help wanted` label removed from client support template.
+
 ---
 
 ## [0.4.0] — 2026-04-09
@@ -18,6 +26,16 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **`--fail-below <n>` flag** on `score` — exits with code 1 when the health score is below the threshold. Designed as a CI quality gate. Combinable with `--json`.
 - **`pub mod report`** — new shared `src/report.rs` module extracts `generate_markdown_report()` from `commands.rs` so the desktop export and CLI export share the same implementation.
 - **`pub mod cleanup`** — `cleanup` module exposed from `naqi_lib` so the CLI calls `execute_action()` directly, inheriting the same backup-first safety protocol (respects Safe Mode, per-client locking, auto-backup, undo stack).
+
+### Cross-platform
+- **Windows support** — `x86_64-pc-windows-msvc` target added to release workflow (`windows-latest` runner). Tauri capabilities extended with `$APPDATA` and `$LOCALAPPDATA` paths for Claude, VS Code, Cursor, Windsurf, JetBrains, GitHub Copilot, Amp, and Naqi data. Bundle config adds `bundle.windows` section (SHA-256 digest, DigiCert timestamp URL, webview bootstrapper). Distributed unsigned; notarization deferred pending code-signing certificate.
+- **Linux support** — `x86_64-unknown-linux-gnu` target added to release workflow (`ubuntu-22.04` runner). CI installs `libwebkit2gtk-4.1-dev`, `libayatana-appindicator3-dev`, `librsvg2-dev`, `patchelf`. Produces `.deb` and `.AppImage` artifacts.
+- **Cross-platform path resolution** — `storage::platform::real_home_dir()` and `storage_base()` used consistently throughout `commands.rs` (5 call sites corrected that previously used `dirs::home_dir()` directly, breaking MAS sandbox builds).
+- **`keyring` features** — updated to `["apple-native", "windows-native", "sync-secret-service"]` for correct OS credential store on all three platforms.
+- **`window-vibrancy`** — moved to `[target.'cfg(target_os = "macos")'.dependencies]` to prevent Linux/Windows build failures.
+- **macOS-only APIs guarded** — `icon_as_template(true)` on tray icon and `MacosLauncher::AppleScript` in autostart plugin both wrapped in `#[cfg(target_os = "macos")]` blocks.
+- **Tray panel positioning** — panel appears below tray icon on macOS, above on Windows/Linux.
+- **Zed client** — marked macOS/Linux only (no Windows config path); scanner skips Zed on Windows.
 
 ### Changed
 - **`reqwest`** — `blocking` feature enabled for synchronous HTTP in the CLI update check.
