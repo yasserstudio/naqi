@@ -182,7 +182,9 @@ Options:
 
 | Flag | Description |
 |------|-------------|
-| `--json` | Output as JSON array of recommendations |
+| `--json` | Output as JSON array of recommendations (list mode) or JSON apply summary (with `--apply`) |
+| `--apply` | Apply each actionable recommendation after per-item confirmation |
+| `--yes`, `-y` | Skip confirmation prompts — apply all automatically. Requires `--apply` |
 
 Examples:
 
@@ -195,6 +197,32 @@ naqi clean --json
 
 # Pipe to jq to filter critical items
 naqi clean --json | jq '[.[] | select(.severity == "Critical")]'
+
+# Apply with per-item confirmation
+naqi clean --apply
+
+# Apply all without prompts (CI / dotfiles)
+naqi clean --apply --yes
+
+# Apply all and get JSON summary
+naqi clean --apply --yes --json
+```
+
+`--apply` skips `Advisory` recommendations (AI-sourced items without validated cleanup actions). Only local rule-based recommendations are applied.
+
+When `--apply` fails on any item, the command exits with code 1. Each successful action creates a timestamped backup in `~/.naqi/backups/` and is undoable from the desktop app's History page.
+
+JSON apply summary shape:
+
+```json
+{
+  "applied": 2,
+  "failed": 1,
+  "results": [
+    { "id": "...", "title": "Remove stale GitHub server", "success": true, "backup_path": "~/.naqi/backups/..." },
+    { "id": "...", "title": "Remove unused Postgres server", "success": false, "error": "Safe Mode is enabled" }
+  ]
+}
 ```
 
 ## CI Usage
