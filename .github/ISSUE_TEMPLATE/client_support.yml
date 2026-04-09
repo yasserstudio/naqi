@@ -1,6 +1,6 @@
 name: New AI Client Support
 description: Request support for a new AI client
-labels: ["feature", "help wanted"]
+labels: ["feature"]
 body:
   - type: input
     id: client_name

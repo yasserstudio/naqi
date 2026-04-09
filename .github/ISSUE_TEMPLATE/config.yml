@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Support & FAQ
+    url: https://getnaqi.com/support
+    about: Questions, help with setup, or general usage
+  - name: License & Billing
+    url: mailto:hello@getnaqi.com
+    about: License activation, refunds, or billing questions
+  - name: Security Vulnerability
+    url: mailto:security@getnaqi.com
+    about: Please report security issues privately — do not open a public issue

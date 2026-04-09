@@ -4,7 +4,8 @@
 
 | Version | Supported |
 |---------|-----------|
-| 0.1.x   | Yes       |
+| 0.4.x   | ✓ Yes     |
+| < 0.4   | ✗ No      |
 
 ## Reporting a Vulnerability
 
@@ -47,7 +48,7 @@ Security issues we care about:
 ## Design Principles
 
 Naqi is built with security-first principles:
-- **Never store secrets in plain text** — API keys stored in `~/.naqi/credentials.json` with 600 permissions (OS keychain planned for v1.0). Scanned env var values are masked in memory.
+- **Never store secrets in plain text** — API keys and tokens stored in the OS keychain (macOS Keychain, Windows Credential Manager, Linux Secret Service) via the `keyring` crate. Scanned env var values are masked in memory and never written to disk.
 - **Workspace anonymization** — before any AI API call, workspace data is stripped of file paths, secret values, and memory content. Only metadata (names, types, ages, counts) is sent.
 - **Backup-first cleanup** — every modification creates a backup, auto-rollback on validation failure
 - **Read-only scanning** — the scanner never modifies source config files

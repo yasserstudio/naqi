@@ -56,4 +56,9 @@ body:
         - label: Cursor
         - label: VS Code
         - label: Windsurf
+        - label: GitHub Copilot
+        - label: JetBrains AI
+        - label: Zed
+        - label: Amp
+        - label: Kiro
         - label: Other
