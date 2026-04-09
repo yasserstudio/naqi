@@ -6,6 +6,11 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 
 ## [Unreleased]
 
+### Changed
+- **E2E test suite expanded to 27 tests** — 5 spec files (added `cleanup.spec.ts`, `pages.spec.ts`). New `e2e/fixtures.ts` injects `window.__TAURI_INTERNALS__` and `window.__TAURI_OS_PLUGIN_INTERNALS__` mocks so Settings, Profiles, and Cleanup tests render real UI instead of ErrorState in the Vite-only dev server. All selectors updated to role-based (`getByRole('heading'|'button')`) to avoid strict-mode violations.
+- **Frontend test count 201** — added `HistoryPage.test.tsx` (11 tests: scan compare toggleCompare logic, delta computation, DeltaCell) and `MemoriesPage.test.tsx` (9 tests: memory search by name/content, case-insensitive, empty state, filter reset).
+- **cargo fmt applied** across all Rust sources — no logic changes.
+
 ---
 
 ## [0.3.0] — 2026-04-07
