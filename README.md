@@ -8,12 +8,12 @@
 
 Naqi scans every AI client on your Mac, finds the dead MCP servers, stale memories, and contradictory skills dragging Claude down — then cleans them up safely.
 
-[![License: MIT](https://img.shields.io/badge/license-MIT-40bfa0.svg)](LICENSE)
+[![Proprietary](https://img.shields.io/badge/license-proprietary-red.svg)](LICENSE)
 [![macOS](https://img.shields.io/badge/macOS-12%2B-40bfa0.svg)]()
 [![Built with Tauri](https://img.shields.io/badge/built%20with-Tauri%20v2-40bfa0.svg)]()
 [![Binary Size](https://img.shields.io/badge/binary-~10MB-40bfa0.svg)]()
 
-[Download](#install) · [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md)
+[Download](#install) · [Changelog](CHANGELOG.md) · [getnaqi.com](https://getnaqi.com)
 
 </div>
 
@@ -191,9 +191,9 @@ cd src-tauri && cargo test    # rust tests
 
 <br />
 
-## Contributing
+## Feedback & Issues
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). New AI client parsers are the most impactful contribution — check [good first issues](https://github.com/yasserstudio/naqi/labels/good%20first%20issue).
+Bug reports and feature requests are welcome via [GitHub Issues](https://github.com/yasserstudio/naqi/issues). Naqi is proprietary software — see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Security
 
@@ -203,7 +203,7 @@ See [SECURITY.md](SECURITY.md). Report vulnerabilities via email, not public iss
 
 <div align="center">
 
-[MIT License](LICENSE) · [getnaqi.com](https://getnaqi.com)
+© 2026 Yasser's studio · Proprietary · [getnaqi.com](https://getnaqi.com)
 
 <br />
 
