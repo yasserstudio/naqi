@@ -28,3 +28,6 @@ playwright-report/
 # MAS signing — private key and provisioning profile must never be committed
 src-tauri/signing/
 src-tauri/embedded.provisionprofile
+
+# Claude Code developer tooling
+.claude/
