@@ -33,7 +33,7 @@ Architecture, data models, and implementation guides.
 Release, signing, and distribution.
 
 - [Distribution Guide](distribution.md) — Code signing, notarization, Homebrew tap, release process, auto-updater
-- [CLI Companion](cli.md) — Planned CLI commands (scan, score, clean) with output formats
+- [CLI Companion](cli.md) — Full CLI reference: scan, score, clean --apply, export, update with --json and --fail-below flags
 - [Deployment](technical/deployment.md) — CI/CD, build process, platform targets
 
 ### Business
@@ -69,4 +69,4 @@ Privacy, terms, and compliance.
 
 ---
 
-*Last updated: April 7, 2026 — v0.3.0 feature-complete, preparing public release*
+*Last updated: April 9, 2026 — v0.4.0 CLI companion complete*
