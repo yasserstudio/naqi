@@ -24,3 +24,7 @@ claude-code/
 test-results/
 playwright-report/
 .mas-certs/
+
+# MAS signing — private key and provisioning profile must never be committed
+src-tauri/signing/
+src-tauri/embedded.provisionprofile
