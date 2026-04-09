@@ -4,7 +4,7 @@ slug: i-audited-my-mcp-servers
 description: "A first-person audit of my AI workspace across Claude Desktop, Claude Code, Cursor, and 7 other clients. The numbers were worse than I expected."
 date: 2026-04-07
 author: Yasser
-canonical: https://naqi.app/blog/i-audited-my-mcp-servers
+canonical: https://getnaqi.com/blog/i-audited-my-mcp-servers
 tags:
   - mcp
   - claude
@@ -87,7 +87,7 @@ I'm building a desktop app called Naqi that does the boring fix for me. It scans
 
 It's not the only tool in this space. [Golf Scanner](https://github.com/) is an open-source CLI that does multi-client MCP discovery. [mcp-sec-audit](https://github.com/) is the best thing I've seen for hunting malicious MCP servers. I wrote a [comparison post](./mcp-cleanup-tools-compared.md) explaining when to pick each. If you're a CLI person who only cares about MCP, those might be a better fit than Naqi.
 
-But if you want a desktop app that also covers memories and skills, with cleanup and undo, and you're on macOS, Naqi is at [naqi.app](https://naqi.app). The scan is free, no signup, and it'll take about 30 seconds to find out how bad your own bloat is.
+But if you want a desktop app that also covers memories and skills, with cleanup and undo, and you're on macOS, Naqi is at [getnaqi.com](https://getnaqi.com). The scan is free, no signup, and it'll take about 30 seconds to find out how bad your own bloat is.
 
 ## Try this even if you don't use Naqi
 
@@ -103,4 +103,4 @@ Then write the cleanup down somewhere so you remember to do it again in two mont
 
 ---
 
-*I'm Yasser. I build [Naqi](https://naqi.app), the AI workspace cleaner — a 10MB desktop app that scans 10 AI clients for MCP servers, memories, and skills, with cleanup recommendations and one-click undo. The scanner is free; the AI recommendations and batch cleanup are a one-time $14.99 upgrade.*
+*I'm Yasser. I build [Naqi](https://getnaqi.com), the AI workspace cleaner — a 10MB desktop app that scans 10 AI clients for MCP servers, memories, and skills, with cleanup recommendations and one-click undo. The scanner is free; the AI recommendations and batch cleanup are a one-time $14.99 upgrade.*

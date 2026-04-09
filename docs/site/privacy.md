@@ -17,7 +17,7 @@ This page is short on purpose. There isn't much to write about, and that's the p
 
 | Where you are | What we collect |
 |---|---|
-| **naqi.app** (this website) | Anonymous, cookieless visit counts via Plausible. No personal data, no fingerprinting, no cross-site tracking. The dashboard is **public** at [plausible.io/naqi.app](https://plausible.io/naqi.app). |
+| **getnaqi.com** (this website) | Anonymous, cookieless visit counts via Plausible. No personal data, no fingerprinting, no cross-site tracking. The dashboard is **public** at [plausible.io/getnaqi.com](https://plausible.io/getnaqi.com). |
 | **The Naqi desktop app** | **Nothing.** No telemetry, no analytics, no crash reports, no usage tracking, no phone-home. The app makes zero network requests by default. |
 | **Pro AI recommendations** (optional) | When you explicitly run an AI analysis, an anonymized summary of your scan goes to whichever AI provider you picked — and only that provider. Naqi never sees it. |
 | **The waitlist or newsletter** (optional) | Your email address, sent only to Buttondown. We unsubscribe you with one click and never share the list. |
@@ -26,7 +26,7 @@ That's the whole policy. The rest of this page explains each row in detail.
 
 ---
 
-## The website (naqi.app)
+## The website (getnaqi.com)
 
 The marketing site uses [Plausible Analytics](https://plausible.io) — a privacy-first analytics tool that runs on EU servers, uses no cookies, and never collects personal data.
 
@@ -45,7 +45,7 @@ What Plausible **does not** measure:
 
 Because Plausible uses no cookies and stores no personal data, **there is no cookie consent banner on this site**. There is nothing to consent to. (This is also why the site is faster than 99% of competitor sites — no GDPR banner script, no third-party tag manager, no Facebook Pixel.)
 
-**The Plausible dashboard is public.** Anyone can see exactly what we see. It's at [plausible.io/naqi.app](https://plausible.io/naqi.app). If we ever start collecting more than what's listed here, you'll see it on that dashboard before you read about it on this page.
+**The Plausible dashboard is public.** Anyone can see exactly what we see. It's at [plausible.io/getnaqi.com](https://plausible.io/getnaqi.com). If we ever start collecting more than what's listed here, you'll see it on that dashboard before you read about it on this page.
 
 ---
 
@@ -119,7 +119,7 @@ Default retention is 90 days. Configurable in Settings.
 
 There are none. Naqi does not collect crash reports or send error logs to any server. If the app crashes, the crash data stays on your Mac in the standard macOS crash log location (`~/Library/Logs/DiagnosticReports/`). You can read it; we cannot.
 
-If you want to send us a crash log to help diagnose a bug, you can email it to [yasser@naqi.app](mailto:yasser@naqi.app). We will only ever look at logs you explicitly send.
+If you want to send us a crash log to help diagnose a bug, you can email it to [yasser@getnaqi.com](mailto:yasser@getnaqi.com). We will only ever look at logs you explicitly send.
 
 ---
 
@@ -157,7 +157,7 @@ You have the right to:
 - **Know what we have** — for the website, it's nothing personal. For the app, it's nothing at all. For email subscribers, it's your email address.
 - **Delete it** — unsubscribe removes you from any list. Uninstalling Naqi removes everything in `~/.naqi/`.
 - **Export it** — backups can be exported as ZIP from the Backups page. Email lists are exportable on request.
-- **Object** — email [yasser@naqi.app](mailto:yasser@naqi.app) and we'll talk like humans.
+- **Object** — email [yasser@getnaqi.com](mailto:yasser@getnaqi.com) and we'll talk like humans.
 
 These rights apply regardless of where you live. We extend them globally because they're the right defaults, not because a regulation forces us to.
 
@@ -165,7 +165,7 @@ These rights apply regardless of where you live. We extend them globally because
 
 ## Changes to this policy
 
-If this policy ever changes, the change will be announced in the [changelog](/changelog) and at the top of the [next monthly newsletter](mailto:hi@naqi.app). The previous version of this page will always be available in the [git history](https://github.com/yasserstudio/naqi/commits/main/docs/site/privacy.md).
+If this policy ever changes, the change will be announced in the [changelog](/changelog) and at the top of the [next monthly newsletter](mailto:hi@getnaqi.com). The previous version of this page will always be available in the [git history](https://github.com/yasserstudio/naqi/commits/main/docs/site/privacy.md).
 
 This is unusual for a privacy policy. Most companies update privacy policies silently. We won't, because the whole point of this page is that you can trust what's on it.
 
@@ -173,7 +173,7 @@ This is unusual for a privacy policy. Most companies update privacy policies sil
 
 ## Contact
 
-Email [yasser@naqi.app](mailto:yasser@naqi.app). One person reads it. Reply expected within 48 hours.
+Email [yasser@getnaqi.com](mailto:yasser@getnaqi.com). One person reads it. Reply expected within 48 hours.
 
 For security disclosures, see [SECURITY.md](https://github.com/yasserstudio/naqi/blob/main/SECURITY.md).
 

@@ -72,6 +72,6 @@ If macOS still warns you about an unidentified developer, the download is corrup
 
 ## If something goes wrong
 
-Email [yasser@naqi.app](mailto:yasser@naqi.app) or [open a GitHub issue](https://github.com/yasserstudio/naqi/issues). One person reads both. Reply expected within 48 hours.
+Email [yasser@getnaqi.com](mailto:yasser@getnaqi.com) or [open a GitHub issue](https://github.com/yasserstudio/naqi/issues). One person reads both. Reply expected within 48 hours.
 
 For security concerns, see [SECURITY.md](https://github.com/yasserstudio/naqi/blob/main/SECURITY.md).

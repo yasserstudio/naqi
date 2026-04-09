@@ -4,7 +4,7 @@ slug: mcp-cleanup-tools-compared
 description: "An honest comparison of the three tools that scan MCP server configurations across AI clients — when to use each, where they overlap, and where they don't."
 date: 2026-04-07
 author: Yasser
-canonical: https://naqi.app/blog/mcp-cleanup-tools-compared
+canonical: https://getnaqi.com/blog/mcp-cleanup-tools-compared
 tags:
   - mcp
   - claude
@@ -147,10 +147,10 @@ I've seen a few posts recently calling Naqi "the first AI workspace cleaner." It
 | Someone who needs to cover memories and skills, not just MCP servers | Naqi |
 | Someone who wants a GUI and doesn't want to edit JSON by hand | Naqi |
 
-If Naqi sounds like the right fit, the scan is free — no signup, no account, no telemetry. [Download it](https://naqi.app) and run your first scan in about 30 seconds. The Pro upgrade is optional and one-time, and you'll know after one cleanup whether it's worth $14.99 to you.
+If Naqi sounds like the right fit, the scan is free — no signup, no account, no telemetry. [Download it](https://getnaqi.com) and run your first scan in about 30 seconds. The Pro upgrade is optional and one-time, and you'll know after one cleanup whether it's worth $14.99 to you.
 
 If Golf Scanner or mcp-sec-audit sounds like the better fit, use those instead. They're great tools, they're free, and the people who built them deserve the credit. The AI workspace cleanup space isn't a zero-sum fight — it's three tools that overlap a little and complement each other a lot.
 
 ---
 
-*Naqi is open source on GitHub (MIT). The scanner, dashboard, backups, undo, and Safe Mode are free. The $14.99 Pro upgrade unlocks AI-powered recommendations and one-click batch cleanup. [naqi.app](https://naqi.app)*
+*Naqi is open source on GitHub (MIT). The scanner, dashboard, backups, undo, and Safe Mode are free. The $14.99 Pro upgrade unlocks AI-powered recommendations and one-click batch cleanup. [getnaqi.com](https://getnaqi.com)*

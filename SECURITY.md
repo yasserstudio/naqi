@@ -10,7 +10,7 @@
 
 If you discover a security vulnerability in Naqi, please report it responsibly.
 
-**Email:** security@naqi.app
+**Email:** security@getnaqi.com
 
 Do NOT open a public GitHub issue for security vulnerabilities.
 

@@ -1,6 +1,6 @@
 # Terms of Service
 
-> **Naqi** (naqi.app) — Terms of Service
+> **Naqi** (getnaqi.com) — Terms of Service
 >
 > Last updated: March 26, 2026
 
@@ -95,7 +95,7 @@ Your purchase is subject to Lemon Squeezy's [Terms of Service](https://www.lemon
 
 To request a refund:
 - Use the refund link in your Lemon Squeezy purchase confirmation email, or
-- Email legal@naqi.app with your order number
+- Email legal@getnaqi.com with your order number
 
 On refund, your license key will be revoked and Pro features will be disabled on your next license validation check (within 7 days).
 
@@ -168,7 +168,7 @@ Our total liability for any claim arising from your use of Naqi is limited to th
 
 ### By you
 
-You can stop using Naqi at any time. Delete the `~/.naqi/` directory and uninstall the app. If you want to deactivate your Pro license on a device, use Settings > License > Deactivate, or visit naqi.app/manage.
+You can stop using Naqi at any time. Delete the `~/.naqi/` directory and uninstall the app. If you want to deactivate your Pro license on a device, use Settings > License > Deactivate, or visit getnaqi.com/manage.
 
 ### By us
 
@@ -177,7 +177,7 @@ We may revoke your Pro license if:
 - A chargeback is filed against your purchase
 - You are found to be distributing or reselling license keys at scale
 
-We will not revoke a license without cause. If a revocation is disputed, email legal@naqi.app and we will work with you to resolve it.
+We will not revoke a license without cause. If a revocation is disputed, email legal@getnaqi.com and we will work with you to resolve it.
 
 ---
 
@@ -208,7 +208,7 @@ We may update these terms from time to time. When we do:
 
 - We will update the "Last updated" date at the top
 - For material changes, we will provide **30 days' notice** before the new terms take effect
-- Notice will be posted on naqi.app and, for significant changes, emailed to Pro users via their Lemon Squeezy email address
+- Notice will be posted on getnaqi.com and, for significant changes, emailed to Pro users via their Lemon Squeezy email address
 - Your continued use of Naqi after the notice period constitutes acceptance of the updated terms
 
 ---
@@ -229,8 +229,8 @@ If any part of these terms is found to be unenforceable, the remaining parts sta
 
 For questions about these terms:
 
-**Email:** legal@naqi.app
+**Email:** legal@getnaqi.com
 
-For privacy-related questions, see our [Privacy Policy](privacy-policy.md) or email privacy@naqi.app.
+For privacy-related questions, see our [Privacy Policy](privacy-policy.md) or email privacy@getnaqi.com.
 
-For security vulnerabilities, email security@naqi.app (do not open public GitHub issues for security reports).
+For security vulnerabilities, email security@getnaqi.com (do not open public GitHub issues for security reports).

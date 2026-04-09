@@ -203,7 +203,7 @@ See [SECURITY.md](SECURITY.md). Report vulnerabilities via email, not public iss
 
 <div align="center">
 
-[MIT License](LICENSE) · [naqi.app](https://naqi.app)
+[MIT License](LICENSE) · [getnaqi.com](https://getnaqi.com)
 
 <br />
 
