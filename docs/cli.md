@@ -35,21 +35,16 @@ Options:
 
 | Flag | Description |
 |------|-------------|
-| `--client <name>` | Scan a specific client only (e.g., `claude-desktop`, `cursor`, `vscode`, `windsurf`, `claude-code`) |
-| `--format <fmt>` | Output format: `table` (default), `json`, `minimal` |
-| `--no-color` | Disable colored output |
+| `--json` | Output as JSON |
 
 Examples:
 
 ```bash
-# Scan all clients, output as JSON
-naqi scan --format json
+# Scan all clients, table output
+naqi scan
 
-# Scan only Claude Desktop
-naqi scan --client claude-desktop
-
-# Minimal output for scripting
-naqi scan --format minimal
+# JSON output for scripting
+naqi scan --json
 ```
 
 ### `naqi score`
@@ -64,9 +59,8 @@ Options:
 
 | Flag | Description |
 |------|-------------|
-| `--threshold <n>` | Exit with code 1 if the score is below the threshold (0-100) |
-| `--format <fmt>` | Output format: `table` (default), `json`, `minimal` |
-| `--no-color` | Disable colored output |
+| `--json` | Output as JSON |
+| `--fail-below <n>` | Exit with code 1 if the score is below n (0-100) |
 
 Examples:
 
@@ -75,10 +69,13 @@ Examples:
 naqi score
 
 # CI gate: fail if score is below 80
-naqi score --threshold 80
+naqi score --fail-below 80
 
 # JSON output for downstream processing
-naqi score --format json
+naqi score --json
+
+# Both: JSON output + CI exit code
+naqi score --json --fail-below 80
 ```
 
 JSON output shape:
@@ -86,16 +83,59 @@ JSON output shape:
 ```json
 {
   "score": 85,
-  "max_score": 100,
-  "breakdown": {
-    "duplicates": -5,
-    "staleness": -3,
-    "missing_env": -7
+  "band": "Healthy",
+  "servers": {
+    "total": 12,
+    "broken": 1,
+    "stale": 2,
+    "duplicate": 0
   },
+  "memories": 34,
+  "skills": 8,
+  "recommendations": 3,
   "pass": true,
   "threshold": 80
 }
 ```
+
+`threshold` is omitted from JSON output when `--fail-below` is not specified.
+
+### `naqi update` / `naqi upgrade`
+
+Check for a newer release and print upgrade instructions.
+
+```bash
+naqi update
+```
+
+Fetches `latest.json` from the GitHub releases endpoint and compares with the running version. If an update is available, prints the release notes (up to 10 lines) and the correct upgrade command based on how Naqi was installed:
+
+- **Homebrew install** (exe path contains `Caskroom`): prints `brew upgrade --cask naqi`
+- **Direct install**: prints the GitHub releases URL
+
+Examples:
+
+```bash
+# Already up to date
+$ naqi update
+Checking for updates... done.
+Naqi 0.4.0 is up to date.
+
+# Update available
+$ naqi update
+Checking for updates... done.
+Update available: 0.3.0 → 0.4.0
+
+What's new:
+  - Pro tier with Lemon Squeezy licensing
+  - CLI --json output and --fail-below gate
+  ...
+
+To update:
+  brew upgrade --cask naqi
+```
+
+---
 
 ### `naqi clean`
 
@@ -109,38 +149,24 @@ Options:
 
 | Flag | Description |
 |------|-------------|
-| `--dry-run` | Preview changes without applying (default behavior) |
-| `--apply` | Apply the recommended changes after confirmation |
-| `--yes` | Skip confirmation prompts (use with `--apply` for CI) |
-| `--format <fmt>` | Output format: `table` (default), `json`, `minimal` |
-| `--no-color` | Disable colored output |
+| `--json` | Output as JSON array of recommendations |
 
 Examples:
 
 ```bash
-# Preview cleanup recommendations
+# Show recommendations as text
 naqi clean
 
-# Apply cleanup with confirmation prompt
-naqi clean --apply
+# JSON output for scripting
+naqi clean --json
 
-# CI mode: apply without prompts
-naqi clean --apply --yes
+# Pipe to jq to filter critical items
+naqi clean --json | jq '[.[] | select(.severity == "Critical")]'
 ```
-
-The cleanup follows the same backup-first protocol as the desktop app: backup, preview diff, confirm, apply, validate. Backups are stored in `~/.naqi/backups/`.
-
-## Output Formats
-
-| Format | Description | Use Case |
-|--------|-------------|----------|
-| `table` | Human-readable table with colors and alignment | Terminal use |
-| `json` | Structured JSON output | Scripting, piping to `jq`, CI |
-| `minimal` | One-line-per-item, no headers or decoration | Scripting, `grep`/`awk` pipelines |
 
 ## CI Usage
 
-Use `naqi score --threshold` as a CI quality gate to enforce workspace hygiene standards.
+Use `naqi score --fail-below` as a CI quality gate to enforce workspace hygiene standards.
 
 ### GitHub Actions Example
 
@@ -158,7 +184,7 @@ jobs:
         run: cargo install naqi
 
       - name: Check workspace health
-        run: naqi score --threshold 80 --format json
+        run: naqi score --fail-below 80 --json
 ```
 
 The command exits with code 0 if the score meets or exceeds the threshold, and code 1 otherwise. CI runners can use this exit code to pass or fail the pipeline step.
