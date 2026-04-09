@@ -4,12 +4,14 @@
 
 # naqi
 
-**Your AI got slower because your config got bloated.**
+**Cleaning up your AI workspace saves you tokens.**
 
-Naqi scans every AI client on your Mac, finds the dead MCP servers, stale memories, and contradictory skills dragging Claude down — then cleans them up safely.
+Every MCP server, memory, and skill you're not using burns context on every request. Naqi scans every AI client, finds what's dead, stale, or contradictory — then cleans it up safely.
 
 [![Proprietary](https://img.shields.io/badge/license-proprietary-red.svg)](LICENSE)
 [![macOS](https://img.shields.io/badge/macOS-12%2B-40bfa0.svg)]()
+[![Windows](https://img.shields.io/badge/Windows-10%2B-40bfa0.svg)]()
+[![Linux](https://img.shields.io/badge/Linux-40bfa0.svg)]()
 [![Built with Tauri](https://img.shields.io/badge/built%20with-Tauri%20v2-40bfa0.svg)]()
 [![Binary Size](https://img.shields.io/badge/binary-~10MB-40bfa0.svg)]()
 
@@ -94,9 +96,7 @@ brew install --cask naqi
 
 ### Direct download
 
-[Latest release for macOS](https://github.com/yasserstudio/naqi/releases/latest) — universal binary (Apple Silicon + Intel).
-
-Windows and Linux coming soon.
+[Latest release](https://github.com/yasserstudio/naqi/releases/latest) — macOS (Apple Silicon + Intel), Windows, Linux.
 
 <br />
 
@@ -143,8 +143,8 @@ Windows and Linux coming soon.
 - **Safe mode** — block all modifications, per-client locking, `Cmd+Shift+M` toggle
 - **Global search** — `Cmd+K` across servers, memories, skills, configs
 - **Keyboard-first** — `Cmd+R` rescan, `Cmd+Z` undo, `Cmd+1-5` nav, `?` shortcuts
-- **OS keychain** — API keys and GitHub PAT stored in macOS Keychain, not plaintext files
-- **Native macOS** — overlay titlebar, resizable sidebar, tray on close, WCAG AA accessible
+- **OS keychain** — API keys and GitHub PAT stored in OS keychain (macOS Keychain, Windows Credential Manager, or Linux Secret Service), never plaintext files
+- **Native desktop (macOS-first)** — overlay titlebar, resizable sidebar, tray on close, WCAG AA accessible
 
 </td>
 </tr>
@@ -185,7 +185,7 @@ pnpm tauri dev
 
 ```bash
 pnpm check                    # lint + typecheck + frontend tests
-pnpm test:e2e                 # playwright e2e tests (12 tests)
+pnpm test:e2e                 # playwright e2e tests (27 tests)
 cd src-tauri && cargo test    # rust tests
 ```
 
