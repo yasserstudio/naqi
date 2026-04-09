@@ -100,6 +100,39 @@ JSON output shape:
 
 `threshold` is omitted from JSON output when `--fail-below` is not specified.
 
+### `naqi export`
+
+Print a full workspace scan report to stdout.
+
+```bash
+naqi export
+```
+
+Options:
+
+| Flag | Description |
+|------|-------------|
+| `--format <fmt>` | Output format: `json` (default) or `md` |
+| `--json` | Shorthand for `--format json` |
+
+Examples:
+
+```bash
+# JSON to stdout (default)
+naqi export
+
+# Save to file
+naqi export > report.json
+naqi export --format md > report.md
+
+# Pipe JSON to jq
+naqi export | jq '.servers[] | select(.status == "Broken")'
+```
+
+The JSON output is the full `Workspace` object — identical to `naqi scan --json` but intended for export/archiving rather than live inspection. The Markdown output includes a summary table, per-client breakdown, MCP server table with status indicators, memories with staleness flags, and skills inventory.
+
+---
+
 ### `naqi update` / `naqi upgrade`
 
 Check for a newer release and print upgrade instructions.
