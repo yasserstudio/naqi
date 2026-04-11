@@ -78,6 +78,11 @@ Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) �
 - **CSP tightening** — `tauri.conf.json` dropped the stale provider allowlist from `connect-src` (all outbound HTTP goes through Rust), and added `object-src 'none'`, `base-uri 'self'`, `frame-ancestors 'none'`, `form-action 'none'`.
 - **Saturating arithmetic on token totals** — `models::tokens::TokenUsage::total` and `add` now use `saturating_add` throughout. Adversarial JSONL can no longer panic debug builds or wrap release builds.
 
+### Added — Community
+
+- **Discord community CTA** — dismissible card on the Dashboard (between the first and second halves of the draggable widget list, Reorder.Group split at midpoint so drag-reorder still works within each half). Uses Discord blurple #5865F2 for the ambient radial blob, icon drop-shadow, and Join button text — keeping brand identity through color tint rather than an accent border. Dismissal persists via `useLocalStorage('discord-cta-dismissed')`. Clicking Join opens `https://discord.gg/b9kGkjEj` via `openUrl` from `@tauri-apps/plugin-opener`.
+- **Settings → About Discord link** — third link row button in the About section alongside GitHub and Website, same `variant="glass"` styling with inline Discord SVG.
+
 ### Changed — Correctness and UX
 
 - **Quiet hours start == end is now "all day silent"** — `notifications::is_within_quiet_hours` previously evaluated an empty same-day range (`now >= t && now < t` → always false), silently disabling quiet hours when a user set both bounds to the same value. Now returns `true` for the start==end case.
