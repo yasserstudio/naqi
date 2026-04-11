@@ -1,25 +1,25 @@
 # CLI Companion
 
-Naqi ships a CLI binary that shares the same Rust library as the desktop app. It provides headless access to scanning, scoring, and cleanup operations for terminal workflows and CI pipelines.
+Naqi ships a CLI binary (`naqi-cli`) that shares the same Rust library as the desktop app. It provides headless access to scanning, scoring, cleanup, Token Hygiene analysis, and prompt linting for terminal workflows and CI pipelines.
 
-> **Status:** Planned. The CLI is not yet published. The commands below represent the target interface.
+> **Status:** Shipped as of v0.4.0. Token Hygiene commands (`naqi tokens`, `naqi lint-prompt`) added in v0.6.0.
 
 ## Installation
 
-### Via Cargo
-
-```bash
-cargo install naqi
-```
+The CLI binary is named `naqi-cli` and is bundled alongside the desktop app.
 
 ### Via Homebrew
 
 ```bash
 brew tap yasserstudio/naqi
-brew install naqi
+brew install --cask naqi
 ```
 
-The Homebrew formula installs both the desktop app (as a cask) and the CLI binary (as a formula) from the same tap.
+The Homebrew cask installs the desktop app and places `naqi-cli` on your `PATH`.
+
+### From a direct download
+
+Download the macOS / Windows / Linux build from [the latest release](https://github.com/yasserstudio/naqi/releases/latest). The `naqi-cli` binary lives in the bundle alongside the desktop app.
 
 ## Commands
 
@@ -133,6 +133,100 @@ The JSON output is the full `Workspace` object — identical to `naqi scan --jso
 
 ---
 
+### `naqi tokens`
+
+Per-project Claude Code session token breakdown. The base command without a subcommand shows aggregated usage across every session under `~/.claude/projects/`.
+
+```bash
+naqi tokens
+```
+
+Options:
+
+| Flag | Description |
+|------|-------------|
+| `--json` | Output as JSON for scripting |
+| `--project <name>` | Filter to sessions in a single project |
+
+Each row shows the project slug, session count, input/cache-create/cache-read/output token totals, and the sum. Under the hood the scan uses a persistent cache with mtime-based invalidation (`~/.naqi/token-cache/manifest.json`), so repeated invocations only re-parse session JSONL files that have actually changed.
+
+---
+
+### `naqi tokens top`
+
+Top N costliest sessions by total token cost.
+
+```bash
+naqi tokens top            # default: top 10
+naqi tokens top --n 25
+naqi tokens top --json
+```
+
+Each row shows the session slug (or UUID prefix), project, turn count, total tokens, and the first-prompt preview (truncated to 200 chars with secrets/paths stripped via the anonymizer).
+
+---
+
+### `naqi tokens waste`
+
+All waste-pattern recommendations across cached sessions, grouped by severity. Same list that powers the TokensPage waste banner in the desktop app.
+
+```bash
+naqi tokens waste
+naqi tokens waste --json
+naqi tokens waste --project naqi
+```
+
+Nine detectors fire on: mega-session (≥50 turns + ≥100M tokens), background-bash overhead (≥20 task notifications), log paste (≥2 KB of pasted console output), dive-deep opener, auto-compact waste, subagent swarm (≥8 subagent fan-outs), short-prompt thrashing, image paste / screenshot-review loop, and skill auto-load overhead (≥4 KB skill listing with <5 skills actually invoked).
+
+---
+
+### `naqi tokens health <session-id>`
+
+Per-session health score breakdown showing every contributing factor (turn count, cache bloat ratio, background-bash overhead, subagent overhead, auto-compactions, dive-deep opener presence).
+
+```bash
+naqi tokens health 084d1abb-85f2-4f95-8c36-a1ebc3d5abb7
+naqi tokens health <id> --json
+```
+
+Text output lists the score (0–100), band (GREEN/YELLOW/RED), turn count, and each factor with its impact. JSON output is the full `SessionHealthScore` struct.
+
+---
+
+### `naqi lint-prompt`
+
+Pre-send prompt linter. Reads a draft Claude Code prompt from stdin or a file and flags four token-wasting patterns. Exits with code 1 on any issue so it composes as a pre-commit hook, shell pipe, or Claude Code skill.
+
+```bash
+# From stdin (heredoc works well for multi-line drafts)
+echo "continue" | naqi lint-prompt
+
+cat <<'EOF' | naqi lint-prompt
+Dive deep into the project and figure out why tests are failing.
+EOF
+
+# From a file
+naqi lint-prompt draft.md
+
+# JSON output for tooling
+naqi lint-prompt draft.md --json
+```
+
+Four rules:
+
+| Rule | Severity | Fires when | Fix |
+|---|---|---|---|
+| `ShortPrompt` | Warning | Trimmed input < 20 chars OR < 3 words | Batch instructions into one complete prompt, or `/clear` first to reset cached context |
+| `DiveDeep` | Warning | Opener matches "dive deep", "understand the project", "check everything", etc. | Name the exact files or areas to examine |
+| `LogPaste` | Warning | ≥5 consecutive log-like lines totaling ≥2 KB | Save output to a file and reference the path (`Read /tmp/build.log`) so it bills once, not every turn |
+| `ImperativeNoAnchor` | Info | First word is imperative (fix/add/update/...) AND no file path or `*.ext` token present | Name the target file(s) or directory |
+
+Empty input is treated as clean. The linter lives in `analyzer/prompt_lint.rs` as a pure function so it can later be exposed via a Tauri command for inline in-app linting.
+
+There's also an optional Claude Code skill wrapper at `skills/lint-prompt/SKILL.md` — `cp -r skills/lint-prompt ~/.claude/agent-skills/skills/` and Claude Code will invoke the CLI automatically when you draft a prompt that looks expensive. See the [Token Hygiene guide](./guides/token-hygiene.md) for the full playbook.
+
+---
+
 ### `naqi update` / `naqi upgrade`
 
 Check for a newer release and print upgrade instructions.
@@ -160,7 +254,7 @@ Checking for updates... done.
 Update available: 0.3.0 → 0.4.0
 
 What's new:
-  - Pro tier with Lemon Squeezy licensing
+  - Pro tier with Paddle licensing
   - CLI --json output and --fail-below gate
   ...
 
@@ -252,17 +346,21 @@ The command exits with code 0 if the score meets or exceeds the threshold, and c
 
 ## Architecture
 
-The CLI binary links against the same `naqi-core` library used by the Tauri desktop app. The scanner, analyzer, and cleanup modules are shared. The only difference is the presentation layer: the desktop app renders in a webview, while the CLI writes to stdout.
+`naqi-cli` and the desktop app link against the same `naqi_lib` crate (see `src-tauri/Cargo.toml`). The scanner, analyzer, cleanup, storage, report, and CLI modules are all shared. Every cleanup command the CLI runs goes through `cleanup::execute_action()`, so it inherits the same backup → preview → confirm → validate → undo protocol, Safe Mode check, per-client locking, and path allowlist as the desktop UI. The only difference is the presentation layer: the desktop app renders in a webview, while the CLI writes to stdout.
 
 ```
-naqi (CLI binary)
-  |
-  +-- naqi-core (shared library)
-  |     +-- scanner/
-  |     +-- analyzer/
-  |     +-- cleanup/
-  |
-naqi-desktop (Tauri app)
-  |
-  +-- naqi-core (same library)
+naqi-cli (CLI binary)
+  │
+  ├── naqi_lib (shared library)
+  │     ├── scanner/           (read-only AI client config + JSONL session parsing)
+  │     ├── analyzer/          (recommendations, token waste, session health, prompt lint)
+  │     ├── cleanup/           (backup → modify → validate → undo)
+  │     ├── storage/           (paths allowlist, settings, history, token cache, backups)
+  │     └── report/            (shared markdown report generator)
+  │
+naqi (Tauri desktop app)
+  │
+  └── naqi_lib (same library)
 ```
+
+Both binaries share the same safety invariants. The CLI cannot bypass Safe Mode, the path allowlist, the file-lock mutexes, or the atomic-write mandate — all of those live in `naqi_lib` and enforce themselves regardless of the caller.
