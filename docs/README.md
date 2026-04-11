@@ -36,6 +36,11 @@ Release, signing, and distribution.
 - [CLI Companion](cli.md) — Full CLI reference: scan, score, clean --apply, export, update with --json and --fail-below flags
 - [Deployment](technical/deployment.md) — CI/CD, build process, platform targets
 
+### Guides
+User-facing explainers for specific feature sets.
+
+- [Token Hygiene Guide](guides/token-hygiene.md) — The v0.6.0 Token Hygiene pillar: 9 waste-pattern detectors, 3 dashboard visuals, 3 proactive nudges, CLI reference, Claude Code skill wrapper, and a token-efficient prompting playbook
+
 ### Business
 Strategy, pricing, market analysis, and growth.
 
@@ -69,4 +74,4 @@ Privacy, terms, and compliance.
 
 ---
 
-*Last updated: April 9, 2026 — v0.4.0 CLI companion complete*
+*Last updated: April 11, 2026 — v0.6.0 Token Hygiene complete*
