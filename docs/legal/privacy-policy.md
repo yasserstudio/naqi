@@ -2,7 +2,7 @@
 
 > **Naqi** (getnaqi.com) — Privacy Policy
 >
-> Last updated: March 26, 2026
+> Last updated: April 11, 2026
 
 ---
 
@@ -79,24 +79,24 @@ Data sent to the Anthropic API is subject to [Anthropic's API Terms of Service](
 
 ---
 
-## 3. What Data Goes to Lemon Squeezy (Pro Purchases)
+## 3. What Data Goes to Paddle (Pro Purchases)
 
-Naqi uses **Lemon Squeezy** as its Merchant of Record for Pro license purchases. When you buy Naqi Pro, Lemon Squeezy collects:
+Naqi uses **Paddle** as its Merchant of Record for Pro license purchases. When you buy Naqi Pro, Paddle collects:
 
 - Your email address
 - Payment information (credit card or other payment method)
 - Billing address (for tax calculation)
 - Country (for VAT/GST compliance)
 
-Naqi itself never sees or stores your payment information. Lemon Squeezy handles all payment processing, tax compliance, and receipt generation.
+Naqi itself never sees or stores your payment information. Paddle handles all payment processing, tax compliance, and receipt generation.
 
 When you activate your license key in the app, Naqi sends:
 - Your license key
 - A hashed machine identifier (SHA-256 hash of your hardware ID — the raw hardware ID never leaves your machine)
 
-This data is sent to Lemon Squeezy's license validation API to verify your purchase and manage device activations.
+This data is sent to Paddle's license validation API to verify your purchase and manage device activations.
 
-Lemon Squeezy's privacy practices are governed by their own [Privacy Policy](https://www.lemonsqueezy.com/privacy).
+Paddle's privacy practices are governed by their own [Privacy Policy](https://www.lemonsqueezy.com/privacy).
 
 ---
 
@@ -126,7 +126,7 @@ Naqi stores its own data in `~/.naqi/` on your machine:
 
 The only network requests Naqi makes are:
 1. **Claude API calls** — only when you explicitly trigger AI analysis (Pro tier)
-2. **Lemon Squeezy license validation** — on activation and periodically (every 7 days) to check license status
+2. **Paddle license validation** — on activation and periodically (every 7 days) to check license status
 3. **Update checks** — to check for new versions of Naqi (standard Tauri updater)
 
 That's it. No other outbound connections.
@@ -142,7 +142,7 @@ The getnaqi.com website uses only essential cookies required for basic site func
 - Third-party tracking cookies
 - Social media tracking pixels
 
-If you visit the Lemon Squeezy checkout page (hosted on lemonsqueezy.com), that page is subject to Lemon Squeezy's own cookie policy.
+If you visit the Paddle checkout page (hosted on lemonsqueezy.com), that page is subject to Paddle's own cookie policy.
 
 ---
 
@@ -152,12 +152,12 @@ Regardless of where you live, we believe you should have control over your data.
 
 ### Right to access
 
-You can see everything Naqi stores locally by reading the files in `~/.naqi/`. For data held by Lemon Squeezy (purchase records, email), contact them directly or email us and we will assist.
+You can see everything Naqi stores locally by reading the files in `~/.naqi/`. For data held by Paddle (purchase records, email), contact them directly or email us and we will assist.
 
 ### Right to deletion
 
 - **Local data:** Delete the `~/.naqi/` directory to remove all Naqi data from your machine. Uninstalling the app also removes this data.
-- **Lemon Squeezy data:** Email privacy@getnaqi.com and we will request deletion of your records from Lemon Squeezy on your behalf.
+- **Paddle data:** Email privacy@getnaqi.com and we will request deletion of your records from Paddle on your behalf.
 - **Anthropic API data:** Anonymized summaries sent to the Claude API are subject to Anthropic's data retention policies. Since the data is anonymized before transmission, it cannot be linked back to you.
 
 ### Right to portability
@@ -205,7 +205,7 @@ Naqi is a developer tool and is not directed at children under 13. We do not kno
 If we make material changes to this policy, we will:
 - Update the "Last updated" date at the top
 - Post a notice on getnaqi.com
-- For significant changes, notify Pro users via the email address associated with their Lemon Squeezy purchase
+- For significant changes, notify Pro users via the email address associated with their Paddle purchase
 
 ---
 

@@ -102,20 +102,24 @@ brew install --cask naqi
 
 ## Free vs Pro
 
-| | Free | Pro · $14.99 one-time |
+| | Free | Pro · $59/yr or $7.99/mo |
 |:---|:---:|:---:|
 | Scan 10 AI clients | ✓ | ✓ |
 | Health score and dashboard | ✓ | ✓ |
 | Memory and skill audit | ✓ | ✓ |
-| Versioned backups and undo | ✓ | ✓ |
+| Manual cleanup + versioned backups + undo | ✓ | ✓ |
 | Safe Mode and change log | ✓ | ✓ |
 | Exportable reports | ✓ | ✓ |
+| 7-day Token Hygiene snapshot | ✓ | ✓ |
+| **Live Token Hygiene** (9 detectors + session watcher + weekly digest) | — | ✓ |
+| **30-day historical token analysis** | — | ✓ |
+| **`naqi lint-prompt` CLI + Claude Code skill** | — | ✓ |
+| **Batch cleanup + cross-client sync** | — | ✓ |
 | **AI-powered recommendations** (6 providers, BYO key) | — | ✓ |
 | **Contradiction detection** (negation-aware) | — | ✓ |
-| **One-click batch cleanup** | — | ✓ |
-| **Cross-client diff and sync** | — | ✓ |
+| **Config profiles + scheduled scans** | — | ✓ |
 
-<p align="center"><sub>One-time purchase · No subscription · Works on 3 devices</sub></p>
+<p align="center"><sub>30-day unconditional refund · cancel anytime · 3 devices per subscription</sub></p>
 
 <br />
 

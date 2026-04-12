@@ -43,7 +43,7 @@ This post is the comparison I wished existed before I started building.
 | **Cleanup actions** | Yes (with backups + undo) | No | No |
 | **GUI** | Yes | No | No |
 | **License** | MIT | Open source | Open source |
-| **Price** | Free, $14.99 Pro upgrade | Free | Free |
+| **Price** | Free, Pro $59/yr or $7.99/mo (30-day refund) | Free | Free |
 
 If you live in the terminal and you only care about MCP servers, Golf Scanner is probably what you want. If you're a security researcher hunting malicious servers, use mcp-sec-audit. If you want a desktop app that covers more of your AI workspace and lets you actually clean it up, that's where Naqi fits.
 
@@ -108,7 +108,7 @@ Naqi is what I built. It's a 10MB native macOS desktop app (Tauri + Rust + React
 **Where it stops:**
 - macOS only at the moment. Windows and Linux are on the roadmap but not shipped.
 - Not a security audit tool. If you suspect a specific MCP server is doing something malicious, run mcp-sec-audit on it. Naqi will tell you the server hasn't been used in 94 days; mcp-sec-audit will tell you whether it's exfiltrating data.
-- The AI recommendations are gated behind a one-time $14.99 Pro upgrade. Everything else — scan, dashboard, health score, backups, undo, Safe Mode — is free.
+- Live Token Hygiene (9 detectors + session watcher + weekly digest), AI recommendations, batch cleanup, config profiles, and scheduled scans are Pro features. Pro is $59/yr or $7.99/mo with a 30-day unconditional refund. Everything else — scan, dashboard, health score, manual cleanup, backups, undo, Safe Mode, and a **7-day Token Hygiene snapshot with $ waste figure** — is free forever.
 
 **When to pick Naqi:** you're an individual developer (or a small team) using multiple AI clients on macOS, and your AI workspace has accumulated more configuration than you can mentally track. You want a desktop app you can open, understand in 30 seconds, and use to actually clean things up — not just produce a report.
 
@@ -147,10 +147,10 @@ I've seen a few posts recently calling Naqi "the first AI workspace cleaner." It
 | Someone who needs to cover memories and skills, not just MCP servers | Naqi |
 | Someone who wants a GUI and doesn't want to edit JSON by hand | Naqi |
 
-If Naqi sounds like the right fit, the scan is free — no signup, no account, no telemetry. [Download it](https://getnaqi.com) and run your first scan in about 30 seconds. The Pro upgrade is optional and one-time, and you'll know after one cleanup whether it's worth $14.99 to you.
+If Naqi sounds like the right fit, the scan is free — no signup, no account, no telemetry. [Download it](https://getnaqi.com) and run your first scan in about 30 seconds. The free tier shows your actual $ waste figure for the last 7 days with the top 3 waste patterns, refreshed weekly. If the number looks meaningful, Pro is $59/yr with a 30-day unconditional refund — same-day processing, no questions.
 
 If Golf Scanner or mcp-sec-audit sounds like the better fit, use those instead. They're great tools, they're free, and the people who built them deserve the credit. The AI workspace cleanup space isn't a zero-sum fight — it's three tools that overlap a little and complement each other a lot.
 
 ---
 
-*Naqi is open source on GitHub (MIT). The scanner, dashboard, backups, undo, and Safe Mode are free. The $14.99 Pro upgrade unlocks AI-powered recommendations and one-click batch cleanup. [getnaqi.com](https://getnaqi.com)*
+*Naqi is open source on GitHub (MIT). Scanning, dashboard, manual cleanup, backups, undo, Safe Mode, and a 7-day Token Hygiene snapshot with $ waste figure are free forever. Pro ($59/yr or $7.99/mo, 30-day refund) adds live Token Hygiene, batch cleanup, AI recommendations, config profiles, and more. [getnaqi.com](https://getnaqi.com)*
