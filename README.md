@@ -87,16 +87,9 @@ Every action backed up before changes. **Diff preview. Full undo stack.** Nothin
 
 ## Install
 
-### macOS (Homebrew)
-
-```bash
-brew tap yasserstudio/naqi
-brew install --cask naqi
-```
-
 ### Direct download
 
-[Latest release](https://github.com/yasserstudio/naqi/releases/latest) — macOS (Apple Silicon + Intel), Windows, Linux.
+[Latest release](https://github.com/yasserstudio/naqi/releases/latest) — macOS (Apple Silicon + Intel).
 
 <br />
 
@@ -113,7 +106,7 @@ brew install --cask naqi
 | 7-day Token Hygiene snapshot | ✓ | ✓ |
 | **Live Token Hygiene** (9 detectors + session watcher + weekly digest) | — | ✓ |
 | **30-day historical token analysis** | — | ✓ |
-| **`naqi lint-prompt` CLI + Claude Code skill** | — | ✓ |
+| **Prompt waste detection** | — | ✓ |
 | **Batch cleanup + cross-client sync** | — | ✓ |
 | **AI-powered recommendations** (6 providers, BYO key) | — | ✓ |
 | **Contradiction detection** (negation-aware) | — | ✓ |
@@ -143,8 +136,7 @@ brew install --cask naqi
 - **Skill inventory** — enriched tiles with description preview, source repo slug, absolute last-modified date, commit SHA, installed/updated dates. Per-skill context menu: Open in Editor, Show in Finder, Copy Name/Install Path/Source Repo, Check for Update, Set Source Repo, Remove
 - **GitHub PAT for skill updates** — optional personal access token (OS keychain) raises rate limit from 60 to 5,000 req/hr for skill update checks. Configure in Settings > Skills
 - **Security audit** — detects insecure HTTP, secrets in args/URLs, credential sprawl
-- **CLI companion** — `naqi scan`, `naqi score`, `naqi clean --apply`, `naqi export`, `naqi tokens`, `naqi lint-prompt`, `naqi update` for terminal workflows and CI pipelines (`--json`, `--fail-below` flags)
-- **Claude Code skill** — optional `lint-prompt` skill ships with Naqi (see [`skills/`](./skills/README.md)). Wraps `naqi lint-prompt` so Claude Code can check draft prompts for token waste before you send them
+- **Prompt waste detection** — flags expensive prompt patterns (dive-deep openers, log pastes, short prompts) before they burn tokens
 - **Safe mode** — block all modifications, per-client locking, `Cmd+Shift+M` toggle
 - **Global search** — `Cmd+K` across servers, memories, skills, configs
 - **Keyboard-first** — `Cmd+R` rescan, `Cmd+Z` undo, `Cmd+1-5` nav, `?` shortcuts
