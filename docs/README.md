@@ -28,6 +28,8 @@ Architecture, data models, and implementation guides.
 - [Development Guide](technical/development-guide.md) — Setup, conventions, testing, workflow
 - [Testing Plan](technical/testing-plan.md) — 500 tests (370 Rust + 181 frontend + 20 E2E), coverage targets, fixtures
 - [Error States & Edge Cases](technical/error-states-edge-cases.md) — Every error state and recovery behavior
+- [GitHub Strategy](technical/github-strategy.md) — Repo posture, branch strategy, workflows, required secrets, issue management
+- [Update Strategy](technical/update-strategy.md) — Update delivery, telemetry, forced-update gate, release process, bad-update playbook
 
 ### Distribution
 Release, signing, and distribution.
@@ -57,7 +59,6 @@ Strategy, pricing, market analysis, and growth.
 - [Landing Page Copy](business/landing-page-copy.md) — Final hero/section copy for getnaqi.com
 - [Content Strategy](business/content-strategy.md) — Blog topics, SEO clusters, editorial calendar
 - [Social Media Strategy](business/social-media-strategy.md) — X/LinkedIn/Reddit playbooks
-- [GitHub Strategy](business/github-strategy.md) — Open-source strategy, community, GitHub as growth channel
 
 ### Legal
 Privacy, terms, and compliance.
