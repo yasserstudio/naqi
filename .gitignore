@@ -1,50 +1,23 @@
-# Dependencies
-node_modules/
+# This is the PUBLIC release-shell repo for Naqi. No source code ships here —
+# only README, CHANGELOG, legal, user-facing docs, and GitHub Releases.
+# Actual development happens in yasserstudio/naqi-private. See INTERNAL.md in
+# that repo for the full split.
 
-# Build output
-dist/
-src-tauri/target/
-
-# IDE
-.vscode/
-.idea/
+# macOS / IDE noise
+.DS_Store
 *.swp
 *.swo
-.DS_Store
+.vscode/
+.idea/
 
-# Environment — never commit any env file
+# Developer tooling — never commit these even if someone clones alongside
+.claude/
+.cursor/
+.agents/
+.vercel/
+.npm/
+
+# Env files — allow an example template, ignore real values
 .env
 .env.*
 !.env.example
-
-# Tauri
-src-tauri/gen/
-claude-code/
-
-# Playwright
-test-results/
-playwright-report/
-.mas-certs/
-
-# Signing material — private keys, CSRs, provisioning profiles must never
-# be committed. Patterns use `**` so they match at any depth in the
-# monorepo (apps/desktop/src-tauri/signing/ as well as the old path).
-**/signing/
-**/embedded.provisionprofile
-*.key
-*.p12
-*.pfx
-*.pem
-*.mobileprovision
-*.keystore
-*.jks
-
-# Credentials and secrets by pattern
-credentials.json
-secrets.json
-*.secret
-*secrets*.env
-
-# Claude Code developer tooling
-.claude/
-.vercel
