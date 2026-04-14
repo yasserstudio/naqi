@@ -235,7 +235,7 @@ agent-skills/
 }
 ```
 
-Same `mcpServers` schema. Used by both Claude Code and VS Code Copilot. Often contains plaintext credentials — a key target for Naqi's security audit (Phase 3).
+Same `mcpServers` schema. Used by both Claude Code and VS Code Copilot. Often contains plaintext credentials that Naqi's scanner flags.
 
 ---
 

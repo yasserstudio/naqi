@@ -271,11 +271,9 @@ Not at runtime — they're `const` values in `src-tauri/src/analyzer/token_waste
 Both. Token Hygiene reads session logs from `~/.claude/projects/`, which Claude Code writes regardless of how you auth. The cost math is the same — cache reads bill the same tokens whether they come out of a Pro subscription or a direct API bill.
 
 **Why only Claude Code?**
-Because Claude Code writes structured JSONL session logs with per-turn usage. Cursor, Windsurf, and most other clients either don't persist session data, persist it in less-structured formats, or don't expose per-turn tokens. Adding more client parsers is on the v1.0.0+ roadmap.
+Because Claude Code writes structured JSONL session logs with per-turn usage. Cursor, Windsurf, and most other clients either don't persist session data, persist it in less-structured formats, or don't expose per-turn tokens.
 
 ## See also
 
-- [ROADMAP.md](../../ROADMAP.md) — full roadmap, including the v0.6.0 Token Hygiene milestone
 - [CLI docs](../cli.md) — complete CLI reference for all Naqi commands
 - [`skills/lint-prompt/SKILL.md`](../../skills/lint-prompt/SKILL.md) — Claude Code skill definition
-- [CLAUDE.md](../../CLAUDE.md) — architectural notes for contributors

@@ -35,7 +35,7 @@ The cask installs the same `.dmg` from the GitHub release and is updated within 
 - About 30 MB of disk space (the binary plus a small data directory at `~/.naqi/`)
 - Internet only required if you opt into Pro AI recommendations — the free tier runs fully offline
 
-Windows and Linux are on the roadmap but not shipping at launch.
+Windows and Linux are not available at this time.
 
 ---
 

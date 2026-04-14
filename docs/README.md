@@ -2,59 +2,37 @@
 
 > **The AI Workspace Cleaner** — Keep your AI workspace pure.
 
----
-
-## Documentation Map
-
-### Product
-Core product vision, features, and roadmap.
-
-- [Project Overview](product/project-overview.md) — Vision, problem statement, tech stack
-- [User Personas](product/user-personas.md) — Target segments, profiles, and jobs-to-be-done
-- [Pain Points](product/pain-points.md) — 6 core problems with real-world scenarios
-- [Features](product/features.md) — Full feature spec with acceptance criteria
-- [Solutions](product/solutions.md) — How each feature solves each pain point
-- [User Flows](product/user-flows.md) — Screen-by-screen UX journeys for all core flows
-- [Implementation Roadmap](product/implementation-roadmap.md) — Build plan with dependencies
-
-### Technical
-Architecture, data models, and implementation guides.
-
-- [System Architecture](technical/architecture.md) — Module design, IPC contract, security model
-- [Config Formats Reference](technical/config-formats.md) — Config schemas for every AI client
-- [Data Models](technical/data-models.md) — Rust structs + TypeScript types
-- [API Design](technical/api-design.md) — Claude/OpenAI integration, prompts, anonymization
-- [Design System](technical/design-system.md) — Color tokens, typography, spacing, components, motion, accessibility
-- [Development Guide](technical/development-guide.md) — Setup, conventions, testing, workflow
-- [Testing Plan](technical/testing-plan.md) — 500 tests (370 Rust + 181 frontend + 20 E2E), coverage targets, fixtures
-- [Error States & Edge Cases](technical/error-states-edge-cases.md) — Every error state and recovery behavior
-- [Update Strategy](technical/update-strategy.md) — Update delivery, telemetry, forced-update gate, release process, bad-update playbook
-
-### Distribution
-Release, signing, and distribution.
-
-- [Distribution Guide](distribution.md) — Code signing, notarization, Homebrew tap, release process, auto-updater
-- [CLI Companion](cli.md) — Full CLI reference: scan, score, clean --apply, export, update with --json and --fail-below flags
-- [Deployment](technical/deployment.md) — CI/CD, build process, platform targets
-
-### Guides
-User-facing explainers for specific feature sets.
-
-- [Token Hygiene Guide](guides/token-hygiene.md) — The v0.6.0 Token Hygiene pillar: 9 waste-pattern detectors, 3 dashboard visuals, 3 proactive nudges, CLI reference, Claude Code skill wrapper, and a token-efficient prompting playbook
-
-### Legal
-Privacy, terms, and compliance.
-
-- [Privacy Policy](legal/privacy-policy.md) — Data handling, anonymization, no telemetry
-- [Terms of Service](legal/terms-of-service.md) — License grant, liability, acceptable use
-
-### Project Root
-- [ROADMAP.md](../ROADMAP.md) — Public roadmap with version milestones
-- [CHANGELOG.md](../CHANGELOG.md) — Detailed change history
-- [CONTRIBUTING.md](../CONTRIBUTING.md) — How to contribute
-- [CLAUDE.md](../CLAUDE.md) — AI-assisted development conventions
-- [VERSIONING.md](../VERSIONING.md) — SemVer strategy
+This is the user-facing documentation for Naqi. Everything here is about
+**how to use Naqi** — install it, run it from the CLI, understand what
+Token Hygiene does, debug your config files. For features, pricing, and
+the product pitch, see [getnaqi.com](https://getnaqi.com).
 
 ---
 
-*Last updated: April 11, 2026 — v0.6.0 Token Hygiene complete*
+## Install & update
+
+- [Distribution Guide](distribution.md) — download, install, update paths
+- [CHANGELOG](../CHANGELOG.md) — release history
+- [SECURITY](../SECURITY.md) — responsible disclosure
+- [Privacy Policy](legal/privacy-policy.md) — data handling, anonymization, no telemetry
+- [Terms of Service](legal/terms-of-service.md) — license grant, acceptable use
+
+## Use it from the terminal
+
+- [CLI Reference](cli.md) — `naqi scan`, `score`, `clean --apply`, `export`, `update` with `--json` and `--fail-below` flags
+
+## Understand what you're seeing
+
+- [Token Hygiene Guide](guides/token-hygiene.md) — waste-pattern detectors, dashboard visuals, proactive nudges, CLI, Claude Code skill wrapper, prompting playbook
+- [Config Formats Reference](technical/config-formats.md) — schemas for every AI client Naqi scans; useful when debugging your own configs
+
+## Site content mirror
+
+- [How it works](site/how-it-works.md)
+- [Download](site/download.md)
+- [Privacy](site/privacy.md)
+
+## Longer reads
+
+- [I Audited My MCP Servers](blog/i-audited-my-mcp-servers.md)
+- [MCP Cleanup Tools Compared](blog/mcp-cleanup-tools-compared.md)

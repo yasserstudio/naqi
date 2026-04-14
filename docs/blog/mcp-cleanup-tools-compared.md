@@ -106,7 +106,7 @@ Naqi is what I built. It's a 10MB native macOS desktop app (Tauri + Rust + React
 - **CLI companion** — `naqi scan`, `naqi score`, `naqi clean` if you want headless operation alongside the desktop app.
 
 **Where it stops:**
-- macOS only at the moment. Windows and Linux are on the roadmap but not shipped.
+- macOS only at this time.
 - Not a security audit tool. If you suspect a specific MCP server is doing something malicious, run mcp-sec-audit on it. Naqi will tell you the server hasn't been used in 94 days; mcp-sec-audit will tell you whether it's exfiltrating data.
 - Live Token Hygiene (9 detectors + session watcher + weekly digest), AI recommendations, batch cleanup, config profiles, and scheduled scans are Pro features. Pro is $59/yr or $7.99/mo with a 30-day unconditional refund. Everything else — scan, dashboard, health score, manual cleanup, backups, undo, Safe Mode, and a **7-day Token Hygiene snapshot with $ waste figure** — is free forever.
 
