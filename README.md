@@ -8,14 +8,15 @@
 
 Every MCP server, memory, and skill you're not using burns context on every request. Naqi scans every AI client, finds what's dead, stale, or contradictory — then cleans it up safely.
 
+[![Public beta](https://img.shields.io/badge/status-public%20beta-f5a623.svg)](VERSIONING.md)
 [![Proprietary](https://img.shields.io/badge/license-proprietary-red.svg)](LICENSE)
 [![macOS](https://img.shields.io/badge/macOS-12%2B-40bfa0.svg)]()
-[![Windows](https://img.shields.io/badge/Windows-10%2B-40bfa0.svg)]()
-[![Linux](https://img.shields.io/badge/Linux-40bfa0.svg)]()
 [![Built with Tauri](https://img.shields.io/badge/built%20with-Tauri%20v2-40bfa0.svg)]()
 [![Binary Size](https://img.shields.io/badge/binary-~10MB-40bfa0.svg)]()
 
-[Download](#install) · [Changelog](CHANGELOG.md) · [getnaqi.com](https://getnaqi.com)
+[Download](#install) · [Changelog](CHANGELOG.md) · [Versioning](VERSIONING.md) · [getnaqi.com](https://getnaqi.com)
+
+> **Heads up:** Naqi is in public beta (`1.0.0-beta.N`). The app is stable enough for daily use — Safe Mode, versioned backups, and the full undo stack have your back — but expect UI refinements and occasional breaking changes between beta bumps. Read the [CHANGELOG](CHANGELOG.md) before upgrading.
 
 </div>
 
