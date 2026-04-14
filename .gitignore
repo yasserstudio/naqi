@@ -12,9 +12,10 @@ src-tauri/target/
 *.swo
 .DS_Store
 
-# Environment
+# Environment — never commit any env file
 .env
-.env.local
+.env.*
+!.env.example
 
 # Tauri
 src-tauri/gen/
@@ -25,9 +26,25 @@ test-results/
 playwright-report/
 .mas-certs/
 
-# MAS signing — private key and provisioning profile must never be committed
-src-tauri/signing/
-src-tauri/embedded.provisionprofile
+# Signing material — private keys, CSRs, provisioning profiles must never
+# be committed. Patterns use `**` so they match at any depth in the
+# monorepo (apps/desktop/src-tauri/signing/ as well as the old path).
+**/signing/
+**/embedded.provisionprofile
+*.key
+*.p12
+*.pfx
+*.pem
+*.mobileprovision
+*.keystore
+*.jks
+
+# Credentials and secrets by pattern
+credentials.json
+secrets.json
+*.secret
+*secrets*.env
 
 # Claude Code developer tooling
 .claude/
+.vercel
