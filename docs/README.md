@@ -43,23 +43,6 @@ User-facing explainers for specific feature sets.
 
 - [Token Hygiene Guide](guides/token-hygiene.md) — The v0.6.0 Token Hygiene pillar: 9 waste-pattern detectors, 3 dashboard visuals, 3 proactive nudges, CLI reference, Claude Code skill wrapper, and a token-efficient prompting playbook
 
-### Business
-Strategy, pricing, market analysis, and growth.
-
-- [Business Model & Pricing](business/business-model.md) — Revenue model, pricing tiers
-- [Pricing Research](business/pricing-research.md) — Comparable products, willingness to pay, anchor analysis
-- [Go-To-Market Strategy](business/go-to-market.md) — Launch plan, channels, growth loops
-- [Launch Playbook](business/launch-playbook.md) — Day-by-day launch sequence
-- [Competitive Analysis](business/competitive-analysis.md) — Landscape, positioning, moat
-- [Financial Projections](business/financial-projections.md) — Revenue forecasts, milestones
-- [Pro Tier Licensing](business/licensing.md) — License keys, validation, feature gating
-- [Paywall Design](business/paywall-design.md) — Upgrade flow, gating UX
-- [Site Architecture](business/site-architecture.md) — Information architecture for getnaqi.com: pages, URL conventions, navigation, phasing
-- [Landing Page Spec](business/landing-page.md) — getnaqi.com homepage content and design
-- [Landing Page Copy](business/landing-page-copy.md) — Final hero/section copy for getnaqi.com
-- [Content Strategy](business/content-strategy.md) — Blog topics, SEO clusters, editorial calendar
-- [Social Media Strategy](business/social-media-strategy.md) — X/LinkedIn/Reddit playbooks
-
 ### Legal
 Privacy, terms, and compliance.
 
