@@ -124,8 +124,10 @@ Every action backed up before changes. **Diff preview. Full undo stack.** Nothin
 <td width="50%" valign="top">
 
 - **Dashboard** — health score, trend chart, daily brief, attention cards, FAB scan trigger
-- **System tray** — menu bar icon with stat grid panel, quick scan, health at a glance
-- **Servers** — full MCP inventory, health checks, transport badges, cross-client diff
+- **Per-request token cost** — see exactly how many tokens every MCP server, memory, and skill costs on every AI turn. Dashboard widget + per-artifact chip on every list (estimated / active badge). Cleanup recs quote the savings ("Remove to save ~200 tokens / request")
+- **Security audit** — dedicated `/security` view with Critical → Warning → Info bands, capability detection (filesystem / network / shell), shape-aware secret detection (Anthropic, OpenAI, Stripe, GitHub, Slack, HuggingFace, AWS, JWT, etc.), cross-server duplicate-secret detection, inline actions (Open config, Copy rotation hint, Suppress). Markdown export
+- **System tray** — menu bar icon with liquid-glass rounded panel, 2×3 stat grid incl. per-request token cost, quick scan, health at a glance
+- **Servers** — full MCP inventory, health checks, transport badges, cross-client diff, sort-by-tokens
 - **Memories** — browse by project, enhanced contradiction detection (negation-aware), bulk actions, archive
 - **Profiles** — capture, apply, export/import configs across clients
 - **Backups** — versioned with SHA-256 dedup, auto-backup on scan, ZIP export/import, one-click restore, dedicated browser page with diff viewer
@@ -136,8 +138,8 @@ Every action backed up before changes. **Diff preview. Full undo stack.** Nothin
 - **Visual config editor** — inline JSON editing with line numbers, validation, format, `Cmd+S` save
 - **Skill inventory** — enriched tiles with description preview, source repo slug, absolute last-modified date, commit SHA, installed/updated dates. Per-skill context menu: Open in Editor, Show in Finder, Copy Name/Install Path/Source Repo, Check for Update, Set Source Repo, Remove
 - **GitHub PAT for skill updates** — optional personal access token (OS keychain) raises rate limit from 60 to 5,000 req/hr for skill update checks. Configure in Settings > Skills
-- **Security audit** — detects insecure HTTP, secrets in args/URLs, credential sprawl
 - **Prompt waste detection** — flags expensive prompt patterns (dive-deep openers, log pastes, short prompts) before they burn tokens
+- **Workspace share card** — one-click social share of your health score + stats. Copy summary, share on X, share on Reddit. Anonymize-by-default
 - **Safe mode** — block all modifications, per-client locking, `Cmd+Shift+M` toggle
 - **Global search** — `Cmd+K` across servers, memories, skills, configs
 - **Keyboard-first** — `Cmd+R` rescan, `Cmd+Z` undo, `Cmd+1-5` nav, `?` shortcuts
