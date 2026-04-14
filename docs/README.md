@@ -28,7 +28,6 @@ Architecture, data models, and implementation guides.
 - [Development Guide](technical/development-guide.md) — Setup, conventions, testing, workflow
 - [Testing Plan](technical/testing-plan.md) — 500 tests (370 Rust + 181 frontend + 20 E2E), coverage targets, fixtures
 - [Error States & Edge Cases](technical/error-states-edge-cases.md) — Every error state and recovery behavior
-- [GitHub Strategy](technical/github-strategy.md) — Repo posture, branch strategy, workflows, required secrets, issue management
 - [Update Strategy](technical/update-strategy.md) — Update delivery, telemetry, forced-update gate, release process, bad-update playbook
 
 ### Distribution
