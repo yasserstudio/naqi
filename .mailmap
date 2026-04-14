@@ -1,0 +1,10 @@
+# Git mailmap — canonicalizes author/committer identity for display.
+#
+# Format: <canonical-email> <commit-email>
+# (See `git help mailmap` for full syntax.)
+#
+# Tools that respect .mailmap include: `git log`, `git shortlog`, `git blame`,
+# and GitHub's commit UI. Raw git data (individual commit objects) is
+# unchanged — the mapping is applied at display time only.
+
+<contact@getnaqi.com> <gorthidz@gmail.com>
