@@ -4,6 +4,86 @@ All notable changes to Naqi are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) — see [VERSIONING.md](VERSIONING.md) for full strategy.
 
+## [1.0.0-beta.1] — 2026-04-20
+
+**Naqi 1.0 public beta.** The headline change is **Token Hygiene** — a full view of where Claude Code spends your tokens, where the waste is, and how to fix it. Plus a Pro tier, a security-hardening pass, an accessibility audit, and a community Discord.
+
+This is the first public release. While we shake out the betas, every release bumps the beta identifier (`1.0.0-beta.2`, `beta.3`, …) — no breaking changes between betas.
+
+### Token Hygiene (Pro)
+
+A new pillar: see, score, and clean up your token usage across every Claude Code session.
+
+- **Tokens dashboard** — per-project breakdown with sessions, total, input/output, cache create/read, and subagent count. Filter 24h / 7d / 30d / all-time.
+- **7-day token trend chart** — mirrored on the dashboard and the Tokens page. Red = up (bad), green = down (good).
+- **9 waste detectors** — mega-sessions, background-bash overhead, log pastes in prompts, "dive deep" openers, auto-compact churn, subagent swarms, short-prompt thrashing, image-paste loops, skill-listing overhead. Each reports the cost and a suggested fix.
+- **30-day project waste banner** — surfaces the top 3 preventable patterns per project. Self-hides on clean projects.
+- **Per-session health score** — 0–100 with a traffic-light indicator and a "why this scored low" breakdown.
+- **Per-session cost breakdown pie** — base context vs subagents vs skill listing vs log pastes vs images.
+- **Session detail panel** — full turn timeline with spike detection and prompt previews.
+- **Proactive nudges** — Weekly Digest (7-day summary), Token Diet (weekly waste-pattern digest, escalates at ≥10 patterns), Project Hotspot (fires at ≥60 % weekly tokens for one project), Session Threshold Alert (live watcher — fires the moment a session crosses 50 turns or 200 M tokens).
+- **CLI** — `naqi tokens` (per-project breakdown), `naqi tokens top` (costliest sessions), `naqi tokens waste` (9-detector report), `naqi tokens health <session-id>` (per-session breakdown), `naqi lint-prompt` (pre-send prompt linter).
+- **Claude Code skill** — drop-in wrapper for `naqi lint-prompt` that triggers when you draft a prompt or paste logs. Install: `cp -r skills/lint-prompt ~/.claude/agent-skills/skills/`.
+
+### Pro tier
+
+**$7.99/month or $59/year**, with a **30-day unconditional refund** on the first charge.
+
+Pro unlocks Token Hygiene (everything above), AI-powered cleanup recommendations, contradiction detection, batch cleanup, config profiles, and scheduled scans.
+
+The Free tier remains **free forever** with full scanning, dashboard, health score, local recommendations, and versioned backups.
+
+### Community
+
+- **Discord** — dismissible CTA on the dashboard, plus a link in Settings → About. [Join the server →](https://discord.gg/b9kGkjEj)
+
+### Settings
+
+- **Font preference** — choose between Naqi's bundled Inter + JetBrains Mono and your OS default font stacks. Custom fonts load lazily, so picking "System" never downloads them.
+- **Titlebar sidebar toggle** — Claude-style collapse button pinned next to the macOS traffic lights (left edge on Windows/Linux). Replaces the hover-only button at the sidebar bottom.
+- **Notification threshold slider** — adjust the health-score threshold for notifications (0–100) directly from Settings → General. Live next-scan countdown shown alongside.
+
+### Accessibility (WCAG pass)
+
+- Focus-visible rings on every interactive element
+- Form labels paired (`<label htmlFor>` + `aria-invalid` + `aria-describedby` for inline errors)
+- Heading focus on route change so screen readers announce the page
+- Keyboard reorder for dashboard widgets (Tab → grip → ArrowUp/Down)
+- Health Trend chart exposes a screen-reader summary of score, trend, and 3-day projection
+- Sidebar nav landmarks distinguished, reduced motion respected, skeleton matches final layout
+
+### Security audit
+
+- **Path safety** — every Tauri command that touches a user-controlled path now routes through a canonicalized allowlist of AI client config roots + `~/.naqi/`. Backup ZIPs and webview-controlled paths can't escape. Symlinks under `~/.claude/projects/` are skipped during discovery.
+- **Safe Mode default ON** — fresh installs, downgrades, and corrupt settings files all converge on Safe Mode enabled. A corrupt `config.json` is renamed `.corrupt` and the app starts with defaults instead of silently wiping every preference.
+- **Atomic writes everywhere** — apply, backup, restore, and profile-apply write through a temp-file-and-rename helper. A crash mid-apply can no longer leave a truncated config. File-lock mutexes prevent the scheduler and IPC handlers from interleaving writes.
+- **Network safety** — `ping_server` rejects loopback, RFC 1918, link-local, cloud-metadata IPs, multicast, and well-known local hostnames. `skills add` rejects URLs, paths, npm scopes, and shell metacharacters in the source argument.
+- **CSP tightening** — `script-src` no longer permits `'unsafe-inline'`; added `object-src 'none'`, `base-uri 'self'`, `frame-ancestors 'none'`, `form-action 'none'`.
+- **Robustness** — JSONL line cap (8 MB) protects scan and the live session watcher from OOM on malformed sessions. Token totals use saturating arithmetic. ServerForm validates command + URL inputs (defense in depth — the backend already exec-spawns).
+
+### Fixes
+
+- Quiet hours where start == end now correctly means "all day silent" (previously evaluated to "always off")
+- Token rescan invalidates session-detail caches — no stale turn bars after a fresh scan
+- Rapid-clicked settings toggles no longer revert (theme, font, display name, schedule, Safe Mode, locked clients, backup retention, AI model — all read the freshest cached state before mutating)
+- Log plugin no longer double-writes every line on case-insensitive filesystems (APFS)
+- Stable list keys on turn timeline + health-factor rows fix React reconciliation glitches
+- Scheduled scans skip the redundant analyzer pass when counting pending recommendations
+- DangerZone DELETE confirm trims trailing whitespace before comparison
+
+### License
+
+**Naqi is now proprietary, closed-source software.** All rights reserved by Yasser's studio. The previous MIT license has been replaced — see [LICENSE](LICENSE) and [Terms of Service](https://getnaqi.com/terms).
+
+### Known limitations
+
+- **Windows installer is unsigned in this beta.** SmartScreen will show a "Windows protected your PC" warning the first time you run Naqi — click **More info** → **Run anyway**. Code signing arrives in a later beta. ([Why](https://getnaqi.com/download))
+- **Mac App Store is not supported** and won't be — sandbox blocks reading the Claude Code session directory. Naqi installs via Homebrew Cask or DMG; both have full access.
+- **Crash reporting is not yet wired.** If something crashes, please [open an issue](https://github.com/yasserstudio/naqi/issues) with the steps that triggered it.
+- **EU data subjects:** see the [Privacy Policy → EU Residents](https://getnaqi.com/privacy) section for current Article 27 representative status (not yet appointed; see policy for rationale and contact path).
+
+---
+
 ## [0.4.0] — 2026-04-09
 
 ### Added
