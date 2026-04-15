@@ -1,9 +1,11 @@
 name: Publish Homebrew
 
 # Fires when a release is published on this public repo (after the draft
-# that naqi-private's release.yml creates gets manually reviewed + published).
-# Downloads both macOS DMGs, computes SHA256, and pushes an updated cask to
-# yasserstudio/homebrew-naqi.
+# that naqi-private's trigger-release.yml + this repo's build-release.yml
+# created gets manually reviewed + published). Discovers the macOS DMG
+# assets from the release itself (so a tag/version mismatch — e.g. a
+# throwaway dry-run tag — still produces a working tap update),
+# computes SHA256, and pushes an updated cask to yasserstudio/homebrew-naqi.
 #
 # Required secret: HOMEBREW_TAP_TOKEN
 #   A fine-grained PAT with contents:write on yasserstudio/homebrew-naqi.
@@ -17,31 +19,56 @@ jobs:
     name: Update Homebrew tap
     runs-on: ubuntu-latest
     steps:
-      - name: Download DMGs and compute SHA256
+      - name: Discover DMG assets and compute SHA256
         id: sha
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           TAG: ${{ github.event.release.tag_name }}
         run: |
-          VERSION="${TAG#v}"
+          set -euo pipefail
+
+          ASSETS=$(gh api "/repos/yasserstudio/naqi/releases/tags/${TAG}")
+
+          ARM_NAME=$(echo "$ASSETS" | jq -r '.assets[] | select(.name | test("^Naqi_.+_aarch64\\.dmg$")) | .name')
+          INTEL_NAME=$(echo "$ASSETS" | jq -r '.assets[] | select(.name | test("^Naqi_.+_x64\\.dmg$")) | .name')
+
+          if [ -z "$ARM_NAME" ] || [ -z "$INTEL_NAME" ]; then
+            echo "ERROR: missing macOS DMG assets in release ${TAG}" >&2
+            echo "Assets found in this release:" >&2
+            echo "$ASSETS" | jq -r '.assets[].name' >&2
+            exit 1
+          fi
+
+          # Binary version comes from the asset filename, not the tag.
+          # Tag and binary version are normally identical, but a throwaway
+          # dry-run tag (e.g. v0.0.0-dryrun) will still resolve correctly.
+          VERSION=$(echo "$ARM_NAME" | sed -E 's/^Naqi_(.+)_aarch64\.dmg$/\1/')
+
           BASE="https://github.com/yasserstudio/naqi/releases/download/${TAG}"
+          curl -fsSL -H "Authorization: token ${GH_TOKEN}" -o arm.dmg "${BASE}/${ARM_NAME}"
+          curl -fsSL -H "Authorization: token ${GH_TOKEN}" -o intel.dmg "${BASE}/${INTEL_NAME}"
 
-          curl -fsSL -H "Authorization: token $GITHUB_TOKEN" \
-            -o arm.dmg "${BASE}/Naqi_${VERSION}_aarch64.dmg"
-          curl -fsSL -H "Authorization: token $GITHUB_TOKEN" \
-            -o intel.dmg "${BASE}/Naqi_${VERSION}_x64.dmg"
-
-          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
-          echo "arm_sha=$(sha256sum arm.dmg | cut -d' ' -f1)" >> "$GITHUB_OUTPUT"
-          echo "intel_sha=$(sha256sum intel.dmg | cut -d' ' -f1)" >> "$GITHUB_OUTPUT"
+          {
+            echo "tag=${TAG}"
+            echo "version=${VERSION}"
+            echo "arm_sha=$(sha256sum arm.dmg | cut -d' ' -f1)"
+            echo "intel_sha=$(sha256sum intel.dmg | cut -d' ' -f1)"
+            echo "arm_name=${ARM_NAME}"
+            echo "intel_name=${INTEL_NAME}"
+          } >> "$GITHUB_OUTPUT"
 
       - name: Clone tap and update cask
         env:
           HOMEBREW_TAP_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+          TAG: ${{ steps.sha.outputs.tag }}
           VERSION: ${{ steps.sha.outputs.version }}
           ARM_SHA: ${{ steps.sha.outputs.arm_sha }}
           INTEL_SHA: ${{ steps.sha.outputs.intel_sha }}
+          ARM_NAME: ${{ steps.sha.outputs.arm_name }}
+          INTEL_NAME: ${{ steps.sha.outputs.intel_name }}
         run: |
+          set -euo pipefail
+
           git clone \
             "https://x-access-token:${HOMEBREW_TAP_TOKEN}@github.com/yasserstudio/homebrew-naqi.git" \
             tap
@@ -52,11 +79,11 @@ jobs:
 
             on_arm do
               sha256 "NAQI_ARM_SHA"
-              url "https://github.com/yasserstudio/naqi/releases/download/v#{version}/Naqi_#{version}_aarch64.dmg"
+              url "https://github.com/yasserstudio/naqi/releases/download/NAQI_TAG/NAQI_ARM_NAME"
             end
             on_intel do
               sha256 "NAQI_INTEL_SHA"
-              url "https://github.com/yasserstudio/naqi/releases/download/v#{version}/Naqi_#{version}_x64.dmg"
+              url "https://github.com/yasserstudio/naqi/releases/download/NAQI_TAG/NAQI_INTEL_NAME"
             end
 
             name "Naqi"
@@ -80,13 +107,16 @@ jobs:
           end
           TEMPLATE
 
-          sed -i "s/NAQI_VERSION/${VERSION}/g" tap/Casks/naqi.rb
-          sed -i "s/NAQI_ARM_SHA/${ARM_SHA}/g"   tap/Casks/naqi.rb
-          sed -i "s/NAQI_INTEL_SHA/${INTEL_SHA}/g" tap/Casks/naqi.rb
+          sed -i "s|NAQI_VERSION|${VERSION}|g"     tap/Casks/naqi.rb
+          sed -i "s|NAQI_TAG|${TAG}|g"             tap/Casks/naqi.rb
+          sed -i "s|NAQI_ARM_SHA|${ARM_SHA}|g"     tap/Casks/naqi.rb
+          sed -i "s|NAQI_INTEL_SHA|${INTEL_SHA}|g" tap/Casks/naqi.rb
+          sed -i "s|NAQI_ARM_NAME|${ARM_NAME}|g"   tap/Casks/naqi.rb
+          sed -i "s|NAQI_INTEL_NAME|${INTEL_NAME}|g" tap/Casks/naqi.rb
 
           cd tap
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add Casks/naqi.rb
-          git commit -m "chore: update naqi to v${VERSION}"
+          git commit -m "chore: update naqi to v${VERSION} (${TAG})"
           git push
