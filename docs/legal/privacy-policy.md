@@ -2,7 +2,9 @@
 
 > **Naqi** (getnaqi.com) — Privacy Policy
 >
-> Last updated: April 11, 2026
+> Last updated: April 15, 2026
+>
+> Canonical version: [getnaqi.com/privacy](https://getnaqi.com/privacy). This file mirrors the live page for transparency and version history.
 
 ---
 
@@ -11,6 +13,8 @@
 Naqi is a desktop application that scans and cleans up AI agent configurations on your machine. Privacy is central to how Naqi works: your data stays local by default, and nothing leaves your machine unless you explicitly trigger it.
 
 This policy explains what data Naqi collects, where it goes, and what control you have over it.
+
+**Data controller:** Yasser's studio (publisher of Naqi). Yasser's studio is established outside the European Economic Area. See [Section 9 — EU Residents](#9-eu-residents-gdpr) for the implications.
 
 ---
 
@@ -25,6 +29,7 @@ When you run a scan, Naqi reads configuration files from AI clients installed on
 - **Windsurf** configs
 
 Naqi reads:
+
 - MCP server names, transport types, and connection commands
 - Environment variable **names** (never values)
 - Memory file contents (for contradiction detection)
@@ -35,9 +40,9 @@ Naqi reads:
 
 ---
 
-## 2. What Data Is Sent to Anthropic (Pro Tier Only)
+## 2. AI Analysis (Pro Tier Only)
 
-If you are a Pro user and you choose to run AI-powered analysis, Naqi sends an **anonymized summary** of your workspace to the Anthropic Claude API. This only happens when you explicitly click "Analyze" — it never happens automatically.
+If you are a Pro user and you choose to run AI-powered analysis, Naqi sends an **anonymized summary** of your workspace to your chosen AI provider. This only happens when you explicitly click "Analyze" — never automatically.
 
 ### What is sent
 
@@ -54,11 +59,9 @@ If you are a Pro user and you choose to run AI-powered analysis, Naqi sends an *
 - Environment variable values
 - Full file paths (usernames are replaced with `[USER]`)
 - Skill file contents
-- Your Claude API key (used only as an authentication header, never in the message body)
+- Your provider API key (used only as an authentication header, never in the message body)
 
 ### Anonymization rules
-
-Before any data is sent to the Anthropic API, Naqi's anonymization engine applies these transformations:
 
 | Data type | What happens |
 |-----------|-------------|
@@ -73,30 +76,31 @@ Before any data is sent to the Anthropic API, Naqi's anonymization engine applie
 
 You can inspect the exact payload before it is sent using the "View Raw Payload" feature in the app. Nothing is sent until you confirm.
 
-### Anthropic's data handling
+### AI providers
 
-Data sent to the Anthropic API is subject to [Anthropic's API Terms of Service](https://www.anthropic.com/api-terms). As of this writing, Anthropic states that API inputs and outputs are not used to train their models. Naqi has no control over Anthropic's policies — please review their terms directly.
+Supported providers (you bring your own API key; the call goes from your machine to the provider directly): Anthropic, OpenAI, Google, xAI, Ollama (local), and OpenRouter. Each provider's own privacy policy governs what they do with the request you initiate. Naqi has no control over any provider's data handling — please review their terms directly.
 
 ---
 
-## 3. What Data Goes to Paddle (Pro Purchases)
+## 3. Payments (Pro Purchases)
 
 Naqi uses **Paddle** as its Merchant of Record for Pro license purchases. When you buy Naqi Pro, Paddle collects:
 
 - Your email address
-- Payment information (credit card or other payment method)
+- Payment information (handled entirely by Paddle)
 - Billing address (for tax calculation)
 - Country (for VAT/GST compliance)
 
 Naqi itself never sees or stores your payment information. Paddle handles all payment processing, tax compliance, and receipt generation.
 
 When you activate your license key in the app, Naqi sends:
+
 - Your license key
-- A hashed machine identifier (SHA-256 hash of your hardware ID — the raw hardware ID never leaves your machine)
+- A SHA-256 hash of your hardware ID (the raw hardware ID never leaves your machine)
 
 This data is sent to Paddle's license validation API to verify your purchase and manage device activations.
 
-Paddle's privacy practices are governed by their own [Privacy Policy](https://www.lemonsqueezy.com/privacy).
+Paddle's privacy practices are governed by their own [Privacy Policy](https://www.paddle.com/legal/privacy).
 
 ---
 
@@ -114,9 +118,9 @@ Naqi stores its own data in `~/.naqi/` on your machine:
 
 **License key storage:** Your license key is encrypted at rest using the OS keychain (macOS Keychain, Windows DPAPI, Linux Secret Service). It is not stored as plaintext.
 
-**Claude API key storage:** Your API key (if you provide one) is stored in the OS keychain, never in plain JSON files. It is only loaded into memory when making an API call.
+**AI provider API key storage:** Your provider API key (if you provide one) is stored in the OS keychain, never in plain JSON files. It is only loaded into memory when making an API call.
 
-**Backup files:** Backups in `~/.naqi/backups/` contain original config file content, which may include API keys and tokens. These files are protected with owner-only filesystem permissions (`chmod 700`).
+**Backup files:** Backups in `~/.naqi/backups/` contain original config file content, which may include API keys and tokens. These files are protected with owner-only filesystem permissions.
 
 ---
 
@@ -125,7 +129,8 @@ Naqi stores its own data in `~/.naqi/` on your machine:
 **Naqi does not include any analytics, tracking, or telemetry.** There is no usage tracking, no crash reporting, no phone-home behavior, and no anonymous usage statistics.
 
 The only network requests Naqi makes are:
-1. **Claude API calls** — only when you explicitly trigger AI analysis (Pro tier)
+
+1. **AI API calls** — only when you explicitly trigger AI analysis (Pro tier)
 2. **Paddle license validation** — on activation and periodically (every 7 days) to check license status
 3. **Update checks** — to check for new versions of Naqi (standard Tauri updater)
 
@@ -142,13 +147,27 @@ The getnaqi.com website uses only essential cookies required for basic site func
 - Third-party tracking cookies
 - Social media tracking pixels
 
-If you visit the Paddle checkout page (hosted on lemonsqueezy.com), that page is subject to Paddle's own cookie policy.
+If you are routed to a Paddle-hosted checkout, that page is subject to Paddle's own cookie policy.
 
 ---
 
-## 7. Your Rights (GDPR / CCPA)
+## 7. Sub-processors
 
-Regardless of where you live, we believe you should have control over your data.
+Where data is processed by third parties on our behalf:
+
+| Sub-processor | Purpose | Region |
+|---|---|---|
+| **Paddle.com Market Limited** (UK) | Payment processing, license API, Merchant of Record | UK / global |
+| **Resend** (US) | Transactional email delivery | US (with EU regions) |
+| **Vercel Inc.** (US) | Hosting of getnaqi.com and the license validation API | US (with EU regions) |
+| **Upstash Inc.** (US) | Redis cache for license validation rate limiting | US (with EU regions) |
+| **GitHub Inc.** (US) | Release artifact hosting and download delivery | US |
+
+AI providers you bring your own key for (Anthropic, OpenAI, Google, xAI, OpenRouter) are not Naqi sub-processors — you contract with them directly.
+
+---
+
+## 8. Your Rights
 
 ### Right to access
 
@@ -157,8 +176,7 @@ You can see everything Naqi stores locally by reading the files in `~/.naqi/`. F
 ### Right to deletion
 
 - **Local data:** Delete the `~/.naqi/` directory to remove all Naqi data from your machine. Uninstalling the app also removes this data.
-- **Paddle data:** Email privacy@getnaqi.com and we will request deletion of your records from Paddle on your behalf.
-- **Anthropic API data:** Anonymized summaries sent to the Claude API are subject to Anthropic's data retention policies. Since the data is anonymized before transmission, it cannot be linked back to you.
+- **Paddle data:** Email `hello@getnaqi.com` and we will request deletion of your records from Paddle on your behalf.
 
 ### Right to portability
 
@@ -174,45 +192,63 @@ Your scan data is stored as JSON files in `~/.naqi/`. You can copy, export, or m
 
 Naqi does not sell personal information. We do not share personal information with third parties for their marketing purposes. The categories of personal information we handle are limited to what is described in this policy.
 
-### For EU/EEA residents (GDPR)
+---
 
-The legal basis for processing your data is:
-- **Contract performance** — license validation is necessary to provide Pro features you purchased
-- **Legitimate interest** — anonymized API calls are necessary to deliver the AI analysis feature you requested
-- **Consent** — AI analysis only runs when you explicitly trigger it
+## 9. EU Residents (GDPR)
+
+If you are in the European Economic Area, Naqi processes the following limited personal data:
+
+- **Pro purchasers:** email address (collected by Paddle as Merchant of Record), license key and hashed machine ID (held by us via Paddle's license API)
+- **Free-tier users:** no personal data — Naqi runs entirely locally with no contact to our servers
+- **Website visitors:** standard server logs (IP at request time, retained ≤ 30 days)
+
+### Legal bases
+
+- **Contract performance** (Article 6(1)(b)) — license validation is necessary to provide Pro features you purchased
+- **Legitimate interest** (Article 6(1)(f)) — security and integrity of the license validation service
+- **Consent** (Article 6(1)(a)) — AI analysis only runs when you explicitly trigger it
+
+### EU representative (Article 27)
+
+Yasser's studio is established outside the EU and currently does not have a designated Article 27 representative. We process minimal personal data (Pro purchaser email + hashed hardware ID; no telemetry, no profiling). We will appoint a representative as the user base grows.
+
+EU data subjects can exercise their rights directly via `hello@getnaqi.com` — we respond within 30 days.
+
+You have the right to access, rectify, erase, restrict, port, and object to processing of your personal data, and to lodge a complaint with your local supervisory authority.
 
 ---
 
-## 8. Data Security
+## 10. Data Security
 
 - All API communication uses HTTPS with certificate verification
 - License keys are encrypted at rest using OS-level keychain services
-- Claude API keys are stored in the OS keychain, never in plain files
+- AI provider API keys are stored in the OS keychain, never in plain files
 - Backup files are protected with owner-only filesystem permissions
 - Naqi requires no elevated privileges — it runs as your user account
 - Machine identifiers are SHA-256 hashed before leaving your device
 
 ---
 
-## 9. Children's Privacy
+## 11. Children's Privacy
 
-Naqi is a developer tool and is not directed at children under 13. We do not knowingly collect data from children.
+Naqi is a developer tool intended for adults. It is not directed at children under 16. We do not knowingly collect data from children.
 
 ---
 
-## 10. Changes to This Policy
+## 12. Changes to This Policy
 
 If we make material changes to this policy, we will:
+
 - Update the "Last updated" date at the top
 - Post a notice on getnaqi.com
 - For significant changes, notify Pro users via the email address associated with their Paddle purchase
 
 ---
 
-## 11. Contact
+## 13. Contact
 
 For privacy questions or data requests:
 
-**Email:** privacy@getnaqi.com
+**Email:** `hello@getnaqi.com`
 
-We aim to respond to all privacy inquiries within 7 business days.
+We aim to respond within 7 business days for general inquiries and 30 days for formal GDPR data subject requests.

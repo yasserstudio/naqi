@@ -2,10 +2,15 @@
 
 ## Supported Versions
 
+Naqi is in public beta. Only the latest released beta receives security fixes.
+
 | Version | Supported |
 |---------|-----------|
-| 0.4.x   | ✓ Yes     |
-| < 0.4   | ✗ No      |
+| `1.0.0-beta.x` (latest) | ✓ Yes |
+| Older `1.0.0-beta.N` | ✗ No — upgrade to latest |
+| `0.x` (pre-beta) | ✗ No |
+
+When `1.0.0` ships, the support window will widen to the latest stable plus one prior minor.
 
 ## Reporting a Vulnerability
 
@@ -31,7 +36,7 @@ Do NOT open a public GitHub issue for security vulnerabilities.
 
 Security issues we care about:
 - Exposure of secrets (API keys, tokens, passwords) from scanned configs
-- Anonymization bypass (PII sent to AI APIs — Claude or OpenAI)
+- Anonymization bypass (PII sent to AI APIs — Anthropic, OpenAI, Google, xAI, Ollama, OpenRouter)
 - Unauthorized filesystem access beyond declared Tauri capabilities
 - Config file corruption during cleanup operations
 - Path traversal or injection in scanner/parser logic

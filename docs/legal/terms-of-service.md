@@ -2,13 +2,15 @@
 
 > **Naqi** (getnaqi.com) — Terms of Service
 >
-> Last updated: April 11, 2026
+> Last updated: April 15, 2026
+>
+> Canonical version: [getnaqi.com/terms](https://getnaqi.com/terms). This file mirrors the live page for transparency and version history.
 
 ---
 
 ## Overview
 
-These terms govern your use of Naqi, a desktop application for scanning, auditing, and cleaning up AI agent configurations (MCP servers, memories, skills, and related config files). By using Naqi, you agree to these terms.
+These terms govern your use of Naqi, a desktop application for scanning, auditing, and cleaning up AI agent configurations (MCP servers, memories, skills, and config files). Naqi is developed and published by **Yasser's studio**. By installing or using Naqi, you agree to these terms.
 
 We wrote these in plain English because our users are developers who value clarity over legalese.
 
@@ -16,12 +18,12 @@ We wrote these in plain English because our users are developers who value clari
 
 ## 1. What Naqi Is
 
-Naqi is a desktop app built with Tauri and Rust that:
+Naqi is a desktop app (macOS, Windows, Linux) built with Tauri and Rust that:
 
 - Scans your machine for AI client configurations (Claude Desktop, Claude Code, Cursor, VS Code, and others)
 - Inventories MCP servers, memories, and skills across those clients
 - Provides a health score and cleanup recommendations
-- Optionally sends anonymized workspace summaries to the Anthropic Claude API for AI-powered analysis (Pro tier)
+- Optionally sends anonymized workspace summaries to an AI provider for AI-powered analysis (Pro tier)
 - Helps you remove stale, broken, or duplicate configurations with backup and undo support
 
 Naqi runs locally on your machine. It reads and (with your permission) modifies configuration files.
@@ -33,6 +35,7 @@ Naqi runs locally on your machine. It reads and (with your permission) modifies 
 ### Free Tier
 
 Available to everyone, forever. Includes:
+
 - Full config scanning across all supported AI clients
 - Dashboard and inventory display
 - Health score
@@ -42,12 +45,12 @@ Available to everyone, forever. Includes:
 
 ### Pro Tier (Subscription)
 
-Available as:
 - **Annual plan:** $59 per year
 - **Monthly plan:** $7.99 per month
-- **Safety net:** 30-day unconditional refund on your first subscription charge (annual or monthly). No trial at launch.
+- **30-day unconditional refund** on your first subscription charge (annual or monthly). No trial at launch.
 
 Unlocks:
+
 - Live Token Hygiene (9 waste-pattern detectors, session threshold watcher, weekly TokenDiet digest)
 - 30-day historical token analysis with per-session drill-down
 - `naqi lint-prompt` CLI and Claude Code skill
@@ -62,31 +65,23 @@ Unlocks:
 
 The Pro tier is a **recurring subscription**. Access to Pro features continues for as long as your subscription is active. You may cancel at any time; Pro features remain active until the end of the current billing cycle. After the cycle ends, you will be downgraded to the Free tier with all your data and history preserved.
 
-**Refund policy:** 30-day unconditional refund on your first subscription charge (annual or monthly). Contact `support@getnaqi.com` with "refund" and we will process your refund the same business day.
-
 **Price changes:** We may update the price of future renewals. If we do, we will notify active subscribers via email at least 60 days before the change takes effect. You may cancel before the new rate applies if you do not wish to continue.
-
-### Future Team Tier
-
-A per-seat annual subscription for teams may be offered in the future. Individual Pro subscribers will not be affected — you can continue on the Pro tier at your current rate regardless of any Team tier launch.
 
 ---
 
-## 3. License Grant
+## 3. License Grant (Proprietary Software)
 
-### Source code (MIT License)
+Naqi is **proprietary, closed-source software**. All rights reserved by Yasser's studio. The source code is not publicly available.
 
-Naqi's source code is released under the MIT License. You are free to use, copy, modify, merge, publish, distribute, sublicense, and sell copies of the source code, subject to the MIT License terms included in the repository.
+### Free Tier license
 
-### Pro features in the distributed binary
+You receive a personal, non-exclusive, non-transferable license to install and use the Free version of Naqi on your own devices. You may not redistribute the binary, decompile, reverse-engineer, or create derivative works.
 
-The pre-built, signed Naqi binary includes Pro features that are gated by a license key. When you purchase Naqi Pro, you receive a personal, non-exclusive, non-transferable license to use Pro features in the distributed binary on up to 3 devices simultaneously.
+### Pro license
 
-**What this means in practice:**
-- The source code is always open and free (MIT)
-- If you can build from source and configure your own API key, you can access equivalent functionality without a license
-- The Pro license pays for the convenience of a packaged, signed, auto-updating binary with Pro features enabled out of the box
-- You may not redistribute, resell, or share your license key
+When you purchase Naqi Pro, you receive a personal, non-exclusive, non-transferable license to use Pro features in the distributed binary on up to 3 devices simultaneously.
+
+You may not redistribute, resell, lend, or share your license key.
 
 ---
 
@@ -99,7 +94,7 @@ All payments for Naqi Pro are processed by **Paddle**, which acts as the Merchan
 - Naqi never sees or stores your payment information
 - Refund requests are processed through Paddle
 
-Your purchase is subject to Paddle's [Terms of Service](https://www.paddle.com/terms) in addition to these terms.
+Your purchase is subject to [Paddle's Terms of Service](https://www.paddle.com/legal/terms) in addition to these terms.
 
 ---
 
@@ -108,8 +103,9 @@ Your purchase is subject to Paddle's [Terms of Service](https://www.paddle.com/t
 **30-day unconditional refund.** If you are not satisfied with Naqi Pro for any reason, you can request a full refund within 30 days of purchase. No questions asked.
 
 To request a refund:
+
 - Use the refund link in your Paddle purchase confirmation email, or
-- Email legal@getnaqi.com with your order number
+- Email `hello@getnaqi.com` with your order number
 
 On refund, your license key will be revoked and Pro features will be disabled on your next license validation check (within 7 days).
 
@@ -121,13 +117,14 @@ When using Naqi, you agree to:
 
 - **Use it for personal or professional purposes.** Naqi is a productivity tool for managing your own AI workspace.
 - **Keep your license key private.** Do not share, publish, or redistribute your Pro license key.
-- **Provide your own Claude API key for AI analysis.** Naqi does not include API credits. You are responsible for your own Anthropic API usage and costs.
+- **Provide your own AI provider API key for AI analysis.** Naqi does not include API credits. You are responsible for your own provider usage and costs.
 - **Review cleanup actions before confirming.** Naqi shows you a diff preview before modifying any file. You are responsible for reviewing and approving changes.
 
 You agree **not** to:
-- Redistribute or resell Naqi Pro license keys
+
+- Redistribute, resell, lend, or share Naqi Pro license keys
 - Use Naqi to intentionally damage or corrupt configuration files on machines you do not own
-- Reverse engineer the license validation mechanism for the purpose of circumventing it in the distributed binary (note: the source code is MIT-licensed, so reading and modifying the source is always permitted)
+- Decompile, reverse-engineer, or attempt to circumvent the license validation mechanism in the distributed binary
 
 ---
 
@@ -147,7 +144,7 @@ Naqi modifies AI client configuration files when you approve cleanup actions. Th
 
 - Config file modifications can affect how your AI tools (Claude Desktop, Cursor, VS Code, etc.) behave. Removing an MCP server config, for example, means that AI client will no longer have access to that server.
 - While Naqi backs up every file before modification, you are responsible for verifying that your AI tools work as expected after cleanup.
-- Naqi's AI-powered recommendations are suggestions, not guarantees. The Claude API may occasionally suggest removing something you still need. Always review recommendations before approving.
+- Naqi's AI-powered recommendations are suggestions, not guarantees. The provider you choose may occasionally suggest removing something you still need. Always review recommendations before approving.
 
 ---
 
@@ -156,6 +153,7 @@ Naqi modifies AI client configuration files when you approve cleanup actions. Th
 Naqi is provided **"AS IS"** and **"AS AVAILABLE"** without warranty of any kind, express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, and non-infringement.
 
 Specifically:
+
 - We do not guarantee that Naqi will correctly identify all stale, broken, or redundant configurations
 - We do not guarantee that AI-powered recommendations will be accurate or appropriate for your setup
 - We do not guarantee uninterrupted or error-free operation
@@ -165,7 +163,7 @@ Specifically:
 
 ## 9. Limitation of Liability
 
-To the maximum extent permitted by law, Naqi and its author shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to:
+To the maximum extent permitted by law, Yasser's studio shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to:
 
 - Loss of data or configuration
 - Disruption of AI tool workflows
@@ -182,36 +180,34 @@ Our total liability for any claim arising from your use of Naqi is limited to th
 
 ### By you
 
-You can stop using Naqi at any time. Delete the `~/.naqi/` directory and uninstall the app. If you want to deactivate your Pro license on a device, use Settings > License > Deactivate, or visit getnaqi.com/manage.
+You can stop using Naqi at any time. Delete the `~/.naqi/` directory and uninstall the app. If you want to deactivate your Pro license on a specific device, use Settings → License → Deactivate.
 
 ### By us
 
 We may revoke your Pro license if:
+
 - You receive a refund (license is automatically revoked)
 - A chargeback is filed against your purchase
 - You are found to be distributing or reselling license keys at scale
 
-We will not revoke a license without cause. If a revocation is disputed, email legal@getnaqi.com and we will work with you to resolve it.
+We will not revoke a license without cause. If a revocation is disputed, email `hello@getnaqi.com` and we will work with you to resolve it.
 
 ---
 
 ## 11. Third-Party Services
 
-Naqi integrates with:
+Naqi integrates with the following providers for optional, user-initiated AI analysis: **Anthropic, OpenAI, Google, xAI, Ollama, and OpenRouter**. You bring your own API key for each; the call goes from your machine to the provider directly, subject to that provider's terms.
 
-| Service | Purpose | Their terms apply |
-|---------|---------|-------------------|
-| **Anthropic Claude API** | AI-powered analysis (Pro tier, user-initiated) | [Anthropic API Terms](https://www.anthropic.com/api-terms) |
-| **Paddle** | Payment processing and license management | [Paddle Terms](https://www.paddle.com/terms) |
+Payment processing uses **Paddle** (Merchant of Record).
 
-Naqi is not affiliated with, endorsed by, or sponsored by Anthropic or any AI client vendor (Claude, Cursor, VS Code, etc.). All product names are trademarks of their respective owners.
+Naqi is not affiliated with, endorsed by, or sponsored by any AI client vendor (Anthropic, Cursor, Microsoft, etc.). All product names are trademarks of their respective owners.
 
 ---
 
 ## 12. Intellectual Property
 
-- The Naqi source code is MIT-licensed. See the LICENSE file in the repository.
-- The Naqi name, logo, and brand assets are proprietary. The MIT license applies to the code, not the brand.
+- Naqi (including its source code, binary, name, logo, brand assets, and documentation) is the intellectual property of Yasser's studio. **All rights reserved.**
+- Naqi is proprietary, closed-source software. The Naqi name, logo, and brand assets are proprietary.
 - User-generated data (your config files, scan results, backups) remains yours. Naqi claims no ownership over your data.
 
 ---
@@ -229,7 +225,7 @@ We may update these terms from time to time. When we do:
 
 ## 14. Governing Law
 
-These terms are governed by the laws of [Jurisdiction TBD]. Any disputes will be resolved in the courts of [Jurisdiction TBD].
+These terms are governed by the laws of **France**. Any disputes will be resolved in the courts of France, without prejudice to any mandatory consumer protections in your country of residence.
 
 ---
 
@@ -241,10 +237,8 @@ If any part of these terms is found to be unenforceable, the remaining parts sta
 
 ## 16. Contact
 
-For questions about these terms:
+**Yasser's studio** — publisher of Naqi.
 
-**Email:** legal@getnaqi.com
-
-For privacy-related questions, see our [Privacy Policy](privacy-policy.md) or email privacy@getnaqi.com.
-
-For security vulnerabilities, email security@getnaqi.com (do not open public GitHub issues for security reports).
+- Legal and general inquiries: `hello@getnaqi.com`
+- Privacy questions: see the [Privacy Policy](privacy-policy.md) or email `hello@getnaqi.com`
+- Security vulnerabilities: `security@getnaqi.com` (do not open public GitHub issues for security reports)
