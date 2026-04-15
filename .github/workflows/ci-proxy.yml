@@ -1,0 +1,130 @@
+name: CI (proxy from private)
+
+# Fires on `repository_dispatch` from yasserstudio/naqi-private's
+# ci.yml dispatcher. Clones the private source at the PR/push SHA
+# and runs the same quality gates (gitleaks, Rust matrix, frontend)
+# on this public repo's free Actions minutes.
+#
+# See docs/technical/github-strategy.md in the private repo for the
+# design; the dispatcher source is naqi-private/.github/workflows/
+# ci.yml.
+#
+# Status is visible in this repo's Actions tab. The private PR/commit
+# does not receive a native GitHub status check — watch the runs here
+# or rely on email-on-failure.
+
+on:
+  repository_dispatch:
+    types: [run-ci]
+
+concurrency:
+  group: ci-${{ github.event.client_payload.sha }}
+  cancel-in-progress: true
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  secrets:
+    name: Secret scan (gitleaks)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout private source at dispatched SHA
+        uses: actions/checkout@v5
+        with:
+          repository: yasserstudio/naqi-private
+          token: ${{ secrets.PRIVATE_REPO_READ_TOKEN }}
+          ref: ${{ github.event.client_payload.sha }}
+          fetch-depth: 0
+      - name: Run gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  rust:
+    name: Rust (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-latest
+            fmt: true
+          - os: ubuntu-22.04
+            fmt: false
+          - os: windows-latest
+            fmt: false
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        working-directory: apps/desktop/src-tauri
+    steps:
+      - name: Checkout private source at dispatched SHA
+        uses: actions/checkout@v5
+        with:
+          repository: yasserstudio/naqi-private
+          token: ${{ secrets.PRIVATE_REPO_READ_TOKEN }}
+          ref: ${{ github.event.client_payload.sha }}
+
+      - name: Install Rust stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+
+      - name: Rust cache
+        uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: apps/desktop/src-tauri
+
+      - name: Install Linux system dependencies
+        if: matrix.os == 'ubuntu-22.04'
+        working-directory: .
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libwebkit2gtk-4.1-dev \
+            libayatana-appindicator3-dev \
+            librsvg2-dev \
+            patchelf
+
+      - name: Check formatting
+        if: matrix.fmt
+        run: cargo fmt --check
+
+      - name: Clippy (zero warnings)
+        run: cargo clippy -- -D warnings
+
+      - name: Run tests
+        run: cargo test
+
+  frontend:
+    name: Frontend (typecheck, lint, test)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/desktop
+    steps:
+      - name: Checkout private source at dispatched SHA
+        uses: actions/checkout@v5
+        with:
+          repository: yasserstudio/naqi-private
+          token: ${{ secrets.PRIVATE_REPO_READ_TOKEN }}
+          ref: ${{ github.event.client_payload.sha }}
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 20
+
+      - name: Install dependencies (workspace root)
+        working-directory: .
+        run: pnpm install --frozen-lockfile
+
+      - name: TypeScript check
+        run: pnpm typecheck
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Tests
+        run: pnpm test run
