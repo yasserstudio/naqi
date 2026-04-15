@@ -11,6 +11,8 @@ Every MCP server, memory, and skill you're not using burns context on every requ
 [![Public beta](https://img.shields.io/badge/status-public%20beta-f5a623.svg)](VERSIONING.md)
 [![Proprietary](https://img.shields.io/badge/license-proprietary-red.svg)](LICENSE)
 [![macOS](https://img.shields.io/badge/macOS-12%2B-40bfa0.svg)]()
+[![Windows](https://img.shields.io/badge/Windows-10%2B-40bfa0.svg)]()
+[![Linux](https://img.shields.io/badge/Linux-40bfa0.svg)]()
 [![Built with Tauri](https://img.shields.io/badge/built%20with-Tauri%20v2-40bfa0.svg)]()
 [![Binary Size](https://img.shields.io/badge/binary-~10MB-40bfa0.svg)]()
 
@@ -90,7 +92,23 @@ Every action backed up before changes. **Diff preview. Full undo stack.** Nothin
 
 ### Direct download
 
-[Latest release](https://github.com/yasserstudio/naqi/releases/latest) — macOS (Apple Silicon + Intel).
+[Latest release](https://github.com/yasserstudio/naqi/releases/latest):
+
+- **macOS** — `.dmg` (Apple Silicon + Intel universal, signed + notarized)
+- **Windows** — `.msi` (x64, unsigned during beta — see first-run guide)
+- **Linux** — `.deb` (Debian/Ubuntu) or `.AppImage` (any distro)
+
+Each release is pinned to a SHA-256 checksum on the release page.
+
+### Homebrew (macOS)
+
+```bash
+brew install yasserstudio/naqi/naqi
+```
+
+### First-run warnings?
+
+macOS may show a Gatekeeper prompt on first launch; Windows will show a SmartScreen warning during the beta (code signing deferred until stable). **Walkthrough at [getnaqi.com/install](https://getnaqi.com/install)** — takes 30 seconds.
 
 <br />
 
@@ -101,10 +119,12 @@ Every action backed up before changes. **Diff preview. Full undo stack.** Nothin
 | Scan 10 AI clients | ✓ | ✓ |
 | Health score and dashboard | ✓ | ✓ |
 | Memory and skill audit | ✓ | ✓ |
-| Manual cleanup + versioned backups + undo | ✓ | ✓ |
+| Manual cleanup + undo | ✓ | ✓ |
+| Versioned backups (browse, preview, compare, export ZIP) | ✓ | ✓ |
 | Safe Mode and change log | ✓ | ✓ |
 | Exportable reports | ✓ | ✓ |
 | 7-day Token Hygiene snapshot | ✓ | ✓ |
+| **One-click backup restore + ZIP import** | — | ✓ |
 | **Live Token Hygiene** (9 detectors + session watcher + weekly digest) | — | ✓ |
 | **30-day historical token analysis** | — | ✓ |
 | **Prompt waste detection** | — | ✓ |
@@ -130,7 +150,7 @@ Every action backed up before changes. **Diff preview. Full undo stack.** Nothin
 - **Servers** — full MCP inventory, health checks, transport badges, cross-client diff, sort-by-tokens
 - **Memories** — browse by project, enhanced contradiction detection (negation-aware), bulk actions, archive
 - **Profiles** — capture, apply, export/import configs across clients
-- **Backups** — versioned with SHA-256 dedup, auto-backup on scan, ZIP export/import, one-click restore, dedicated browser page with diff viewer
+- **Backups** — versioned with SHA-256 dedup, auto-backup on scan, browser page with diff viewer, ZIP export (free) · one-click restore + ZIP import (Pro)
 
 </td>
 <td width="50%" valign="top">
