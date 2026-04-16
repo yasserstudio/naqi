@@ -33,6 +33,8 @@ Pro unlocks Token Hygiene (everything above), AI-powered cleanup recommendations
 
 The Free tier remains **free forever** with full scanning, dashboard, health score, local recommendations, and versioned backups.
 
+**Per-device license.** Naqi Pro is active on one device at a time. To move your license to a new machine, deactivate the previous device in Settings → License. If you lose access to your current machine (lost laptop, broken drive), deactivate remotely at [getnaqi.com/manage](https://getnaqi.com/manage) — paste your license key, confirm, then activate on the new machine using the same key.
+
 ### Community
 
 - **Discord** — dismissible CTA on the dashboard, plus a link in Settings → About. [Join the server →](https://discord.gg/b9kGkjEj)
