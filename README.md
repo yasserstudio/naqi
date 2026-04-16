@@ -133,7 +133,7 @@ macOS may show a Gatekeeper prompt on first launch; Windows will show a SmartScr
 | **Contradiction detection** (negation-aware) | — | ✓ |
 | **Config profiles + scheduled scans** | — | ✓ |
 
-<p align="center"><sub>30-day unconditional refund · cancel anytime · 3 devices per subscription</sub></p>
+<p align="center"><sub>14-day unconditional refund · cancel anytime · per-device license (move anytime via Settings → License)</sub></p>
 
 <br />
 

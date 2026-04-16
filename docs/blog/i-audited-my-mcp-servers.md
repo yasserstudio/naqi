@@ -103,4 +103,4 @@ Then write the cleanup down somewhere so you remember to do it again in two mont
 
 ---
 
-*I'm Yasser. I build [Naqi](https://getnaqi.com), the token watchdog for Claude Code — a 10MB desktop app with a live session watcher, 9 waste-pattern detectors, and a weekly TokenDiet digest, plus cleanup across 10 AI clients. The scanner is free forever (including a 7-day Token Hygiene snapshot with $ waste figure); Pro is $59/yr or $7.99/mo with a 30-day unconditional refund.*
+*I'm Yasser. I build [Naqi](https://getnaqi.com), the token watchdog for Claude Code — a 10MB desktop app with a live session watcher, 9 waste-pattern detectors, and a weekly TokenDiet digest, plus cleanup across 10 AI clients. The scanner is free forever (including a 7-day Token Hygiene snapshot with $ waste figure); Pro is $59/yr or $7.99/mo with a 14-day unconditional refund.*

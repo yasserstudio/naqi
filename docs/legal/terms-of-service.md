@@ -2,7 +2,7 @@
 
 > **Naqi** (getnaqi.com) — Terms of Service
 >
-> Last updated: April 15, 2026
+> Last updated: April 16, 2026
 >
 > Canonical version: [getnaqi.com/terms](https://getnaqi.com/terms). This file mirrors the live page for transparency and version history.
 
@@ -47,7 +47,7 @@ Available to everyone, forever. Includes:
 
 - **Annual plan:** $59 per year
 - **Monthly plan:** $7.99 per month
-- **30-day unconditional refund** on your first subscription charge (annual or monthly). No trial at launch.
+- **14-day unconditional refund** on your first subscription charge (annual or monthly). No trial at launch.
 
 Unlocks:
 
@@ -79,7 +79,7 @@ You receive a personal, non-exclusive, non-transferable license to install and u
 
 ### Pro license
 
-When you purchase Naqi Pro, you receive a personal, non-exclusive, non-transferable license to use Pro features in the distributed binary on up to 3 devices simultaneously.
+When you purchase Naqi Pro, you receive a personal, non-exclusive, non-transferable license to use Pro features in the distributed binary on one device at a time. To move your license to a new machine, deactivate the previous device in Settings → License.
 
 You may not redistribute, resell, lend, or share your license key.
 
@@ -100,14 +100,14 @@ Your purchase is subject to [Paddle's Terms of Service](https://www.paddle.com/l
 
 ## 5. Refund Policy
 
-**30-day unconditional refund.** If you are not satisfied with Naqi Pro for any reason, you can request a full refund within 30 days of purchase. No questions asked.
+**14-day unconditional refund.** If you are not satisfied with Naqi Pro for any reason, you can request a full refund within 14 days of purchase. No questions asked.
 
 To request a refund:
 
 - Use the refund link in your Paddle purchase confirmation email, or
-- Email `hello@getnaqi.com` with your order number
+- Email `support@getnaqi.com` with your order number
 
-On refund, your license key will be revoked and Pro features will be disabled on your next license validation check (within 7 days).
+On refund, your license key is revoked immediately and Pro features are disabled on the next license validation check (typically within a few hours; maximum 24 hours).
 
 ---
 
@@ -190,7 +190,7 @@ We may revoke your Pro license if:
 - A chargeback is filed against your purchase
 - You are found to be distributing or reselling license keys at scale
 
-We will not revoke a license without cause. If a revocation is disputed, email `hello@getnaqi.com` and we will work with you to resolve it.
+We will not revoke a license without cause. If a revocation is disputed, email `support@getnaqi.com` and we will work with you to resolve it.
 
 ---
 

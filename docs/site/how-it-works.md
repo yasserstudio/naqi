@@ -68,7 +68,7 @@ When you decide to remove something, Naqi follows a strict 6-step protocol for e
 
 ### Backups
 
-Every backup is browsable in the Backups page. You can View, Compare, Restore, or Export as ZIP at any point. Retention defaults to 90 days; configurable in Settings.
+Every backup is browsable in the Backups page. View, Compare, and Export as ZIP are available on every plan. **Restore** and **ZIP import** (the recovery flows that write configs back) require Naqi Pro. Retention defaults to 90 days; configurable in Settings.
 
 ### Safe Mode (on by default for new users)
 
@@ -91,11 +91,16 @@ You can also lock individual clients (Settings → Locked Clients) so Naqi will 
 
 ---
 
-## What's open source
+## What you can verify
 
-Everything. The scanner, the cleanup engine, the backup system, the AI integration, and the UI are all MIT-licensed on [GitHub](https://github.com/yasserstudio/naqi). The Pro tier gates AI recommendations and batch cleanup behind a license check, not behind closed source — if you want to fork the repo and bypass the check, you can. The packaged, signed, notarized, auto-updating app is the real product.
+Naqi is proprietary, closed-source software — the source code is not published. What's *verifiable* isn't the code, it's the behavior, and everything meaningful is observable without source access:
 
-The scanner code path is `src-tauri/src/scanner/`. The cleanup protocol is in `src-tauri/src/cleanup/`. Read either one and verify the claims on this page yourself.
+- **Network activity:** run Naqi with Little Snitch or your OS firewall. The scan, dashboard, and cleanup flows make zero outbound calls. The only network activity is the opt-in AI recommendations feature in Pro, which goes to the AI provider you configured.
+- **Filesystem effects:** the backup-first protocol writes a timestamped copy before every modification. Inspect `~/.naqi/backups/` after any cleanup action to see exactly what was preserved.
+- **Diff preview:** every cleanup action shows a line-by-line diff before you confirm. Nothing changes without your explicit approval.
+- **Safe Mode (default on):** read-only until you turn it off.
+
+If you want stronger guarantees than this, don't use Pro and don't use cleanup — the free scan, dashboard, and inventory are 100% read-only and never touch the network.
 
 ---
 
@@ -106,7 +111,7 @@ The scanner code path is `src-tauri/src/scanner/`. The cleanup protocol is in `s
 | Will Naqi delete something I need? | Not unless you click Clean, see the diff preview, and confirm. Even then, every change is backed up and can be undone. |
 | Does Naqi send my data anywhere? | No, by default. The optional Pro AI recommendations send an anonymized summary to your chosen provider (Ollama runs fully offline). |
 | What if Naqi breaks something? | The backup-first protocol creates a timestamped copy before every modification. Rolling back is one click. |
-| Can I audit the code? | Yes — MIT licensed on GitHub, scanner and cleanup paths are clearly named. |
+| Can I audit the behavior? | Yes — run Naqi with a network monitor (Little Snitch, macOS firewall) to confirm zero network calls in the free flow, and inspect `~/.naqi/backups/` to confirm every cleanup is backed up. Source code is not published. |
 | What if I just want to look without touching anything? | Safe Mode is on by default. The scan, dashboard, and inventory are 100% read-only and free forever. |
 
 ---

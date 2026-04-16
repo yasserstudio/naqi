@@ -27,7 +27,7 @@ A new pillar: see, score, and clean up your token usage across every Claude Code
 
 ### Pro tier
 
-**$7.99/month or $59/year**, with a **30-day unconditional refund** on the first charge.
+**$7.99/month or $59/year**, with a **14-day unconditional refund** on the first charge.
 
 Pro unlocks Token Hygiene (everything above), AI-powered cleanup recommendations, contradiction detection, batch cleanup, config profiles, and scheduled scans.
 
