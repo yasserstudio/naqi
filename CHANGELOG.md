@@ -39,6 +39,15 @@ The Free tier remains **free forever** with full scanning, dashboard, health sco
 
 - **Discord** — dismissible CTA on the dashboard, plus a link in Settings → About. [Join the server →](https://discord.gg/b9kGkjEj)
 
+### Localization
+
+[getnaqi.com](https://getnaqi.com) now ships in **5 languages**: English, Español, Français, Deutsch, and Português (Brasil). A globe-icon switcher in the header (and inline list in the mobile drawer) swaps the whole site in place, preserving your current page. Selection is remembered via a `NEXT_LOCALE` cookie.
+
+- Every user-facing string flows through locale catalogs — ~1300 keys per language, zero parity drift.
+- Schema.org rich-snippet metadata (breadcrumbs, HowTo guides, Article pages) localizes too, so Google search results match each locale's `<html lang>`.
+- License-activation API errors, transactional emails (purchase, refund, cancel, payment-failed, renewal reminder), and in-app date / plan / billing formatting all respect the caller's Accept-Language + Paddle `customer.locale`.
+- Non-English locales are first-pass translations pending native-speaker review on the money-path copy (home, pricing, CTAs). The desktop app's UI remains English-only for this beta.
+
 ### Settings
 
 - **Font preference** — choose between Naqi's bundled Inter + JetBrains Mono and your OS default font stacks. Custom fonts load lazily, so picking "System" never downloads them.
