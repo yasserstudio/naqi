@@ -32,7 +32,7 @@ This post is the comparison I wished existed before I started building.
 
 | | Naqi | Golf Scanner | mcp-sec-audit |
 |---|---|---|---|
-| **Form factor** | Desktop app (macOS) + CLI | CLI (Go) | CLI / library |
+| **Form factor** | Desktop app (macOS) | CLI (Go) | CLI / library |
 | **Audience** | Individual developers | Security teams, CI pipelines | Security researchers, red teams |
 | **Primary goal** | Workspace hygiene + cleanup | MCP discovery + security checks | Detect malicious MCP servers |
 | **Clients scanned** | 10 | 7 IDEs | Single-server analysis |
@@ -103,7 +103,6 @@ Naqi is what I built. It's a 10MB native macOS desktop app (Tauri + Rust + React
 - **GUI for non-CLI users.** This sounds obvious until you watch a non-terminal-comfortable developer try to use a Go CLI for the first time. The dashboard view, the floating action button, the diff preview — these aren't decoration, they're what makes cleanup happen instead of staying on a TODO list.
 - **Cleanup, not just discovery.** Every action is backed up before anything changes, with a side-by-side diff preview and a full undo stack. Nothing is auto-deleted. Safe Mode is on by default for new users.
 - **AI-powered recommendations from 6 providers** (Anthropic, OpenAI, Google Gemini, xAI Grok, Ollama, OpenRouter), with Ollama running fully offline. You bring your own key — Naqi never sees your data.
-- **CLI companion** — `naqi scan`, `naqi score`, `naqi clean` if you want headless operation alongside the desktop app.
 
 **Where it stops:**
 - macOS only at this time.

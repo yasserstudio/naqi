@@ -53,7 +53,6 @@ Unlocks:
 
 - Live Token Hygiene (9 waste-pattern detectors, session threshold watcher, weekly TokenDiet digest)
 - 30-day historical token analysis with per-session drill-down
-- `naqi lint-prompt` CLI and Claude Code skill
 - AI-powered cleanup recommendations via 6 providers (bring your own key)
 - Memory contradiction detection
 - Batch cleanup and cross-client diff/sync

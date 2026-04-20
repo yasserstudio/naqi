@@ -1,6 +1,6 @@
 # Token Hygiene Guide
 
-Naqi's second product pillar: **make token waste visible so you can stop paying for it.** This guide covers the full Token Hygiene feature set that shipped in v0.6.0 — the scanner, dashboard, waste-pattern detectors, proactive nudges, CLI, and the Claude Code skill wrapper — plus a short playbook for writing token-efficient prompts distilled from what the detectors encode.
+Naqi's second product pillar: **make token waste visible so you can stop paying for it.** This guide covers the Token Hygiene feature set that ships in the desktop app — the scanner, dashboard, waste-pattern detectors, and proactive nudges — plus a short playbook for writing token-efficient prompts distilled from what the detectors encode.
 
 ## Why this exists
 
@@ -17,21 +17,7 @@ If you've ever wondered "where did my tokens go?" — this is the answer engine.
 
 ## Quick start
 
-```bash
-# Scan your Claude Code session logs
-naqi tokens
-
-# Top 10 costliest sessions
-naqi tokens top --n 10
-
-# Waste-pattern recommendations
-naqi tokens waste
-
-# Before sending a draft prompt, check it for waste
-echo "Dive deep into the codebase and explain everything" | naqi lint-prompt
-```
-
-Or open the Naqi desktop app and click **Tokens** in the sidebar.
+Open the Naqi desktop app and click **Tokens** in the sidebar. The scanner walks `~/.claude/projects/<project>/*.jsonl` read-only, then the Tokens page shows the 7-day trend, per-project breakdown, and waste-pattern recommendations.
 
 ## Scope
 
@@ -41,7 +27,7 @@ Token Hygiene only analyzes **Claude Code** session logs (`~/.claude/projects/<p
 
 ## The 9 waste-pattern detectors
 
-Every detector produces an advisory `Recommendation` with `rec_type: TokenWaste` that shows up on the Tokens page, in the tray panel, and in `naqi tokens waste`. None of them apply automatic fixes — tokens are already spent by the time the detector fires. The value is making the pattern visible so you can avoid it next time.
+Every detector produces an advisory `Recommendation` with `rec_type: TokenWaste` that shows up on the Tokens page and in the tray panel. None of them apply automatic fixes — tokens are already spent by the time the detector fires. The value is making the pattern visible so you can avoid it next time.
 
 | Detector | Fires when | Fix |
 |---|---|---|
@@ -119,106 +105,6 @@ Skip the 30-second startup grace period and the live alert when you just launche
 
 ---
 
-## CLI reference
-
-The `naqi-cli` binary ships with the app and exposes the full Token Hygiene analysis surface for terminal and CI use.
-
-### `naqi tokens`
-
-Per-project token breakdown across all Claude Code sessions.
-
-```bash
-naqi tokens                    # Table output
-naqi tokens --json             # JSON for scripting
-naqi tokens --project naqi     # Filter to one project
-```
-
-### `naqi tokens top`
-
-Top N costliest sessions by total token cost.
-
-```bash
-naqi tokens top                # Default: top 10
-naqi tokens top --n 25         # Top 25
-naqi tokens top --json
-```
-
-Each row shows session ID, project, turn count, total tokens, and first-prompt preview.
-
-### `naqi tokens waste`
-
-All waste-pattern recommendations across cached sessions, grouped by severity. This is the same list that powers the Tokens-page waste banner.
-
-```bash
-naqi tokens waste              # Human-readable
-naqi tokens waste --json       # JSON
-naqi tokens waste --project naqi  # Filter by project
-```
-
-### `naqi tokens health <session-id>`
-
-Per-session health score breakdown showing the contributing factors (turn count, cache bloat, auto-compacts, subagent swarm, dive-deep opener).
-
-```bash
-naqi tokens health 084d1abb-85f2-4f95-8c36-a1ebc3d5abb7
-naqi tokens health <id> --json
-```
-
-### `naqi lint-prompt`
-
-Pre-send linter that runs four checks against a draft prompt and exits 1 on any issue. Designed to compose as a pre-commit hook, shell pipe, or Claude Code skill.
-
-```bash
-# Read from a file
-naqi lint-prompt draft.md
-
-# Read from stdin
-echo "continue" | naqi lint-prompt
-
-# Heredoc for multi-line drafts
-cat <<'EOF' | naqi lint-prompt
-Dive deep into the project and figure out why tests are failing.
-EOF
-
-# JSON output for tooling
-naqi lint-prompt draft.md --json
-```
-
-Four rules:
-
-| Rule | Severity | Fires when | Fix |
-|---|---|---|---|
-| `ShortPrompt` | Warning | Trimmed input <20 chars or <3 words | Batch instructions; `/clear` first |
-| `DiveDeep` | Warning | Dive-deep-pattern regex match on the trimmed opener | Name the exact files/areas |
-| `LogPaste` | Warning | Pasted log run ≥2 KB (same detector as the waste recommendation) | Save to a file, `Read` the path |
-| `ImperativeNoAnchor` | Info | First word is imperative (fix/add/update/…) AND no path or `*.ext` token present | Name the target file(s) |
-
-Exit codes: `0` when clean, `1` on any issue. Empty input is treated as clean (no work to lint).
-
----
-
-## Claude Code skill: `lint-prompt`
-
-An optional Claude Code skill wrapper ships in [`skills/lint-prompt/`](../../skills/lint-prompt/SKILL.md). Once installed, Claude Code will invoke `naqi lint-prompt` automatically when you draft a prompt and ask for feedback, paste a large log block, or say "does this look good to send?".
-
-### Install
-
-```bash
-cp -r skills/lint-prompt ~/.claude/agent-skills/skills/
-```
-
-Requires `naqi-cli` on `PATH`. Claude Code picks up new skills on the next session start — no restart or rebuild.
-
-### How it works
-
-The skill is a thin wrapper around the CLI. Claude reads the draft (usually from the current conversation), invokes `naqi-cli lint-prompt` via the Bash tool, and presents the findings using the linter's own `title` + `hint` strings. The hints are designed to be actionable as-written — Claude doesn't paraphrase them.
-
-If a draft fails the linter, Claude will suggest a concrete rewrite when the draft is short enough to edit inline, then ask whether to use the revised version. If you disagree with a specific finding (e.g., you insist on pasting the full log), just say so — the linter is advisory, not a hard gate.
-
-See the [skill definition](../../skills/lint-prompt/SKILL.md) for the full trigger rules and presentation protocol.
-
----
-
 ## A token-efficient prompting playbook
 
 The detectors encode nine concrete rules. Here they are as positive advice:
@@ -272,8 +158,3 @@ Both. Token Hygiene reads session logs from `~/.claude/projects/`, which Claude 
 
 **Why only Claude Code?**
 Because Claude Code writes structured JSONL session logs with per-turn usage. Cursor, Windsurf, and most other clients either don't persist session data, persist it in less-structured formats, or don't expose per-turn tokens.
-
-## See also
-
-- [CLI docs](../cli.md) — complete CLI reference for all Naqi commands
-- [`skills/lint-prompt/SKILL.md`](../../skills/lint-prompt/SKILL.md) — Claude Code skill definition
