@@ -30,10 +30,53 @@ Native system notifications (the banners macOS shows outside the app) display fu
 
 ## What stays in English
 
-Product names (Naqi, Naqi Pro, Naqi Free), feature names (TokenDiet, Smart Scan, Safe Mode), technical terms (MCP, API, CLI), AI provider names, and prices ($59/yr, $7.99/mo) are never translated. See the full list in the project glossary.
+The following terms are never translated, regardless of locale.
+
+### Product & brand names
+
+| Term | Notes |
+|---|---|
+| Naqi | Product name |
+| Naqi Pro | Paid tier |
+| Naqi Free | Free tier |
+| Yasser's Studio | Publisher name |
+
+### Feature names
+
+| Term | Notes |
+|---|---|
+| TokenDiet | Token-optimization feature |
+| Smart Scan | Automated workspace scan |
+| Safe Mode | Read-only protection mode |
+| Config Profiles | Server configuration snapshots |
+
+### Technical terms
+
+| Term | Notes |
+|---|---|
+| MCP | Model Context Protocol |
+| API | Application Programming Interface |
+| CLI | Command Line Interface |
+| JSON | Data format |
+| URL | Web address |
+| DELETE | Confirmation keyword (typed by user) |
+
+### AI providers & tools
+
+| Term | Notes |
+|---|---|
+| Claude Code | Anthropic's AI coding tool |
+| Cursor | AI code editor |
+| Windsurf | AI code editor |
+| Ollama | Local AI runtime |
+| GitHub Copilot | AI coding assistant |
+
+### Pricing
+
+Prices appear in USD only: $59/yr, $7.99/mo. Currency symbols and amounts are never localized.
 
 ## Scope
 
-- **Desktop app:** 1140 translated keys per locale covering every page, dialog, notification, toast, error message, menu bar, boot splash, native notification bodies, dashboard widgets, settings, server forms, and onboarding
+- **Desktop app:** 1155 translated keys per locale covering every page, dialog, notification, toast, error message, menu bar, boot splash, native notification bodies, dashboard widgets, settings, server forms, and onboarding
 - **Website:** 993 translated keys per locale covering all pages, SEO metadata, emails, and legal copy
 - **Documentation:** English only
