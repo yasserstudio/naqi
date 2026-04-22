@@ -26,7 +26,7 @@ Click the globe icon in the site header (or the language list in the mobile menu
 
 ### Native macOS notifications
 
-Native system notifications (the banners macOS shows outside the app) display localized titles for health drops, broken servers, scan reminders, weekly digests, token diets, project hotspots, and session threshold alerts. Notification bodies remain English in the native banner; the full localized body is always shown in the in-app notification center.
+Native system notifications (the banners macOS shows outside the app) display fully localized titles and bodies for all 12 notification types: health drops, broken servers, stale servers, duplicates, contradictory memories, cleanup follow-ups, scan reminders, weekly digests, token diets, project hotspots, and session threshold alerts. Plural-dependent strings (e.g. "3 stale servers") use pre-split `_one`/`_other` key variants so the Rust backend can resolve them without an ICU parser.
 
 ## What stays in English
 
@@ -34,6 +34,6 @@ Product names (Naqi, Naqi Pro, Naqi Free), feature names (TokenDiet, Smart Scan,
 
 ## Scope
 
-- **Desktop app:** 919 translated keys per locale covering every page, dialog, notification, toast, error message, menu bar, and boot splash
+- **Desktop app:** 1140 translated keys per locale covering every page, dialog, notification, toast, error message, menu bar, boot splash, native notification bodies, dashboard widgets, settings, server forms, and onboarding
 - **Website:** 993 translated keys per locale covering all pages, SEO metadata, emails, and legal copy
 - **Documentation:** English only
