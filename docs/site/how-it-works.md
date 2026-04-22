@@ -72,7 +72,7 @@ Every backup is browsable in the Backups page. View, Compare, and Export as ZIP 
 
 ### Menu bar
 
-Naqi has a full macOS menu bar with six menus: Naqi, File, Edit, View, Window, and Help. The menu bar is localized — it updates immediately when you change the language in Settings, no restart needed. Key items include Smart Scan (⌘R), export options, navigation to all 11 pages (⌘1–⌘8), zoom controls, dark mode and Safe Mode toggles, and direct links to the website, changelog, Discord, and issue tracker.
+Naqi has a full macOS menu bar with six menus: Naqi, File, Edit, View, Window, and Help. The menu bar is localized — it updates immediately when you change the language in Settings, no restart needed. Key items include Smart Scan (⌘R), export and import options, navigation to all 11 pages (⌘1–⌘8), zoom in/out/reset (⌘=/⌘-/⌘0), dark mode and Safe Mode toggles, and direct links to the website, changelog, Discord, and issue tracker.
 
 ### System tray
 

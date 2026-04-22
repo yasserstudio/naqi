@@ -24,6 +24,10 @@ The Rust backend and the React frontend both swap their catalogs on the fly. UI 
 
 Click the globe icon in the site header (or the language list in the mobile menu). Your choice is saved in a `NEXT_LOCALE` cookie and persists across visits.
 
+### Native macOS notifications
+
+Native system notifications (the banners macOS shows outside the app) display localized titles for health drops, broken servers, scan reminders, weekly digests, token diets, project hotspots, and session threshold alerts. Notification bodies remain English in the native banner; the full localized body is always shown in the in-app notification center.
+
 ## What stays in English
 
 Product names (Naqi, Naqi Pro, Naqi Free), feature names (TokenDiet, Smart Scan, Safe Mode), technical terms (MCP, API, CLI), AI provider names, and prices ($59/yr, $7.99/mo) are never translated. See the full list in the project glossary.
