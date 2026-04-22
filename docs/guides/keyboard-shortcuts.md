@@ -9,10 +9,21 @@ All shortcuts use ⌘ (Cmd) on macOS. Press `⌘?` to open the shortcuts dialog 
 | ⌘K | Search workspace |
 | ⌘R | Smart Scan |
 | ⌘Z | Undo last action |
+| ⌘E | Export as JSON |
+| ⌘⇧E | Export as Markdown |
 | ⌘⇧S | Toggle sidebar |
+| ⌘⇧D | Toggle dark mode |
 | ⌘⇧M | Toggle Safe Mode |
 | ⌘, | Open Settings |
-| ⌘? | Show keyboard shortcuts |
+| ? | Show keyboard shortcuts |
+
+## Zoom
+
+| Shortcut | Action |
+|---|---|
+| ⌘= | Zoom in |
+| ⌘- | Zoom out |
+| ⌘0 | Actual size |
 
 ## Navigation
 
@@ -22,7 +33,7 @@ All shortcuts use ⌘ (Cmd) on macOS. Press `⌘?` to open the shortcuts dialog 
 | ⌘2 | Servers |
 | ⌘3 | Memories |
 | ⌘4 | Skills |
-| ⌘5 | Configs |
-| ⌘6 | Cleanup |
-| ⌘7 | History |
-| ⌘8 | Settings |
+| ⌘5 | Tokens |
+| ⌘6 | Configs |
+| ⌘7 | Cleanup |
+| ⌘8 | Security |

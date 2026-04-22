@@ -18,7 +18,7 @@ Naqi ships in **5 languages** across both the desktop app and the marketing webs
 
 **Settings → General → Appearance → Language.** Pick a language from the dropdown or leave it on "System" to follow your OS locale. The change takes effect immediately — no restart required.
 
-The Rust backend and the React frontend both swap their catalogs on the fly. UI labels, notifications, error messages, and recommendations all update in place.
+The Rust backend and the React frontend both swap their catalogs on the fly. UI labels, notifications, toasts, error messages, recommendations, the macOS menu bar, and the system tray all update in place. The boot splash screen also displays status messages in the chosen language on next launch.
 
 ### Website
 
@@ -30,6 +30,6 @@ Product names (Naqi, Naqi Pro, Naqi Free), feature names (TokenDiet, Smart Scan,
 
 ## Scope
 
-- **Desktop app:** 903 translated keys per locale covering every page, dialog, notification, toast, and error message
+- **Desktop app:** 919 translated keys per locale covering every page, dialog, notification, toast, error message, menu bar, and boot splash
 - **Website:** 993 translated keys per locale covering all pages, SEO metadata, emails, and legal copy
 - **Documentation:** English only

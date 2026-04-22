@@ -70,6 +70,10 @@ When you decide to remove something, Naqi follows a strict 6-step protocol for e
 
 Every backup is browsable in the Backups page. View, Compare, and Export as ZIP are available on every plan. **Restore** and **ZIP import** (the recovery flows that write configs back) require Naqi Pro. Retention defaults to 90 days; configurable in Settings.
 
+### Menu bar
+
+Naqi has a full macOS menu bar with six menus: Naqi, File, Edit, View, Window, and Help. The menu bar is localized — it updates immediately when you change the language in Settings, no restart needed. Key items include Smart Scan (⌘R), export options, navigation to all 11 pages (⌘1–⌘8), zoom controls, dark mode and Safe Mode toggles, and direct links to the website, changelog, Discord, and issue tracker.
+
 ### System tray
 
 Naqi lives in your menu bar (macOS) or system tray (Windows/Linux). The tray panel shows a quick-glance health score, scan status, and recent notifications without opening the main window. Click the tray icon to toggle the panel; click any notification to jump to the relevant page.
