@@ -35,7 +35,25 @@ The cask installs the same `.dmg` from the GitHub release and is updated within 
 - About 30 MB of disk space (the binary plus a small data directory at `~/.naqi/`)
 - Internet only required if you opt into Pro AI recommendations — the free tier runs fully offline
 
-Windows and Linux are not available at this time.
+### Windows (beta)
+
+Download the `.msi` installer from the [GitHub release page](https://github.com/yasserstudio/naqi/releases/latest). Windows builds are currently unsigned — SmartScreen will show a "Windows protected your PC" warning on first run. Click **More info → Run anyway**. Code signing arrives in a later beta.
+
+### Linux (beta)
+
+Download `.deb` (Debian/Ubuntu) or `.AppImage` (universal) from the [GitHub release page](https://github.com/yasserstudio/naqi/releases/latest).
+
+```bash
+# Debian/Ubuntu
+sudo dpkg -i Naqi-x.y.z-linux-amd64.deb
+sudo apt-get install -f   # fix any missing deps
+
+# AppImage (any distro)
+chmod +x Naqi-x.y.z-linux-x86_64.AppImage
+./Naqi-x.y.z-linux-x86_64.AppImage
+```
+
+If the AppImage fails to launch, install FUSE: `sudo apt-get install libfuse2` (Ubuntu) or `sudo dnf install fuse-libs` (Fedora).
 
 ---
 

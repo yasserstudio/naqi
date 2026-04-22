@@ -46,7 +46,8 @@ The Free tier remains **free forever** with full scanning, dashboard, health sco
 - Every user-facing string flows through locale catalogs — ~1300 keys per language, zero parity drift.
 - Schema.org rich-snippet metadata (breadcrumbs, HowTo guides, Article pages) localizes too, so Google search results match each locale's `<html lang>`.
 - License-activation API errors, transactional emails (purchase, refund, cancel, payment-failed, renewal reminder), and in-app date / plan / billing formatting all respect the caller's Accept-Language + Paddle `customer.locale`.
-- Non-English locales are first-pass translations pending native-speaker review on the money-path copy (home, pricing, CTAs). The desktop app's UI remains English-only for this beta.
+- The desktop app also ships in all 5 languages — 903 keys per locale with a language picker in Settings → General → Appearance. Locale changes take effect immediately (no restart).
+- Non-English locales are first-pass translations pending native-speaker review on the money-path copy (home, pricing, CTAs).
 
 ### Settings
 

@@ -70,6 +70,10 @@ When you decide to remove something, Naqi follows a strict 6-step protocol for e
 
 Every backup is browsable in the Backups page. View, Compare, and Export as ZIP are available on every plan. **Restore** and **ZIP import** (the recovery flows that write configs back) require Naqi Pro. Retention defaults to 90 days; configurable in Settings.
 
+### System tray
+
+Naqi lives in your menu bar (macOS) or system tray (Windows/Linux). The tray panel shows a quick-glance health score, scan status, and recent notifications without opening the main window. Click the tray icon to toggle the panel; click any notification to jump to the relevant page.
+
 ### Safe Mode (on by default for new users)
 
 Safe Mode blocks all destructive actions until you explicitly turn it off in Settings. When Safe Mode is on, the cleanup buttons are greyed out and a shield icon appears in the sidebar. The only way to disable Safe Mode is from Settings — there's no nag dialog, no upsell, no countdown.
