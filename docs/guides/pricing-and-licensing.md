@@ -28,8 +28,10 @@ The free tier is a complete product, not a teaser. Scan, review, clean up manual
 Naqi Pro is active on **one device at a time**. To move your license:
 
 1. **From the current device:** Settings → License → Deactivate
-2. **Lost access to the device:** go to [getnaqi.com/manage](https://getnaqi.com/manage), paste your license key, and deactivate remotely
+2. **Lost access to the device:** go to [getnaqi.com/manage](https://getnaqi.com/manage), paste your license key, and remove the device
 3. Activate on the new machine using the same key
+
+The [manage page](https://getnaqi.com/manage) shows your subscription status, device name and OS, and lets you remove individual devices — no support ticket needed.
 
 ## Refund policy
 
@@ -37,8 +39,8 @@ Naqi Pro is active on **one device at a time**. To move your license:
 
 ## Payment
 
-Payments are processed by [Paddle](https://www.paddle.com/) as Merchant of Record. Paddle handles tax calculation, invoicing, and compliance. Your payment details are never seen by Naqi or Yasser's Studio.
+Payments are processed through the **Mac App Store**. Apple is the Merchant of Record and handles tax calculation, invoicing, and compliance. Your payment details are never seen by Naqi or Yasser's Studio.
 
 ## Cancellation
 
-Cancel anytime from Settings → License or via [getnaqi.com/manage](https://getnaqi.com/manage). Your Pro features remain active until the end of the current billing period.
+Cancel anytime from System Settings → Apple ID → Subscriptions, or via the "Manage subscription in App Store" link on [getnaqi.com/manage](https://getnaqi.com/manage). Your Pro features remain active until the end of the current billing period.
