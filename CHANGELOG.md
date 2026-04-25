@@ -4,6 +4,27 @@ All notable changes to Naqi are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 Versioning follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html) — see [VERSIONING.md](VERSIONING.md) for full strategy.
 
+## [1.0.0-beta.2] — 2026-04-25
+
+### Added
+- **Pro licensing** — activate via deep link (`naqi://activate`), manage subscription through Apple, per-device management with auto-deactivation
+- **License state banners** — clear status indicators for PastDue, CanceledActive, and Expired states
+- **Token Waste Revelation** — personalized paywall showing your actual waste patterns and potential savings
+- **Pro gating** — live session watcher, weekly digest, token diet, and project hotspot now require Pro
+- **Renewal reminders and expiry notifications**
+- **Annual/monthly plan selector** on pricing page
+- **i18n** — desktop app keys synced across all 5 locales
+
+### Fixed
+- MAS sandbox compliance — user-granted folder access replaces temp exceptions
+- Exports use Save dialog for full MAS sandbox compatibility
+- Apple review rejections for lzma and China availability resolved
+- License keys redacted from all server logs
+- Email branding refresh — dark theme, golden PRO badge
+
+### Removed
+- Unused `tauri-plugin-store` dependency
+
 ## [1.0.0-beta.1] — 2026-04-20
 
 **Naqi 1.0 public beta.** The headline change is **Token Hygiene** — a full view of where Claude Code spends your tokens, where the waste is, and how to fix it. Plus a Pro tier, a security-hardening pass, an accessibility audit, and a community Discord.
