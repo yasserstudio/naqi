@@ -195,14 +195,21 @@ jobs:
       - name: Upload build to App Store Connect
         working-directory: .
         env:
-          ASC_APP_ID: ${{ secrets.ASC_APP_ID }}
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_PRIVATE_KEY: ${{ secrets.ASC_PRIVATE_KEY }}
         run: |
-          asc builds upload \
-            --app "$ASC_APP_ID" \
-            --pkg "$PKG_PATH" \
-            --version "${{ github.event.client_payload.version || '1.0.0' }}" \
-            --build-number "${{ github.event.client_payload.build_number || '10' }}" \
-            --output json
+          mkdir -p ~/.appstoreconnect/private_keys
+          echo "$ASC_PRIVATE_KEY" | base64 --decode > ~/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8
+          xcrun altool --upload-package "$PKG_PATH" \
+            --type macos \
+            --apple-id "${{ secrets.ASC_APP_ID }}" \
+            --bundle-id "app.naqi.desktop" \
+            --bundle-version "${{ github.event.client_payload.build_number || '10' }}" \
+            --bundle-short-version-string "${{ github.event.client_payload.version || '1.0.0' }}" \
+            --apiKey "$ASC_KEY_ID" \
+            --apiIssuer "$ASC_ISSUER_ID"
+          rm -f ~/.appstoreconnect/private_keys/AuthKey_${ASC_KEY_ID}.p8
 
       # ── Submit (optional, controlled by dispatch payload) ─────────────────
       - name: Submit for App Review
