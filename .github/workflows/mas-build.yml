@@ -106,6 +106,7 @@ jobs:
       - name: Build Naqi arm64 (MAS)
         env:
           VITE_MAS: 'true'
+          TAURI_SIGNING_PRIVATE_KEY: 'unused-mas-builds-do-not-use-updater'
         run: |
           pnpm tauri build \
             --config src-tauri/tauri.mas.conf.json \
@@ -116,6 +117,7 @@ jobs:
       - name: Build Naqi x86_64 (MAS)
         env:
           VITE_MAS: 'true'
+          TAURI_SIGNING_PRIVATE_KEY: 'unused-mas-builds-do-not-use-updater'
         run: |
           pnpm tauri build \
             --config src-tauri/tauri.mas.conf.json \
