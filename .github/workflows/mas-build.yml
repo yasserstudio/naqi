@@ -104,16 +104,22 @@ jobs:
 
       # ── Build (both arches) ───────────────────────────────────────────────
       - name: Build Naqi arm64 (MAS)
+        env:
+          VITE_MAS: 'true'
         run: |
           pnpm tauri build \
             --config src-tauri/tauri.mas.conf.json \
+            --features mas \
             --target aarch64-apple-darwin \
             --bundles app
 
       - name: Build Naqi x86_64 (MAS)
+        env:
+          VITE_MAS: 'true'
         run: |
           pnpm tauri build \
             --config src-tauri/tauri.mas.conf.json \
+            --features mas \
             --target x86_64-apple-darwin \
             --bundles app
 
@@ -127,6 +133,15 @@ jobs:
           lipo -create "$ARM_BIN" "$X86_BIN" -output "$ARM_BIN"
           lipo -info "$ARM_BIN"
           echo "APP_PATH=$APP_PATH" >> "$GITHUB_ENV"
+
+      # ── Patch Info.plist for App Store ────────────────────────────────────
+      # Tauri writes semver pre-release (e.g. "1.0.0-beta.2") which Apple
+      # rejects (ITMS-90060). Patch to clean version + numeric build number.
+      - name: Patch Info.plist versions
+        run: |
+          PLIST="$APP_PATH/Contents/Info.plist"
+          /usr/libexec/PlistBuddy -c "Set :CFBundleShortVersionString ${{ github.event.client_payload.version || '1.0.0' }}" "$PLIST"
+          /usr/libexec/PlistBuddy -c "Set :CFBundleVersion ${{ github.event.client_payload.build_number || '10' }}" "$PLIST"
 
       # ── Re-sign the universal .app ────────────────────────────────────────
       - name: Re-sign universal .app
