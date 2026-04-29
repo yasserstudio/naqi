@@ -106,7 +106,7 @@ jobs:
       - name: Build Naqi arm64 (MAS)
         env:
           VITE_MAS: 'true'
-          TAURI_SIGNING_PRIVATE_KEY: 'unused-mas-builds-do-not-use-updater'
+          TAURI_SIGNING_PRIVATE_KEY: 'dW50cnVzdGVkIGNvbW1lbnQ6IHJzaWduIGVuY3J5cHRlZCBzZWNyZXQga2V5ClJXUlRZMEl5aWxra2dXRVNlMlpHc1F3VVNMNWpUVCswM0NOUktENklrc2VKS0dpSHJ6OEFBQkFBQUFBQUFBQUFBQUlBQUFBQTdjaGJCZHFBZHF0WDRKUDE5bWROcEJ3Z2F5SGhjVFRUNGQxc0pDTU5tOU5wMG5EeE5OREVlVGdiNWhOM3NyV2pteERaakg1b3JOaTZQZ09TeGtzNldacmlIbHpnOUdidTNheWI1UGI4dmpYVlJxNFRPOElWRGhjblpvK2ViQjRmZlhDeDlNWGh2aGs9Cg=='
         run: |
           pnpm tauri build \
             --config src-tauri/tauri.mas.conf.json \
@@ -117,7 +117,7 @@ jobs:
       - name: Build Naqi x86_64 (MAS)
         env:
           VITE_MAS: 'true'
-          TAURI_SIGNING_PRIVATE_KEY: 'unused-mas-builds-do-not-use-updater'
+          TAURI_SIGNING_PRIVATE_KEY: 'dW50cnVzdGVkIGNvbW1lbnQ6IHJzaWduIGVuY3J5cHRlZCBzZWNyZXQga2V5ClJXUlRZMEl5aWxra2dXRVNlMlpHc1F3VVNMNWpUVCswM0NOUktENklrc2VKS0dpSHJ6OEFBQkFBQUFBQUFBQUFBQUlBQUFBQTdjaGJCZHFBZHF0WDRKUDE5bWROcEJ3Z2F5SGhjVFRUNGQxc0pDTU5tOU5wMG5EeE5OREVlVGdiNWhOM3NyV2pteERaakg1b3JOaTZQZ09TeGtzNldacmlIbHpnOUdidTNheWI1UGI4dmpYVlJxNFRPOElWRGhjblpvK2ViQjRmZlhDeDlNWGh2aGs9Cg=='
         run: |
           pnpm tauri build \
             --config src-tauri/tauri.mas.conf.json \
