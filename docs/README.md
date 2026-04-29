@@ -23,6 +23,7 @@ see [getnaqi.com](https://getnaqi.com).
 - [Config Profiles](guides/config-profiles.md) — save, apply, export, and share MCP configurations
 - [Keyboard Shortcuts](guides/keyboard-shortcuts.md) — every shortcut in the app
 - [Language & Localization](guides/localization.md) — supported languages, how to switch
+- [Settings File](guides/settings-file.md) — portable TOML settings, syncing, MDM policy
 
 ## Reference
 

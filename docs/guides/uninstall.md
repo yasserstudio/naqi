@@ -73,7 +73,7 @@ rm -rf ~/.local/share/com.yasserstudio.naqi
 
 | Location | Contents |
 |---|---|
-| `~/.naqi/` | Backups, scan cache, token history, profiles, settings |
+| `~/.naqi/` | Backups, scan cache, token history, profiles, `settings.toml`, `state.json` |
 | App support / config dirs | WebView cache, window state, logs |
 | Keychain / credential store | Pro license key (if activated) |
 | Launch agent / autostart | Scheduled scan entry (if enabled) |
